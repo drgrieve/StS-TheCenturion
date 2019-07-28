@@ -1,0 +1,78 @@
+{
+  "centurion:Axe": {
+    "NAME": "Axe",
+    "DESCRIPTION": "Deal !D! Damage."
+  },
+  "centurion:Shield": {
+    "NAME": "Shield",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "centurion:Strike_Centurion": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! Damage."
+  },
+  "centurion:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "centurion:OpeningManeuver": {
+    "NAME": "Opening Maneuver",
+    "DESCRIPTION": "Innate. Choose to play an Axe or a Shield card. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Innate. Choose to play an Upgraded Axe or an Upgraded Shield card. Exhaust."
+  },
+  "centurion:SharpenBlade": {
+    "NAME": "Sharpen Blade",
+    "DESCRIPTION": "This turn, your Attacks that deal unblocked damage, apply 1 Bleed."
+  },
+  "centurion:TrustyAxe": {
+    "NAME": "Trusty Axe",
+    "DESCRIPTION": "Innate. Deal !D! Damage."
+  },
+  "centurion:TrustyShield": {
+    "NAME": "Trusty Shield",
+    "DESCRIPTION": "Innate. Gain !B! Block."
+  },
+  "centurion:DefaultCommonPower": {
+    "NAME": "Hold Place",
+    "DESCRIPTION": "Gain !M! centurion:Keyword.",
+    "UPGRADE_DESCRIPTION": "Gain !M! centurion:Keywords."
+  },
+  "centurion:DefaultUncommonAttack": {
+    "NAME": "Big slap",
+    "DESCRIPTION": "Deal !D! Damage."
+  },
+  "centurion:DefaultUncommonSkill": {
+    "NAME": "A Better Defend",
+    "DESCRIPTION": "Gain !B! Plated Armor. Affected by Dexterity."
+  },
+  "centurion:DefaultUncommonPower": {
+    "NAME": "Weirdness",
+    "DESCRIPTION": "Gain X centurion:Keywords.",
+    "UPGRADE_DESCRIPTION": "Gain X +1 centurion:Keywords."
+  },
+  "centurion:DefaultRareAttack": {
+    "NAME": "TOUCH",
+    "DESCRIPTION": "Deal !D! Damage."
+  },
+  "centurion:DefaultRareSkill": {
+    "NAME": "For Each Loop x2",
+    "DESCRIPTION": "Apply !M! vulnerable to all enemies, 2 times.",
+    "UPGRADE_DESCRIPTION": "Apply !M! vulnerable to all enemies, 3 times."
+  },
+  "centurion:DefaultRarePower": {
+    "NAME": "In-Progress Form",
+    "DESCRIPTION": "At the start of your turn, play a TOUCH."
+  },
+  "centurion:DefaultAttackWithVariable": {
+    "NAME": "Special Strike",
+    "DESCRIPTION": "Deal !D! Damage [E] times. NL (Deal !centurion:ENERGY_DAMAGE! damage total.)"
+  },
+  "centurion:DefaultSecondMagicNumberSkill": {
+    "NAME": "Cool 2 Number Card",
+    "DESCRIPTION": "Apply !M! vulnerable and !centurion:SecondMagic! poison to an enemy."
+  },
+  "centurion:OrbSkill": {
+    "NAME": "Get Orb",
+    "DESCRIPTION": "Channel 1 Default Orb."
+  }
+}
