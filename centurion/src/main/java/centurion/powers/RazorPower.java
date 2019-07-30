@@ -1,6 +1,8 @@
 package centurion.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
+import centurion.actions.BleedAction;
+import centurion.cards.BleedOut;
 import centurion.util.TextureLoader;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -96,7 +98,15 @@ public class RazorPower extends AbstractPower implements CloneablePowerInterface
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.ATTACK) {
             this.flash();
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new RazorPower(this.owner, -1), -1));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new RazorPower(this.owner, -1), -1));
+
+            if (card.cardID == BleedOut.ID) {
+                int applications = card.upgraded ? 2 : 1;
+                for(int i = 0; i < applications; i++) {
+                    AbstractDungeon.actionManager.addToBottom(new BleedAction(action.target, this.owner));
+                }
+
+            }
         }
     }
 

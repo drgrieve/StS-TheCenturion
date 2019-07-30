@@ -33,6 +33,7 @@ import centurion.util.IDCheckDontTouchPls;
 import centurion.util.TextureLoader;
 import centurion.variables.DefaultCustomVariable;
 import centurion.variables.DefaultSecondMagicNumber;
+import org.w3c.dom.css.Counter;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -412,13 +413,17 @@ public class CenturionMod implements
         BaseMod.addCard(new OpeningManeuver());
         BaseMod.addCard(new SharpenBlade());
 
-        //Generic cards
+        //Generic cards - Common
         BaseMod.addCard(new Anticipate());
         BaseMod.addCard(new BlurredBlade());
         BaseMod.addCard(new CounterOffensive());
         BaseMod.addCard(new StrategicCut());
         BaseMod.addCard(new TrustyAxe());
         BaseMod.addCard(new TrustyShield());
+
+        //Generic cards - Uncommon
+        BaseMod.addCard(new BleedOut());
+        BaseMod.addCard(new CounterAttack());
 
         BaseMod.addCard(new OrbSkill());
         BaseMod.addCard(new DefaultSecondMagicNumberSkill());
@@ -449,6 +454,9 @@ public class CenturionMod implements
         UnlockTracker.unlockCard(StrategicCut.ID);
         UnlockTracker.unlockCard(TrustyAxe.ID);
         UnlockTracker.unlockCard(TrustyShield.ID);
+
+        UnlockTracker.unlockCard(BleedOut.ID);
+        UnlockTracker.unlockCard(CounterAttack.ID);
 
         UnlockTracker.unlockCard(OrbSkill.ID);
         UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);

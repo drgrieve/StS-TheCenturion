@@ -81,19 +81,6 @@ public class OpeningManeuver extends AbstractDynamicCard implements ModalChoice.
         modal.open();
     }
 
-    @Override
-    public void optionSelected(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster, int i) {
-/*
-        AbstractCard c;
-        if (i == 0)
-            c = CardLibrary.getCard(TrustyAxe.ID).makeCopy();
-        else
-            c = CardLibrary.getCard(TrustyShield.ID).makeCopy();
-        if (this.upgraded) c.upgrade();
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, true));
- */
-    }
-
     // Upgraded stats.
     @Override
     public void upgrade() {
@@ -108,5 +95,10 @@ public class OpeningManeuver extends AbstractDynamicCard implements ModalChoice.
     public AbstractCard makeCopy()
     {
         return new OpeningManeuver();
+    }
+
+    @Override
+    public void optionSelected(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster, int i) {
+
     }
 }

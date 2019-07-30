@@ -68,9 +68,8 @@ public class BleedPower extends AbstractPower implements CloneablePowerInterface
     public void atStartOfTurn() {
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             this.flashWithoutSound();
-            AbstractDungeon.actionManager.addToBottom(new BleedAction(this.owner, this.source, this.amount, AbstractGameAction.AttackEffect.POISON));
+            AbstractDungeon.actionManager.addToBottom(new BleedAction(this.owner, this.source));
         }
-
     }
 
     @Override

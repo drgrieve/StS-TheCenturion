@@ -1,7 +1,7 @@
 {
   "centurion:Axe": {
     "NAME": "Axe",
-    "DESCRIPTION": "Deal !D! Damage."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "centurion:Shield": {
     "NAME": "Shield",
@@ -9,7 +9,7 @@
   },
   "centurion:Strike_Centurion": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! Damage."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "centurion:Defend": {
     "NAME": "Defend",
@@ -46,11 +46,20 @@
   },
   "centurion:TrustyAxe": {
     "NAME": "Trusty Axe",
-    "DESCRIPTION": "Innate. Deal !D! Damage."
+    "DESCRIPTION": "Innate. Deal !D! damage."
   },
   "centurion:TrustyShield": {
     "NAME": "Trusty Shield",
     "DESCRIPTION": "Innate. Gain !B! Block."
+  },
+  "centurion:BleedOut": {
+    "NAME": "Bleed Out",
+    "DESCRIPTION": "Gain 1 centurion:Razor. Deal !D! damage. If the enemy has centurion:Bleed, trigger it.",
+    "UPGRADE_DESCRIPTION": "Gain 1 centurion:Razor. Deal !D! damage. If the enemy has centurion:Bleed, trigger it twice."
+  },
+  "centurion:CounterAttack": {
+    "NAME": "Counter Attack",
+    "DESCRIPTION": "Deal !D! damage. If the enemy intends to attack, double the damage."
   },
   "centurion:DefaultCommonPower": {
     "NAME": "Hold Place",
@@ -59,7 +68,7 @@
   },
   "centurion:DefaultUncommonAttack": {
     "NAME": "Big slap",
-    "DESCRIPTION": "Deal !D! Damage."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "centurion:DefaultUncommonSkill": {
     "NAME": "A Better Defend",
@@ -72,7 +81,7 @@
   },
   "centurion:DefaultRareAttack": {
     "NAME": "TOUCH",
-    "DESCRIPTION": "Deal !D! Damage."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "centurion:DefaultRareSkill": {
     "NAME": "For Each Loop x2",
