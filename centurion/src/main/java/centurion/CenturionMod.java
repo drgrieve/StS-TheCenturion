@@ -413,6 +413,10 @@ public class CenturionMod implements
         BaseMod.addCard(new SharpenBlade());
 
         //Generic cards
+        BaseMod.addCard(new Anticipate());
+        BaseMod.addCard(new BlurredBlade());
+        BaseMod.addCard(new CounterOffensive());
+        BaseMod.addCard(new StrategicCut());
         BaseMod.addCard(new TrustyAxe());
         BaseMod.addCard(new TrustyShield());
 
@@ -439,6 +443,10 @@ public class CenturionMod implements
         UnlockTracker.unlockCard(OpeningManeuver.ID);
         UnlockTracker.unlockCard(SharpenBlade.ID);
 
+        UnlockTracker.unlockCard(Anticipate.ID);
+        UnlockTracker.unlockCard(BlurredBlade.ID);
+        UnlockTracker.unlockCard(CounterOffensive.ID);
+        UnlockTracker.unlockCard(StrategicCut.ID);
         UnlockTracker.unlockCard(TrustyAxe.ID);
         UnlockTracker.unlockCard(TrustyShield.ID);
 

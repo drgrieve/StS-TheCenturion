@@ -3,24 +3,24 @@
         "NAME": "Bleed",
         "DESCRIPTIONS": [
                 "At the start of your turn, lose #b",
-                "At the start of its turn, loses #b"
+                "At the start of its turn, loses #b",
+                " HP."
         ]
         },
         "centurion:RazorPower": {
                 "NAME": "Razor",
                 "DESCRIPTIONS": [
                         "Whenever you deal unblocked attack damage, apply #b",
-                        " #yBleed."
+                        " #yBleed. Whenever you play an #yAttack card, or at the end of your turn, lose #b1 #yRazor."
                 ]
         },
-        "centurion:LoseRazorPower": {
-                "NAME": "Dulled",
+        "centurion:LoseThornsPower": {
+                "NAME": "Despike",
                 "DESCRIPTIONS": [
-                        "At the end of this turn, lose #b",
-                        " #yRazor."
+                        "Lose #b",
+                        " #yThorns at the start of your next turn."
                 ]
         },
-
         "centurion:CommonPower": {
                 "NAME": "Placeholder Power",
                 "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]

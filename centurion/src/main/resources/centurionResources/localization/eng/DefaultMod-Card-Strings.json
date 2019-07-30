@@ -22,7 +22,27 @@
   },
   "centurion:SharpenBlade": {
     "NAME": "Sharpen Blade",
-    "DESCRIPTION": "This turn, your Attacks that deal unblocked damage, apply 1 Bleed."
+    "DESCRIPTION": "Gain 3 centurion:Razor"
+  },
+  "centurion:Anticipate": {
+    "NAME": "Anticipate",
+    "DESCRIPTION": "Gain !B! Block. If an enemy intends to not attack, gain double that Block next turn.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Gains !M! Block.)"
+    ]
+  },
+  "centurion:BlurredBlade": {
+    "NAME": "Blurred Blade",
+    "DESCRIPTION": "Gain !M! centurion:Razor. Deal !D! damage to all enemies.",
+    "UPGRADE_DESCRIPTION": "Gain !M! centurion:Razor. Deal !D! damage to all enemies twice."
+  },
+  "centurion:CounterOffensive": {
+    "NAME": "Counter Offensive",
+    "DESCRIPTION": "Gain !B! Block. Gain !M! Thorns until the start of your next turn."
+  },
+  "centurion:StrategicCut": {
+    "NAME": "Strategic Cut",
+    "DESCRIPTION": "Gain !M! centurion:Razor. centurion:Razor applies !centurion:SecondMagic! additional centurion:Bleed this turn. Deal !D! damage."
   },
   "centurion:TrustyAxe": {
     "NAME": "Trusty Axe",

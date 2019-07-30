@@ -31,12 +31,22 @@ public class RazorPower extends AbstractPower implements CloneablePowerInterface
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
+    private int baseBleed = 1;
+    private int currentBleed = baseBleed;
+
     public RazorPower(AbstractCreature owner, int newAmount) {
+        this(owner, newAmount, 0, 0);
+    }
+
+    public RazorPower(AbstractCreature owner, int newAmount, int increaseBaseBleedAmount, int increaseCurrentBleedAmount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = newAmount;
         this.type = PowerType.BUFF;
+        this.canGoNegative = false;
+        this.baseBleed = baseBleed + increaseBaseBleedAmount;
+        this.currentBleed = currentBleed + increaseCurrentBleedAmount;
 
         // We load those textures here.
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
@@ -49,7 +59,7 @@ public class RazorPower extends AbstractPower implements CloneablePowerInterface
         this.fontScale = 8.0F;
         this.amount += stackAmount;
         if (this.amount <= 0) {
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, NAME));
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
         }
 
         if (this.amount >= 999) {
@@ -61,7 +71,7 @@ public class RazorPower extends AbstractPower implements CloneablePowerInterface
         this.fontScale = 8.0F;
         this.amount -= reduceAmount;
         if (this.amount <= 0) {
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, NAME));
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
         }
 
         if (this.amount >= 999) {
@@ -71,16 +81,44 @@ public class RazorPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        this.description = DESCRIPTIONS[0] + this.currentBleed + DESCRIPTIONS[1];
     }
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (damageAmount > 0 && target != this.owner && info.type == DamageInfo.DamageType.NORMAL) {
+        if (damageAmount > 0 && this.amount > 0 && target != this.owner && info.type == DamageInfo.DamageType.NORMAL) {
             this.flash();
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, this.owner, new BleedPower(target, this.owner, this.amount), this.amount, true));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, this.owner, new BleedPower(target, this.owner, this.currentBleed), this.currentBleed, true));
         }
+    }
 
+    @Override
+    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+        if (card.type == AbstractCard.CardType.ATTACK) {
+            this.flash();
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new RazorPower(this.owner, -1), -1));
+        }
+    }
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        if (isPlayer) {
+            this.flash();
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new RazorPower(this.owner, -1), -1));
+            if (this.currentBleed > this.baseBleed) {
+                this.currentBleed = this.currentBleed - 1;
+                updateDescription();
+            }
+        }
+    }
+
+    public void increaseCurrentBleed(int amount) {
+        this.currentBleed = this.currentBleed + amount;
+    }
+
+    public void increaseBaseBleed(int amount) {
+        this.baseBleed = this.baseBleed + amount;
+        if (this.baseBleed > this.currentBleed) this.currentBleed = this.baseBleed;
     }
 
     @Override

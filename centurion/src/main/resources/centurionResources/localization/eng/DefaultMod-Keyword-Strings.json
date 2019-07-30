@@ -7,6 +7,12 @@
   },
   {
     "NAMES": [
+      "razor"
+    ],
+    "DESCRIPTION": "Whenever you deal unblocked attack damage, apply 1 Bleed"
+  },
+  {
+    "NAMES": [
       "keyword",
       "keywords"
     ],

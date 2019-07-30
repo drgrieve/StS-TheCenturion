@@ -55,6 +55,7 @@ public class Axe extends AbstractDynamicCard {
         AbstractCard c = this.makeStatEquivalentCopy();
         c.freeToPlayOnce= false;
         p.discardPile.addToTop(c);
+        //TODO trigger razor down
     }
 
     //Upgraded stats.

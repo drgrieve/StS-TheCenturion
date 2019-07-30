@@ -1,7 +1,6 @@
 package centurion.cards;
 
 import centurion.characters.Centurion;
-import centurion.powers.LoseRazorPower;
 import centurion.powers.RazorPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -46,8 +45,7 @@ public class SharpenBlade extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new RazorPower(p, 1), 1));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new LoseRazorPower(p, 1), 1));
+            new ApplyPowerAction(p, p, new RazorPower(p, 3), 3));
     }
 
     // Upgraded stats.
