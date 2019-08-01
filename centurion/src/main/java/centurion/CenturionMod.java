@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import com.sun.corba.se.impl.orb.PrefixParserData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import centurion.cards.*;
@@ -157,7 +158,7 @@ public class CenturionMod implements
     public static String makePowerPath(String resourcePath) {
         return getModID() + "Resources/images/powers/" + resourcePath;
     }
-    
+
     public static String makeEventPath(String resourcePath) {
         return getModID() + "Resources/images/events/" + resourcePath;
     }
@@ -417,25 +418,30 @@ public class CenturionMod implements
         BaseMod.addCard(new Anticipate());
         BaseMod.addCard(new BlurredBlade());
         BaseMod.addCard(new CounterOffensive());
+        BaseMod.addCard(new Prepared());
+        BaseMod.addCard(new Reconnaissance());
         BaseMod.addCard(new StrategicCut());
         BaseMod.addCard(new TrustyAxe());
         BaseMod.addCard(new TrustyShield());
 
         //Generic cards - Uncommon
         BaseMod.addCard(new BleedOut());
+        BaseMod.addCard(new BloodSpirit());
         BaseMod.addCard(new CounterAttack());
+        BaseMod.addCard(new DeepCut());
+        BaseMod.addCard(new Defiance());
+        BaseMod.addCard(new EarlyStart());
+        BaseMod.addCard(new HoneBlade());
+        BaseMod.addCard(new Observe());
+        BaseMod.addCard(new Search());
 
-        BaseMod.addCard(new OrbSkill());
-        BaseMod.addCard(new DefaultSecondMagicNumberSkill());
-        BaseMod.addCard(new DefaultAttackWithVariable());
-        BaseMod.addCard(new DefaultCommonPower());
-        BaseMod.addCard(new DefaultUncommonSkill());
-        BaseMod.addCard(new DefaultUncommonAttack());
-        BaseMod.addCard(new DefaultUncommonPower());
-        BaseMod.addCard(new DefaultRareAttack());
-        BaseMod.addCard(new DefaultRareSkill());
-        BaseMod.addCard(new DefaultRarePower());
-        
+        //Generic cards - Rare
+        BaseMod.addCard(new BrightBeginning());
+        BaseMod.addCard(new Burst());
+        BaseMod.addCard(new DefensiveWhirlwind());
+        BaseMod.addCard(new WhirlingBlade());
+        BaseMod.addCard(new UltimateStrike());
+
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
         // This is so that they are all "seen" in the library, for people who like to look at the card list
@@ -451,24 +457,28 @@ public class CenturionMod implements
         UnlockTracker.unlockCard(Anticipate.ID);
         UnlockTracker.unlockCard(BlurredBlade.ID);
         UnlockTracker.unlockCard(CounterOffensive.ID);
+        UnlockTracker.unlockCard(Prepared.ID);
+        UnlockTracker.unlockCard(Reconnaissance.ID);
         UnlockTracker.unlockCard(StrategicCut.ID);
         UnlockTracker.unlockCard(TrustyAxe.ID);
         UnlockTracker.unlockCard(TrustyShield.ID);
 
         UnlockTracker.unlockCard(BleedOut.ID);
+        UnlockTracker.unlockCard(BloodSpirit.ID);
         UnlockTracker.unlockCard(CounterAttack.ID);
+        UnlockTracker.unlockCard(DeepCut.ID);
+        UnlockTracker.unlockCard(Defiance.ID);
+        UnlockTracker.unlockCard(EarlyStart.ID);
+        UnlockTracker.unlockCard(HoneBlade.ID);
+        UnlockTracker.unlockCard(Observe.ID);
+        UnlockTracker.unlockCard(Search.ID);
 
-        UnlockTracker.unlockCard(OrbSkill.ID);
-        UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
-        UnlockTracker.unlockCard(DefaultAttackWithVariable.ID);
-        UnlockTracker.unlockCard(DefaultCommonPower.ID);
-        UnlockTracker.unlockCard(DefaultUncommonSkill.ID);
-        UnlockTracker.unlockCard(DefaultUncommonAttack.ID);
-        UnlockTracker.unlockCard(DefaultUncommonPower.ID);
-        UnlockTracker.unlockCard(DefaultRareAttack.ID);
-        UnlockTracker.unlockCard(DefaultRareSkill.ID);
-        UnlockTracker.unlockCard(DefaultRarePower.ID);
-        
+        UnlockTracker.unlockCard(BrightBeginning.ID);
+        UnlockTracker.unlockCard(Burst.ID);
+        UnlockTracker.unlockCard(DefensiveWhirlwind.ID);
+        UnlockTracker.unlockCard(WhirlingBlade.ID);
+        UnlockTracker.unlockCard(UltimateStrike.ID);
+
         logger.info("Done adding cards!");
     }
     
@@ -513,7 +523,11 @@ public class CenturionMod implements
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
-        
+
+        // UIStrings
+        BaseMod.loadCustomStringsFile(UIStrings.class,
+                getModID() + "Resources/localization/eng/DefaultMod-UI-Strings.json");
+
         logger.info("Done edittting strings");
     }
     

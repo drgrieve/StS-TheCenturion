@@ -14,11 +14,23 @@
                         " #yBleed. Whenever you play an #yAttack card, or at the end of your turn, lose #b1 #yRazor."
                 ]
         },
-        "centurion:LoseThornsPower": {
+        "centurion:ThornsDownPower": {
                 "NAME": "Despike",
                 "DESCRIPTIONS": [
                         "Lose #b",
                         " #yThorns at the start of your next turn."
+                ]
+        },
+        "centurion:DefensiveWhirlwindPower": {
+                "NAME": "Defensive Whirlwind",
+                "DESCRIPTIONS": [
+                        "Whenever you Gain #yBlock, draw #b1 card."
+                ]
+        },
+        "centurion:WhirlingBladePower": {
+                "NAME": "Whirling Blade",
+                "DESCRIPTIONS": [
+                        "Whenever you play an #yAttack, draw #b1 card."
                 ]
         },
         "centurion:CommonPower": {

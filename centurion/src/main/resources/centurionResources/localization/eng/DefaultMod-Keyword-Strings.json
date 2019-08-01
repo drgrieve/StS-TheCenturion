@@ -13,6 +13,12 @@
   },
   {
     "NAMES": [
+      "filter"
+    ],
+    "DESCRIPTION": "Look at the top X cards of your draw pile. You may discard any of them."
+  },
+  {
+    "NAMES": [
       "keyword",
       "keywords"
     ],

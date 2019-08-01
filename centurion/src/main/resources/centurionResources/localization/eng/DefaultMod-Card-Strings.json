@@ -40,6 +40,14 @@
     "NAME": "Counter Offensive",
     "DESCRIPTION": "Gain !B! Block. Gain !M! Thorns until the start of your next turn."
   },
+  "centurion:Prepared": {
+    "NAME": "Prepared",
+    "DESCRIPTION": "Gain !B! Block. centurion:Filter for the amount of Block gained."
+  },
+  "centurion:Reconnaissance": {
+    "NAME": "Reconnaissance",
+    "DESCRIPTION": "Deal !D! damage. centurion:Filter for the amount of damage dealt."
+  },
   "centurion:StrategicCut": {
     "NAME": "Strategic Cut",
     "DESCRIPTION": "Gain !M! centurion:Razor. centurion:Razor applies !centurion:SecondMagic! additional centurion:Bleed this turn. Deal !D! damage."
@@ -57,9 +65,62 @@
     "DESCRIPTION": "Gain 1 centurion:Razor. Deal !D! damage. If the enemy has centurion:Bleed, trigger it.",
     "UPGRADE_DESCRIPTION": "Gain 1 centurion:Razor. Deal !D! damage. If the enemy has centurion:Bleed, trigger it twice."
   },
+  "centurion:BloodSpirit": {
+    "NAME": "Blood Spirit",
+    "DESCRIPTION": "If an enemy intends to Buff, gain !M! Strength. Draw a card."
+  },
   "centurion:CounterAttack": {
     "NAME": "Counter Attack",
     "DESCRIPTION": "Deal !D! damage. If the enemy intends to attack, double the damage."
+  },
+  "centurion:Defiance": {
+    "NAME": "Defiance",
+    "DESCRIPTION": "Gain !B! Block. Gain !M! Strength."
+  },
+  "centurion:DeepCut": {
+    "NAME": "Deep Cut",
+    "DESCRIPTION": "Double the enemy's centurion:Bleed. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Triple the enemy's centurion:Bleed. Exhaust."
+  },
+  "centurion:EarlyStart": {
+    "NAME": "Early Start",
+    "DESCRIPTION": "Innate. Draw !M! cards."
+  },
+  "centurion:HoneBlade": {
+    "NAME": "Hone Blade",
+    "DESCRIPTION": "Gain !M! centurion:Razor."
+  },
+  "centurion:Observe": {
+    "NAME": "Observe",
+    "DESCRIPTION": "Deal !D! damage. Gain !M! Dexterity."
+  },
+  "centurion:Search": {
+    "NAME": "Search",
+    "DESCRIPTION": "centurion:Filter !M!. Draw a card. Exhaustive !stslib:ex!."
+  },
+  "centurion:BrightBeginning": {
+    "NAME": "Bright Beginning",
+    "DESCRIPTION": "Innate. Reduce the cost of all Innate cards in your hand to 0 this turn.",
+    "UPGRADE_DESCRIPTION": "Innate. Reduce the cost of all Innate cards in your hand to 0 this turn. Exhaust."
+  },
+  "centurion:Burst": {
+    "NAME": "Burst",
+    "DESCRIPTION": "centurion:Filter !M!. Gain [R] for each card discarded. Draw the cards not discarded.",
+    "EXTENDED_DESCRIPTION": [
+      "Choose cards to discard. NL Gain energy for each card discarded. Draw the cards not discarded."
+    ]
+  },
+  "centurion:DefensiveWhirlwind": {
+    "NAME": "Defensive Whirlwind",
+    "DESCRIPTION": "Whenever you gain Block this turn, draw a card."
+  },
+  "centurion:WhirlingBlade": {
+    "NAME": "Whirling Blade",
+    "DESCRIPTION": "Whenever you play an Attack this turn, draw a card."
+  },
+  "centurion:UltimateStrike": {
+    "NAME": "UltimateStrike",
+    "DESCRIPTION": "Deal !D! damage. Gain !B! Block. Draw a card."
   },
   "centurion:DefaultCommonPower": {
     "NAME": "Hold Place",
