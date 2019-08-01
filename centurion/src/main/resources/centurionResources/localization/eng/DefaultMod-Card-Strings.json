@@ -107,7 +107,7 @@
     "NAME": "Burst",
     "DESCRIPTION": "centurion:Filter !M!. Gain [R] for each card discarded. Draw the cards not discarded.",
     "EXTENDED_DESCRIPTION": [
-      "Choose cards to discard. NL Gain energy for each card discarded. Draw the cards not discarded."
+      "Choose cards to discard. Gain energy for each card discarded. Draw the cards not discarded."
     ]
   },
   "centurion:DefensiveWhirlwind": {
