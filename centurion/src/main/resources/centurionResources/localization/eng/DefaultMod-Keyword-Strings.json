@@ -19,6 +19,11 @@
   },
   {
     "NAMES": [
+      "heavy"
+    ],
+    "DESCRIPTION": "Strength increases attack damage X times."
+  },  {
+    "NAMES": [
       "keyword",
       "keywords"
     ],

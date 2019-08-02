@@ -20,7 +20,7 @@ public abstract class AbstractDefaultPower extends AbstractPower {
         String baseImageName = this.ID.substring(modIDLength, this.ID.length() - powerLength);
         Texture tex84 = TextureLoader.getTexture(makePowerPath(baseImageName + ".png"));
         Texture tex32 = TextureLoader.getTexture(makePowerPath(baseImageName + "Small.png"));
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
+        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 96, 96);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
     }
 }

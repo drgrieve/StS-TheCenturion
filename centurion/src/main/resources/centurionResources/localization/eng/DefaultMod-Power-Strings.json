@@ -14,6 +14,13 @@
                         " #yBleed. Whenever you play an #yAttack card, or at the end of your turn, lose #b1 #yRazor."
                 ]
         },
+        "centurion:RazorGainPower": {
+                "NAME": "Diamond Edge",
+                "DESCRIPTIONS": [
+                        "At the start of your turn gain #b",
+                        " #yRazor."
+                ]
+        },
         "centurion:ThornsDownPower": {
                 "NAME": "Despike",
                 "DESCRIPTIONS": [

@@ -48,7 +48,7 @@ public class Burst extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         cardsDiscarded = p.discardPile.size();
-        AbstractDungeon.actionManager.addToBottom(new FilterAction(this.magicNumber, FilterAction.ExtraAction.NONE, FilterAction.ExtraAction.NONE, EXTENDED_DESCRIPTION[0]));
+        AbstractDungeon.actionManager.addToBottom(new FilterAction(this.magicNumber, EXTENDED_DESCRIPTION[0]));
     }
 
     @Override

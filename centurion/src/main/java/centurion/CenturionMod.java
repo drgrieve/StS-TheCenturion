@@ -19,7 +19,6 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import com.sun.corba.se.impl.orb.PrefixParserData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import centurion.cards.*;
@@ -34,7 +33,6 @@ import centurion.util.IDCheckDontTouchPls;
 import centurion.util.TextureLoader;
 import centurion.variables.DefaultCustomVariable;
 import centurion.variables.DefaultSecondMagicNumber;
-import org.w3c.dom.css.Counter;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -286,13 +284,13 @@ public class CenturionMod implements
     
     @Override
     public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + Centurion.Enums.THE_DEFAULT.toString());
+        logger.info("Beginning to edit characters. " + "Add " + Centurion.Enums.CENTURION.toString());
         
-        BaseMod.addCharacter(new Centurion("the Default", Centurion.Enums.THE_DEFAULT),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, Centurion.Enums.THE_DEFAULT);
+        BaseMod.addCharacter(new Centurion("the Default", Centurion.Enums.CENTURION),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, Centurion.Enums.CENTURION);
         
         receiveEditPotions();
-        logger.info("Added " + Centurion.Enums.THE_DEFAULT.toString());
+        logger.info("Added " + Centurion.Enums.CENTURION.toString());
     }
     
     // =============== /LOAD THE CHARACTER/ =================
@@ -357,7 +355,7 @@ public class CenturionMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, Centurion.Enums.THE_DEFAULT);
+        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, Centurion.Enums.CENTURION);
         
         logger.info("Done editing potions");
     }
@@ -407,6 +405,7 @@ public class CenturionMod implements
         //Token cards
         BaseMod.addCard(new Axe());
         BaseMod.addCard(new Shield());
+        BaseMod.addCard(new Experience());
 
         //Basic cards
         BaseMod.addCard(new Strike_Centurion());
@@ -431,13 +430,17 @@ public class CenturionMod implements
         BaseMod.addCard(new DeepCut());
         BaseMod.addCard(new Defiance());
         BaseMod.addCard(new EarlyStart());
+        BaseMod.addCard(new Execution());
+        BaseMod.addCard(new GatherBandages());
         BaseMod.addCard(new HoneBlade());
         BaseMod.addCard(new Observe());
         BaseMod.addCard(new Search());
+        BaseMod.addCard(new Setup());
 
         //Generic cards - Rare
         BaseMod.addCard(new BrightBeginning());
         BaseMod.addCard(new Burst());
+        BaseMod.addCard(new DiamondEdgedBlade());
         BaseMod.addCard(new DefensiveWhirlwind());
         BaseMod.addCard(new WhirlingBlade());
         BaseMod.addCard(new UltimateStrike());
@@ -469,12 +472,16 @@ public class CenturionMod implements
         UnlockTracker.unlockCard(DeepCut.ID);
         UnlockTracker.unlockCard(Defiance.ID);
         UnlockTracker.unlockCard(EarlyStart.ID);
+        UnlockTracker.unlockCard(Execution.ID);
+        UnlockTracker.unlockCard(GatherBandages.ID);
         UnlockTracker.unlockCard(HoneBlade.ID);
         UnlockTracker.unlockCard(Observe.ID);
         UnlockTracker.unlockCard(Search.ID);
+        UnlockTracker.unlockCard(Setup.ID);
 
         UnlockTracker.unlockCard(BrightBeginning.ID);
         UnlockTracker.unlockCard(Burst.ID);
+        UnlockTracker.unlockCard(DiamondEdgedBlade.ID);
         UnlockTracker.unlockCard(DefensiveWhirlwind.ID);
         UnlockTracker.unlockCard(WhirlingBlade.ID);
         UnlockTracker.unlockCard(UltimateStrike.ID);

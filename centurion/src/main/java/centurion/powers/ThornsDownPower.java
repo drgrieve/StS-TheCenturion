@@ -15,7 +15,7 @@ import com.megacrit.cardcrawl.powers.ThornsPower;
 import static centurion.CenturionMod.makePowerPath;
 
 public class ThornsDownPower extends AbstractDefaultPower {
-    public static final String POWER_ID = centurion.CenturionMod.makeID("ThornsDownPower");
+    public static final String POWER_ID = centurion.CenturionMod.makeID(ThornsDownPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

@@ -7,6 +7,10 @@
     "NAME": "Shield",
     "DESCRIPTION": "Gain !B! Block."
   },
+  "centurion:Experience": {
+    "NAME": "Experience",
+    "DESCRIPTION": "You have !M! experience."
+  },
   "centurion:Strike_Centurion": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
@@ -86,6 +90,14 @@
     "NAME": "Early Start",
     "DESCRIPTION": "Innate. Draw !M! cards."
   },
+  "centurion:Execution": {
+    "NAME": "Execution",
+    "DESCRIPTION": "Retain. centurion:Heavy !M!. NL Deal !D! Damage, if this kills an enemy, permanently increase this card's centurion:Heavy by !centurion:SecondMagic!. NL Exhaust."
+  },
+  "centurion:GatherBandages": {
+    "NAME": "GatherBandages",
+    "DESCRIPTION": "Retain. NL If your have lost HP this combat, shuffle !M! Bandage Up into your discard pile. NL Exhaust."
+  },
   "centurion:HoneBlade": {
     "NAME": "Hone Blade",
     "DESCRIPTION": "Gain !M! centurion:Razor."
@@ -97,6 +109,10 @@
   "centurion:Search": {
     "NAME": "Search",
     "DESCRIPTION": "centurion:Filter !M!. Draw a card. Exhaustive !stslib:ex!."
+  },
+  "centurion:Setup": {
+    "NAME": "Setup",
+    "DESCRIPTION": "Retain. NL Put a card from your hand on top of your draw pile. It costs 0 until played. NL Exhaust."
   },
   "centurion:BrightBeginning": {
     "NAME": "Bright Beginning",
