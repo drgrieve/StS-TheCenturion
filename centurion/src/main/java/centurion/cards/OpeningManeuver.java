@@ -46,7 +46,6 @@ public class OpeningManeuver extends AbstractDynamicCard implements ModalChoice.
 
     private static final int COST = 1;
     private ModalChoice modal;
-    private Axe axeCard;
 
     // /STAT DECLARATION/
 

@@ -24,7 +24,7 @@ import org.apache.logging.log4j.Logger;
 import centurion.cards.*;
 import centurion.relics.DefaultClickableRelic;
 import centurion.relics.PlaceholderRelic;
-import centurion.relics.PlaceholderRelic2;
+import centurion.relics.IronHelmRelic;
 
 import java.util.ArrayList;
 
@@ -176,11 +176,11 @@ public class Centurion extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         retVal.add(PlaceholderRelic.ID);
-        retVal.add(PlaceholderRelic2.ID);
+        retVal.add(IronHelmRelic.ID);
         retVal.add(DefaultClickableRelic.ID);
 
         UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
+        UnlockTracker.markRelicAsSeen(IronHelmRelic.ID);
         UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
 
         return retVal;

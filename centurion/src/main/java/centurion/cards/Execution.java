@@ -3,6 +3,7 @@ package centurion.cards;
 import centurion.actions.ExecuteAction;
 import centurion.characters.Centurion;
 import com.badlogic.gdx.Game;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AlwaysRetainField;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -61,7 +62,7 @@ public class Execution extends AbstractHeavyCard {
         this.magicNumber = MAGIC_NUMBER;
         this.defaultBaseSecondMagicNumber = ADDITIONAL_HEAVY_NUMBER;
         this.defaultSecondMagicNumber = ADDITIONAL_HEAVY_NUMBER;
-        this.retain = true;
+        AlwaysRetainField.alwaysRetain.set(this, true);
         this.exhaust = true;
     }
 

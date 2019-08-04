@@ -1,25 +1,27 @@
-package centurion.cards;
+package centurion.cards.stance;
 
-import centurion.actions.FilterAction;
+import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import centurion.powers.RazorPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static centurion.CenturionMod.makeCardPath;
 
-public class Experience extends AbstractDynamicCard {
+public class TwoHandedStance extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = centurion.CenturionMod.makeID(Experience.class.getSimpleName());
-    public static final String IMG = makeCardPath("Defend.png");
+    public static final String ID = centurion.CenturionMod.makeID(TwoHandedStance.class.getSimpleName());
+    public static final String IMG = makeCardPath("Skill.png");
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     // /TEXT DECLARATION/
-
 
     // STAT DECLARATION
 
@@ -28,37 +30,31 @@ public class Experience extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
 
-    private static final int COST = 0;
+    private static final int COST = 1;
 
     // /STAT DECLARATION/
 
 
-    public Experience() {
+    public TwoHandedStance() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-
-        int experience = 3 * CardCrawlGame.monstersSlain;
-        experience += 9 * (CardCrawlGame.elites1Slain + CardCrawlGame.elites2Slain + CardCrawlGame.elites3Slain);
-        experience += 15 * AbstractDungeon.bossCount;
-        this.baseMagicNumber = experience;
-
+        this.isInnate = true;
+        this.purgeOnUse = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.actionManager.addToBottom(
+            new ApplyPowerAction(p, p, new RazorPower(p, 3), 3));
     }
 
-    //Upgraded stats.
+    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }
-
-    @Override
-    public AbstractCard makeCopy()
-    {
-        return new Experience();
-    }}
+}

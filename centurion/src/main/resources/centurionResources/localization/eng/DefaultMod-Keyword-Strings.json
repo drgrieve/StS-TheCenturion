@@ -1,6 +1,41 @@
 [
   {
     "NAMES": [
+      "blade",
+      "blades"
+    ],
+    "DESCRIPTION": "Blades are #b0 cost Attack cards which Exhaust."
+  },
+  {
+    "PROPER_NAME": "Rank Up",
+    "NAMES": [
+      "Rank Up",
+      "rank up",
+      "rank_up"
+    ],
+    "DESCRIPTION": "A Rank Up is a one time use card that will you allow to choose from different rewards."
+  },
+  {
+    "PROPER_NAME": "XP",
+    "NAMES": [
+      "xp"
+    ],
+    "DESCRIPTION": "Gain 1, 5, or 10 XP for defeating a normal, elite, or boss encounter respectively."
+  },
+  {
+    "NAMES": [
+      "stance"
+    ],
+    "DESCRIPTION": "Each Stance unlocks a special set of cards for you to find and changes your future Rank Up rewards."
+  },
+  {
+    "NAMES": [
+      "equip"
+    ],
+    "DESCRIPTION": "Gain the item's power for this combat."
+  },
+  {
+    "NAMES": [
       "bleed"
     ],
     "DESCRIPTION": "Bleeding creatures lose HP at the start of their turn."

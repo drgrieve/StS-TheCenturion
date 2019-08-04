@@ -3,13 +3,44 @@
     "NAME": "Axe",
     "DESCRIPTION": "Deal !D! damage."
   },
+  "centurion:Dagger": {
+    "NAME": "Dagger",
+    "DESCRIPTION": "Every time you play 2 Attacks in a single turn, gain !M! centurion:Razor."
+  },
+  "centurion:Mace": {
+    "NAME": "Mace",
+    "DESCRIPTION": "Every time you play 2 Attacks in a single turn, apply !M! Weak."
+  },
   "centurion:Shield": {
     "NAME": "Shield",
     "DESCRIPTION": "Gain !B! Block."
   },
-  "centurion:Experience": {
-    "NAME": "Experience",
-    "DESCRIPTION": "You have !M! experience."
+  "centurion:QuickStrike": {
+    "NAME": "Quick Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust."
+  },
+  "centurion:TwoHandedStance": {
+    "NAME": "Two Handed",
+    "DESCRIPTION": "Innate. NL centurion:Equip a new weapon: Greatsword, Battle Axe, or a Warhammer. NL Purge.",
+    "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded weapon: Greatsword, Battle Axe, or a Warhammer. NL Purge."
+  },
+  "centurion:DualWieldStance": {
+    "NAME": "Dual Wield",
+    "DESCRIPTION": "Innate. NL centurion:Equip an offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
+    "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
+    "EXTENDED_DESCRIPTION": [
+      "Equip an offhand weapon."
+    ]
+  },
+  "centurion:Sword": {
+    "NAME": "Sword",
+    "DESCRIPTION": "At the start of your turn, add a Quick Strike into your hand.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, add a Upgraded Quick Strike into your hand."
+  },
+  "centurion:SwordShieldStance": {
+    "NAME": "Sword & Shield",
+    "DESCRIPTION": "Innate. NL centurion:Equip a better shield: Tower, Spiked, or Warded. NL Purge.",
+    "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip a better and Upgraded shield: Tower+, Spiked+, or Warded+. NL Purge."
   },
   "centurion:Strike_Centurion": {
     "NAME": "Strike",

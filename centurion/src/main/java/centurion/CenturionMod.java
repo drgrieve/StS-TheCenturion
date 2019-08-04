@@ -22,13 +22,15 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import centurion.cards.*;
+import centurion.cards.token.*;
+import centurion.cards.stance.*;
 import centurion.characters.Centurion;
 import centurion.events.IdentityCrisisEvent;
 import centurion.potions.PlaceholderPotion;
 import centurion.relics.BottledPlaceholderRelic;
 import centurion.relics.DefaultClickableRelic;
 import centurion.relics.PlaceholderRelic;
-import centurion.relics.PlaceholderRelic2;
+import centurion.relics.IronHelmRelic;
 import centurion.util.IDCheckDontTouchPls;
 import centurion.util.TextureLoader;
 import centurion.variables.DefaultCustomVariable;
@@ -375,7 +377,7 @@ public class CenturionMod implements
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), Centurion.Enums.COLOR_GRAY);
         
         // This adds a relic to the Shared pool. Every character can find this relic.
-        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
+        BaseMod.addRelic(new IronHelmRelic(), RelicType.SHARED);
         
         // Mark relics as seen (the others are all starters so they're marked as seen in the character file
         UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
@@ -404,8 +406,12 @@ public class CenturionMod implements
         // when generating card rewards/shop screen items.
         //Token cards
         BaseMod.addCard(new Axe());
+        BaseMod.addCard(new Dagger());
         BaseMod.addCard(new Shield());
-        BaseMod.addCard(new Experience());
+        BaseMod.addCard(new Sword());
+        BaseMod.addCard(new TwoHandedStance());
+        BaseMod.addCard(new DualWieldStance());
+        BaseMod.addCard(new SwordShieldStance());
 
         //Basic cards
         BaseMod.addCard(new Strike_Centurion());

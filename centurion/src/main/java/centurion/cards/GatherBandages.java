@@ -1,6 +1,7 @@
 package centurion.cards;
 
 import centurion.characters.Centurion;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AlwaysRetainField;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.colorless.BandageUp;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -34,6 +35,7 @@ public class GatherBandages extends AbstractDynamicCard {
     public GatherBandages() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.exhaust = true;
+        AlwaysRetainField.alwaysRetain.set(this, true);
         this.baseMagicNumber = MAGIC_NUMBER;
         this.magicNumber = MAGIC_NUMBER;
     }
@@ -43,11 +45,6 @@ public class GatherBandages extends AbstractDynamicCard {
         if (p.damagedThisCombat > 0) {
             AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new BandageUp(), this.magicNumber));
         }
-    }
-
-    public void applyPowers() {
-        super.applyPowers();
-        this.retain = true;
     }
 
     // Upgraded stats.

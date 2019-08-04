@@ -7,6 +7,22 @@
                 " HP."
         ]
         },
+        "centurion:DaggerPower": {
+                "NAME": "Dagger",
+                "DESCRIPTIONS": [
+                        "Every time you play #b",
+                        " #yAttacks in a single turn, gain #b",
+                        " #yRazor."
+                ]
+        },
+        "centurion:MacePower": {
+                "NAME": "Mace",
+                "DESCRIPTIONS": [
+                        "Every time you play #b",
+                        " #yAttacks in a single turn, apply #b",
+                        " #yWeak."
+                ]
+        },
         "centurion:RazorPower": {
                 "NAME": "Razor",
                 "DESCRIPTIONS": [
@@ -38,6 +54,14 @@
                 "NAME": "Whirling Blade",
                 "DESCRIPTIONS": [
                         "Whenever you play an #yAttack, draw #b1 card."
+                ]
+        },
+        "centurion:QuickStrikePower": {
+                "NAME": "Quick Strike",
+                "DESCRIPTIONS": [
+                        "At the start of your turn, add #b",
+                        " #yBlades into your hand.",
+                        " #yBlade into your hand."
                 ]
         },
         "centurion:CommonPower": {
