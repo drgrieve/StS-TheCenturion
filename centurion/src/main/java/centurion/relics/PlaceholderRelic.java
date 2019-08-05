@@ -35,13 +35,13 @@ public class PlaceholderRelic extends CustomRelic {
     // Gain 1 energy on equip.
     @Override
     public void onEquip() {
-        AbstractDungeon.player.energy.energyMaster += 1;
+        //AbstractDungeon.player.energy.energyMaster += 1;
     }
 
     // Lose 1 energy on unequip.
     @Override
     public void onUnequip() {
-        AbstractDungeon.player.energy.energyMaster -= 1;
+        //AbstractDungeon.player.energy.energyMaster -= 1;
     }
 
     // Description

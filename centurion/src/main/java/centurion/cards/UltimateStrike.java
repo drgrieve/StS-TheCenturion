@@ -49,6 +49,7 @@ public class UltimateStrike extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         baseBlock = BLOCK;
+        this.tags.add(CardTags.STRIKE);
     }
 
     // Actions the card should do.

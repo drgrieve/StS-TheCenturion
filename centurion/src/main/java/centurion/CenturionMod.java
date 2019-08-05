@@ -22,8 +22,9 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import centurion.cards.*;
-import centurion.cards.token.*;
 import centurion.cards.stance.*;
+import centurion.cards.dualwield.*;
+import centurion.cards.token.*;
 import centurion.characters.Centurion;
 import centurion.events.IdentityCrisisEvent;
 import centurion.potions.PlaceholderPotion;
@@ -407,6 +408,9 @@ public class CenturionMod implements
         //Token cards
         BaseMod.addCard(new Axe());
         BaseMod.addCard(new Dagger());
+        BaseMod.addCard(new LightHeal());
+        BaseMod.addCard(new Mace());
+        BaseMod.addCard(new PowerUp());
         BaseMod.addCard(new Shield());
         BaseMod.addCard(new Sword());
         BaseMod.addCard(new TwoHandedStance());
@@ -450,6 +454,9 @@ public class CenturionMod implements
         BaseMod.addCard(new DefensiveWhirlwind());
         BaseMod.addCard(new WhirlingBlade());
         BaseMod.addCard(new UltimateStrike());
+
+        //Dual Wield card
+        BaseMod.addCard(new Caution());
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards

@@ -3,15 +3,13 @@ package centurion.cards.stance;
 import basemod.helpers.ModalChoice;
 import basemod.helpers.ModalChoiceBuilder;
 import centurion.cards.AbstractDynamicCard;
-import centurion.cards.token.Dagger;
-import centurion.cards.token.Mace;
-import centurion.cards.token.Sword;
+import centurion.cards.dualwield.Caution;
 import centurion.characters.Centurion;
-import centurion.powers.RazorPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -45,6 +43,7 @@ public class DualWieldStance extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.isInnate = true;
         this.purgeOnUse = true;
+        SoulboundField.soulbound.set(this, true);
 
         modal = new ModalChoiceBuilder()
             .setTitle(cardStrings.EXTENDED_DESCRIPTION[0])
@@ -57,6 +56,7 @@ public class DualWieldStance extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        checkStanceUnlock();
         if (this.upgraded) {
             modal.getCard(0).upgrade();
             modal.getCard(1).upgrade();
@@ -72,6 +72,12 @@ public class DualWieldStance extends AbstractDynamicCard {
             upgradeName();
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
+        }
+    }
+
+    private void checkStanceUnlock() {
+        if (CardLibrary.getCard(Caution.ID).rarity == CardRarity.SPECIAL) {
+            CardLibrary.getCard(Caution.ID).rarity = CardRarity.COMMON;
         }
     }
 }

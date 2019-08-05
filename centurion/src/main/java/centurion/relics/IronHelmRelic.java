@@ -6,6 +6,8 @@ import centurion.cards.RankUp;
 import centurion.cards.stance.DualWieldStance;
 import centurion.cards.stance.SwordShieldStance;
 import centurion.cards.stance.TwoHandedStance;
+import centurion.cards.token.LightHeal;
+import centurion.cards.token.PowerUp;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -80,24 +82,26 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
             this.currentRank++;
 
             RewardItem defaultAward = new RewardItem();
-            defaultAward.type = RewardItem.RewardType.CARD;
-            defaultAward.cards.clear();
+            defaultAward.text = DESCRIPTIONS[2];
+            addCardsToReward(defaultAward, new String[] {LightHeal.ID, PowerUp.ID });
             AbstractDungeon.getCurrRoom().rewards.add(0, defaultAward);
 
             RewardItem newRankAward = new RewardItem();
-            newRankAward.type = RewardItem.RewardType.CARD;
-            newRankAward.cards.clear();
             if (this.currentRank == 1) {
-                newRankAward.text = DESCRIPTIONS[1];
-                AbstractCard c = CardLibrary.getCard(TwoHandedStance.ID);
-                newRankAward.cards.add(c.makeCopy());
-                c = CardLibrary.getCard(DualWieldStance.ID);
-                newRankAward.cards.add(c.makeCopy());
-                c = CardLibrary.getCard(SwordShieldStance.ID);
-                newRankAward.cards.add(c.makeCopy());
+                newRankAward.text = DESCRIPTIONS[2];
+                addCardsToReward(newRankAward, new String[] { TwoHandedStance.ID, DualWieldStance.ID, SwordShieldStance.ID });
                 AbstractDungeon.getCurrRoom().rewards.add(0, newRankAward);
             }
             updateTips();
+        }
+    }
+
+    private void addCardsToReward(RewardItem reward, String[] cardIds) {
+        reward.type = RewardItem.RewardType.CARD;
+        reward.cards.clear();
+        for(int i = 0; i < cardIds.length; i++) {
+            AbstractCard c = CardLibrary.getCard(cardIds[i]);
+            reward.cards.add(c.makeCopy());
         }
     }
 

@@ -49,13 +49,14 @@ public class Axe extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        if (this.freeToPlayOnce) {
+            AbstractCard c = this.makeStatEquivalentCopy();
+            c.freeToPlayOnce = false;
+            p.discardPile.addToTop(c);
+        }
         AbstractDungeon.actionManager.addToBottom(
             new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
                     AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        AbstractCard c = this.makeStatEquivalentCopy();
-        c.freeToPlayOnce= false;
-        p.discardPile.addToTop(c);
-        //TODO trigger razor down
     }
 
     //Upgraded stats.

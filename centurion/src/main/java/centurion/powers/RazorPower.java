@@ -35,6 +35,7 @@ public class RazorPower extends AbstractPower implements CloneablePowerInterface
 
     private int baseBleed = 1;
     private int currentBleed = baseBleed;
+    private static boolean naturalClear = false;
 
     public RazorPower(AbstractCreature owner, int newAmount) {
         this(owner, newAmount, 0, 0);
@@ -47,6 +48,7 @@ public class RazorPower extends AbstractPower implements CloneablePowerInterface
         this.amount = newAmount;
         this.type = PowerType.BUFF;
         this.canGoNegative = false;
+        this.isTurnBased = true;
         this.baseBleed = baseBleed + increaseBaseBleedAmount;
         this.currentBleed = currentBleed + increaseCurrentBleedAmount;
 
@@ -73,7 +75,7 @@ public class RazorPower extends AbstractPower implements CloneablePowerInterface
         this.fontScale = 8.0F;
         this.amount -= reduceAmount;
         if (this.amount <= 0) {
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+            this.amount = 0;
         }
 
         if (this.amount >= 999) {
@@ -96,7 +98,7 @@ public class RazorPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        if (card.type == AbstractCard.CardType.ATTACK) {
+        if (card.type == AbstractCard.CardType.ATTACK && this.amount > 0) {
             this.flash();
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new RazorPower(this.owner, -1), -1));
 
@@ -113,9 +115,10 @@ public class RazorPower extends AbstractPower implements CloneablePowerInterface
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         if (isPlayer) {
-            this.flash();
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new RazorPower(this.owner, -1), -1));
-            if (this.currentBleed > this.baseBleed) {
+            if (this.amount <= 1) {
+                AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+            } else if (this.currentBleed > this.baseBleed) {
+                this.flash();
                 this.currentBleed = this.currentBleed - 1;
                 updateDescription();
             }

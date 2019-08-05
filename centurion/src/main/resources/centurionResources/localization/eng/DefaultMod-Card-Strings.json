@@ -3,13 +3,30 @@
     "NAME": "Axe",
     "DESCRIPTION": "Deal !D! damage."
   },
+  "centurion:Caution": {
+    "NAME": "Caution",
+    "DESCRIPTION": "Gain !B! Block. NL Draw a card."
+  },
   "centurion:Dagger": {
     "NAME": "Dagger",
     "DESCRIPTION": "Every time you play 2 Attacks in a single turn, gain !M! centurion:Razor."
   },
+  "centurion:DiamondEdgedBlade": {
+    "NAME": "Diamond Edged Blade  ",
+    "DESCRIPTION": "At the start of your turn, gain !M! centurion:Razor."
+  },
+  "centurion:LightHeal": {
+    "NAME": "Light Heal",
+    "DESCRIPTION": "Innate. NL Heal for !M!% of your Max HP. NL Fleeting."
+  },
   "centurion:Mace": {
     "NAME": "Mace",
     "DESCRIPTION": "Every time you play 2 Attacks in a single turn, apply !M! Weak."
+  },
+  "centurion:PowerUp": {
+    "NAME": "Power Up",
+    "DESCRIPTION": "Innate. NL Permanently Upgrade a random card. NL stslib:Fleeting.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Permanently Upgrade a random card. Favours rarer cards. NL stslib:Fleeting."
   },
   "centurion:Shield": {
     "NAME": "Shield",
@@ -52,12 +69,12 @@
   },
   "centurion:OpeningManeuver": {
     "NAME": "Opening Maneuver",
-    "DESCRIPTION": "Innate. Choose to play an Axe or a Shield card. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Innate. Choose to play an Upgraded Axe or an Upgraded Shield card. Exhaust."
+    "DESCRIPTION": "Innate. NL Choose to play an Axe or a Shield card. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Choose to play an Upgraded Axe or an Upgraded Shield card. Exhaust."
   },
   "centurion:SharpenBlade": {
     "NAME": "Sharpen Blade",
-    "DESCRIPTION": "Gain 3 centurion:Razor"
+    "DESCRIPTION": "Gain !M! centurion:Razor"
   },
   "centurion:Anticipate": {
     "NAME": "Anticipate",
@@ -68,8 +85,8 @@
   },
   "centurion:BlurredBlade": {
     "NAME": "Blurred Blade",
-    "DESCRIPTION": "Gain !M! centurion:Razor. Deal !D! damage to all enemies.",
-    "UPGRADE_DESCRIPTION": "Gain !M! centurion:Razor. Deal !D! damage to all enemies twice."
+    "DESCRIPTION": "Gain !M! centurion:Razor. NL Deal !D! damage to all enemies.",
+    "UPGRADE_DESCRIPTION": "Gain !M! centurion:Razor. NL Deal !D! damage to all enemies twice."
   },
   "centurion:CounterOffensive": {
     "NAME": "Counter Offensive",
@@ -81,7 +98,7 @@
   },
   "centurion:Reconnaissance": {
     "NAME": "Reconnaissance",
-    "DESCRIPTION": "Deal !D! damage. centurion:Filter for the amount of damage dealt."
+    "DESCRIPTION": "Deal !D! damage. NL centurion:Filter for the amount of damage dealt."
   },
   "centurion:StrategicCut": {
     "NAME": "Strategic Cut",
@@ -110,7 +127,7 @@
   },
   "centurion:Defiance": {
     "NAME": "Defiance",
-    "DESCRIPTION": "Gain !B! Block. Gain !M! Strength."
+    "DESCRIPTION": "Gain !B! Block. Gain !M! Strength. NL Exhaustive !stslib:ex!."
   },
   "centurion:DeepCut": {
     "NAME": "Deep Cut",
@@ -135,11 +152,11 @@
   },
   "centurion:Observe": {
     "NAME": "Observe",
-    "DESCRIPTION": "Deal !D! damage. Gain !M! Dexterity."
+    "DESCRIPTION": "Deal !D! damage. Gain !M! Dexterity. NL Exhaustive !stslib:ex!."
   },
   "centurion:Search": {
     "NAME": "Search",
-    "DESCRIPTION": "centurion:Filter !M!. Draw a card. Exhaustive !stslib:ex!."
+    "DESCRIPTION": "centurion:Filter !M!. Draw a card. NL Exhaustive !stslib:ex!."
   },
   "centurion:Setup": {
     "NAME": "Setup",
@@ -167,7 +184,7 @@
   },
   "centurion:UltimateStrike": {
     "NAME": "UltimateStrike",
-    "DESCRIPTION": "Deal !D! damage. Gain !B! Block. Draw a card."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block. NL Draw a card."
   },
   "centurion:DefaultCommonPower": {
     "NAME": "Hold Place",

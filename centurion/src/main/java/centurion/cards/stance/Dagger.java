@@ -1,9 +1,8 @@
-package centurion.cards.token;
+package centurion.cards.stance;
 
 import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
 import centurion.powers.DaggerPower;
-import centurion.powers.QuickStrikePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

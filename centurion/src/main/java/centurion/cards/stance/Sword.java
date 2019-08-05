@@ -1,60 +1,49 @@
-package centurion.cards;
+package centurion.cards.stance;
 
+import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
-import centurion.tags.CustomTags;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import centurion.powers.QuickStrikePower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static centurion.CenturionMod.makeCardPath;
 
-public class Shield extends AbstractDynamicCard {
-
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * Defend Gain 5 (8) block.
-     */
-
+public class Sword extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = centurion.CenturionMod.makeID(Shield.class.getSimpleName());
-    public static final String IMG = makeCardPath("Defend.png");
+    public static final String ID = centurion.CenturionMod.makeID(Sword.class.getSimpleName());
+    public static final String IMG = makeCardPath("Strike_Centurion.png");
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     // /TEXT DECLARATION/
-
 
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int BLOCK = 8;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
 
     // /STAT DECLARATION/
 
 
-    public Shield() {
+    public Sword() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseBlock = BLOCK;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.freeToPlayOnce) {
-            AbstractCard c = this.makeStatEquivalentCopy();
-            c.freeToPlayOnce = false;
-            p.discardPile.addToTop(c);
-        }
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new QuickStrikePower(p, 1, this.upgraded), 1));
     }
 
     //Upgraded stats.
@@ -62,7 +51,7 @@ public class Shield extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }
@@ -70,5 +59,7 @@ public class Shield extends AbstractDynamicCard {
     @Override
     public AbstractCard makeCopy()
     {
-        return new Shield();
-    }}
+        return new Sword();
+    }
+
+}

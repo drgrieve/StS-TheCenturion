@@ -1,8 +1,8 @@
-package centurion.cards.token;
+package centurion.cards.stance;
 
 import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
-import centurion.powers.QuickStrikePower;
+import centurion.powers.MacePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,14 +13,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static centurion.CenturionMod.makeCardPath;
 
-public class Sword extends AbstractDynamicCard {
+public class Mace extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = centurion.CenturionMod.makeID(Sword.class.getSimpleName());
+    public static final String ID = centurion.CenturionMod.makeID(Mace.class.getSimpleName());
     public static final String IMG = makeCardPath("Strike_Centurion.png");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -32,18 +31,22 @@ public class Sword extends AbstractDynamicCard {
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
+    private static final int MAGIC_NUMBER = 1;
+    private static final int UPGRADE_PLUS_MAGIC_NUMBER = 1;
 
     // /STAT DECLARATION/
 
 
-    public Sword() {
+    public Mace() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        this.baseMagicNumber = MAGIC_NUMBER;
+        this.magicNumber = MAGIC_NUMBER;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new QuickStrikePower(p, 1, this.upgraded), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new MacePower(p, this.magicNumber), this.magicNumber));
     }
 
     //Upgraded stats.
@@ -51,7 +54,7 @@ public class Sword extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(UPGRADE_PLUS_MAGIC_NUMBER);
             initializeDescription();
         }
     }
@@ -59,7 +62,7 @@ public class Sword extends AbstractDynamicCard {
     @Override
     public AbstractCard makeCopy()
     {
-        return new Sword();
+        return new Mace();
     }
 
 }

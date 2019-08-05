@@ -11,12 +11,6 @@ import static centurion.CenturionMod.makeCardPath;
 
 public class SharpenBlade extends AbstractDynamicCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * A Better Defend Gain 1 Plated Armor. Affected by Dexterity.
-     */
-
     // TEXT DECLARATION
 
     public static final String ID = centurion.CenturionMod.makeID(SharpenBlade.class.getSimpleName());
@@ -31,21 +25,23 @@ public class SharpenBlade extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
 
-    private static final int COST = 1;
-    private static final int UPGRADE_REDUCED_COST = 0;
+    private static final int COST = 0;
+    private static final int MAGIC_NUMBER = 3;
+    private static final int UPGRADE_PLUS_MAGIC_NUMBER = 2;
 
     // /STAT DECLARATION/
 
-
     public SharpenBlade() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        this.baseMagicNumber = MAGIC_NUMBER;
+        this.magicNumber = MAGIC_NUMBER;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(p, p, new RazorPower(p, 3), 3));
+            new ApplyPowerAction(p, p, new RazorPower(p, this.magicNumber), this.magicNumber));
     }
 
     // Upgraded stats.
@@ -53,7 +49,7 @@ public class SharpenBlade extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_REDUCED_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_MAGIC_NUMBER);
             initializeDescription();
         }
     }

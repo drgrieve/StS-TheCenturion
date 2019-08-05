@@ -1,6 +1,8 @@
 package centurion.cards;
 
 import centurion.characters.Centurion;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.ExhaustiveField;
+import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -35,6 +37,7 @@ public class Observe extends AbstractDynamicCard {
     private static final int UPGRADE_PLUS_DMG = 3;
     private static final int MAGIC_NUMBER = 1;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
+    private static final int EXHAUSTIVE_AMT = 2;
 
     // /STAT DECLARATION/
 
@@ -43,6 +46,7 @@ public class Observe extends AbstractDynamicCard {
         this.baseDamage = DAMAGE;
         this.baseMagicNumber = MAGIC_NUMBER;
         this.magicNumber = MAGIC_NUMBER;
+        ExhaustiveVariable.setBaseValue(this, EXHAUSTIVE_AMT);
     }
 
     // Actions the card should do.
