@@ -12,13 +12,6 @@ import static centurion.CenturionMod.makeCardPath;
 
 public class Shield extends AbstractDynamicCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * Defend Gain 5 (8) block.
-     */
-
-
     // TEXT DECLARATION
 
     public static final String ID = centurion.CenturionMod.makeID(Shield.class.getSimpleName());
@@ -44,6 +37,7 @@ public class Shield extends AbstractDynamicCard {
     public Shield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
+        tags.add(CustomTags.SHIELD);
     }
 
     // Actions the card should do.

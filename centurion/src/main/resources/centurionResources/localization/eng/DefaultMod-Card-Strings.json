@@ -3,6 +3,11 @@
     "NAME": "Axe",
     "DESCRIPTION": "Deal !D! damage."
   },
+  "centurion:BladeWork": {
+    "NAME": "Blade Work",
+    "DESCRIPTION": "Whenever you play an Attack gain 2 Block.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you play an Attack gain 2 Block."
+  },
   "centurion:Caution": {
     "NAME": "Caution",
     "DESCRIPTION": "Gain !B! Block. NL Draw a card."
@@ -11,9 +16,22 @@
     "NAME": "Dagger",
     "DESCRIPTION": "Every time you play 2 Attacks in a single turn, gain !M! centurion:Razor."
   },
+  "centurion:DexterityUp": {
+    "NAME": "Dexterity Up",
+    "DESCRIPTION": "Innate. NL Gain !M! Dexterity at the start of every combat. NL Fleeting."
+  },
   "centurion:DiamondEdgedBlade": {
-    "NAME": "Diamond Edged Blade  ",
+    "NAME": "Diamond Edged Blade",
     "DESCRIPTION": "At the start of your turn, gain !M! centurion:Razor."
+  },
+  "centurion:DoubleStrike": {
+    "NAME": "Double Strike",
+    "DESCRIPTION": "Deal !D! damage. Add 1 Quick Strike to your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. Add 1 Upgraded Quick Strike to your hand."
+  },
+  "centurion:Feint": {
+    "NAME": "Feint",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
   },
   "centurion:LightHeal": {
     "NAME": "Light Heal",
@@ -23,18 +41,52 @@
     "NAME": "Mace",
     "DESCRIPTION": "Every time you play 2 Attacks in a single turn, apply !M! Weak."
   },
+  "centurion:Patience": {
+    "NAME": "Patience",
+    "DESCRIPTION": "Shuffle !M! Ultimate Strike into your draw pile. Can be upgraded any number of times.",
+    "UPGRADE_DESCRIPTION": "Shuffle !M! Ultimate Strikes into your draw pile. Can be upgraded any number of times."
+  },
   "centurion:PowerUp": {
     "NAME": "Power Up",
-    "DESCRIPTION": "Innate. NL Permanently Upgrade a random card. NL stslib:Fleeting.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Permanently Upgrade a random card. Favours rarer cards. NL stslib:Fleeting."
+    "DESCRIPTION": "Innate. NL Permanently upgrade a random card. NL Fleeting.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Permanently upgrade a random card. Favours rarer cards. NL Fleeting."
+  },
+  "centurion:Probe": {
+    "NAME": "Probe",
+    "DESCRIPTION": "Add 1 Quick Strike that draws a card to your hand.",
+    "UPGRADE_DESCRIPTION": "Add 1 upgraded Quick Strike that draws a card to your hand."
+  },
+  "centurion:Quicksilver": {
+    "NAME": "Quicksilver",
+    "DESCRIPTION": "Retain. NL Choose 1 Attack card. NL It costs 0 this turn. NL Shuffle a Dazed into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Choose 2 Attack cards. They cost 0 this turn. NL Shuffle a Dazed into your draw pile."
+  },
+  "centurion:MurderAllTheThings": {
+    "NAME": "Murder All The Things",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Twice."
   },
   "centurion:Shield": {
     "NAME": "Shield",
     "DESCRIPTION": "Gain !B! Block."
   },
+  "centurion:SlashAndParry": {
+    "NAME": "Slash and Parry",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block."
+  },
+  "centurion:StatsUp": {
+    "NAME": "Stats Up",
+    "DESCRIPTION": "Innate. NL Gain !M! Strength and !centurion:SecondMagic! Dexterity at the start of every combat. NL Fleeting."
+  },
+  "centurion:StrengthUp": {
+    "NAME": "Strength Up",
+    "DESCRIPTION": "Innate. NL Gain !M! Strength at the start of every combat. NL Fleeting."
+  },
   "centurion:QuickStrike": {
     "NAME": "Quick Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! damage. NL Draw a card. NL Exhaust."
+    ]
   },
   "centurion:TwoHandedStance": {
     "NAME": "Two Handed",
@@ -51,8 +103,8 @@
   },
   "centurion:Sword": {
     "NAME": "Sword",
-    "DESCRIPTION": "At the start of your turn, add a Quick Strike into your hand.",
-    "UPGRADE_DESCRIPTION": "At the start of your turn, add a Upgraded Quick Strike into your hand."
+    "DESCRIPTION": "At the start of your turn, add 1 Quick Strike into your hand.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, add 1 Upgraded Quick Strike into your hand."
   },
   "centurion:SwordShieldStance": {
     "NAME": "Sword & Shield",
@@ -102,7 +154,7 @@
   },
   "centurion:StrategicCut": {
     "NAME": "Strategic Cut",
-    "DESCRIPTION": "Gain !M! centurion:Razor. centurion:Razor applies !centurion:SecondMagic! additional centurion:Bleed this turn. Deal !D! damage."
+    "DESCRIPTION": "Gain !M! centurion:Razor. Increase centurion:Razor centurion:Bleed by !centurion:SecondMagic! for this turn. NL Deal !D! damage."
   },
   "centurion:TrustyAxe": {
     "NAME": "Trusty Axe",
@@ -164,8 +216,8 @@
   },
   "centurion:BrightBeginning": {
     "NAME": "Bright Beginning",
-    "DESCRIPTION": "Innate. Reduce the cost of all Innate cards in your hand to 0 this turn.",
-    "UPGRADE_DESCRIPTION": "Innate. Reduce the cost of all Innate cards in your hand to 0 this turn. Exhaust."
+    "DESCRIPTION": "Innate. NL Reduce the cost of all Innate cards in your hand to 0 this turn.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Reduce the cost of all Innate cards in your hand to 0 this turn. NL Exhaust."
   },
   "centurion:Burst": {
     "NAME": "Burst",
@@ -183,8 +235,8 @@
     "DESCRIPTION": "Whenever you play an Attack this turn, draw a card."
   },
   "centurion:UltimateStrike": {
-    "NAME": "UltimateStrike",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block. NL Draw a card."
+    "NAME": "Ultimate Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block. NL Draw a card. NL Exhaust."
   },
   "centurion:DefaultCommonPower": {
     "NAME": "Hold Place",

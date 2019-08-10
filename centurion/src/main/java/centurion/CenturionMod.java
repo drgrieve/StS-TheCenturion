@@ -3,8 +3,8 @@ package centurion;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
+import centurion.cards.swordshield.SwordShieldStance;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -13,6 +13,8 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.green.BladeDance;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -22,16 +24,13 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import centurion.cards.*;
-import centurion.cards.stance.*;
+import centurion.cards.twohanded.*;
 import centurion.cards.dualwield.*;
 import centurion.cards.token.*;
 import centurion.characters.Centurion;
 import centurion.events.IdentityCrisisEvent;
 import centurion.potions.PlaceholderPotion;
-import centurion.relics.BottledPlaceholderRelic;
-import centurion.relics.DefaultClickableRelic;
-import centurion.relics.PlaceholderRelic;
-import centurion.relics.IronHelmRelic;
+import centurion.relics.*;
 import centurion.util.IDCheckDontTouchPls;
 import centurion.util.TextureLoader;
 import centurion.variables.DefaultCustomVariable;
@@ -143,7 +142,7 @@ public class CenturionMod implements
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
     }
-    
+
     public static String makeRelicPath(String resourcePath) {
         return getModID() + "Resources/images/relics/" + resourcePath;
     }
@@ -373,15 +372,17 @@ public class CenturionMod implements
         logger.info("Adding relics");
         
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), Centurion.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), Centurion.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new DexterityUpRelic(-1), Centurion.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new IronHelmRelic(), Centurion.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new StrengthUpRelic(-1), Centurion.Enums.COLOR_GRAY);
+        //BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), Centurion.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), Centurion.Enums.COLOR_GRAY);
         
         // This adds a relic to the Shared pool. Every character can find this relic.
-        BaseMod.addRelic(new IronHelmRelic(), RelicType.SHARED);
+        // BaseMod.addRelic(new IronHelmRelic(), RelicType.SHARED);
         
         // Mark relics as seen (the others are all starters so they're marked as seen in the character file
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
+        //UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
         logger.info("Done adding relics!");
     }
     
@@ -412,6 +413,7 @@ public class CenturionMod implements
         BaseMod.addCard(new Mace());
         BaseMod.addCard(new PowerUp());
         BaseMod.addCard(new Shield());
+        BaseMod.addCard(new StrengthUp());
         BaseMod.addCard(new Sword());
         BaseMod.addCard(new TwoHandedStance());
         BaseMod.addCard(new DualWieldStance());
@@ -457,6 +459,16 @@ public class CenturionMod implements
 
         //Dual Wield card
         BaseMod.addCard(new Caution());
+        BaseMod.addCard(new DoubleStrike());
+        BaseMod.addCard(new Feint());
+        BaseMod.addCard(new Probe());
+
+        BaseMod.addCard(new Patience());
+        BaseMod.addCard(new SlashAndParry());
+        BaseMod.addCard(new Quicksilver());
+        BaseMod.addCard(new MurderAllTheThings());
+
+        BaseMod.addCard(new BladeWork());
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards

@@ -1,9 +1,10 @@
 {
-  "centurion:PlaceholderRelic": {
-    "NAME": "Placeholder Energy Relic",
-    "FLAVOR": "The snake is a friend.",
+  "centurion:DexterityUpRelic": {
+    "NAME": "Dexterity Up",
+    "FLAVOR": "Legs day is best day.",
     "DESCRIPTIONS": [
-      "Gain #b1 [E] ."
+      "Gain #b",
+      " Dexterity"
     ]
   },
   "centurion:IronHelmRelic": {
@@ -12,7 +13,16 @@
     "DESCRIPTIONS": [
       "Defeat enemies to gain #ycenturion:XP. NL Gain #b10 #ycenturion:XP to gain a #ycenturion:Rank_Up reward. NL Your current Rank is #b",
       "Rank Up - Health or Power",
-      "Rank Up - Choose a stance"
+      "Rank Up - Choose a stance",
+      "Rank Up - Get a boost"
+    ]
+  },
+  "centurion:StrengthUpRelic": {
+    "NAME": "Strength Up",
+    "FLAVOR": "Arms day is best day.",
+    "DESCRIPTIONS": [
+      "Gain #b",
+      " Strength"
     ]
   },
   "centurion:DefaultClickableRelic": {

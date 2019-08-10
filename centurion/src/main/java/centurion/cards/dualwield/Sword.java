@@ -1,4 +1,4 @@
-package centurion.cards.stance;
+package centurion.cards.dualwield;
 
 import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;

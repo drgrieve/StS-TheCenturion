@@ -1,7 +1,6 @@
 package centurion.cards;
 
 import centurion.characters.Centurion;
-import centurion.tags.CustomTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

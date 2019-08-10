@@ -1,22 +1,28 @@
 package centurion.cards.dualwield;
 
 import centurion.cards.AbstractDynamicCard;
+import centurion.cards.token.QuickStrike;
 import centurion.characters.Centurion;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static centurion.CenturionMod.makeCardPath;
 
-public class Caution extends AbstractDynamicCard {
+public class Probe extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = centurion.CenturionMod.makeID(Caution.class.getSimpleName());
-    public static final String IMG = makeCardPath("Defend.png");
+    public static final String ID = centurion.CenturionMod.makeID(Probe.class.getSimpleName());
+    public static final String IMG = makeCardPath("Skill.png");
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -29,22 +35,19 @@ public class Caution extends AbstractDynamicCard {
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
 
     private static final int COST = 0;
-    private static final int BLOCK = 2;
-    private static final int UPGRADE_PLUS_BLOCK = 2;
 
     // /STAT DECLARATION/
 
-
-    public Caution() {
+    public Probe() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseBlock = BLOCK;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
-        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
+        AbstractCard c = new QuickStrike(true);
+        if (this.upgraded) c.upgrade();
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, 1, false));
     }
 
     //Upgraded stats.
@@ -52,7 +55,7 @@ public class Caution extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }
@@ -60,5 +63,7 @@ public class Caution extends AbstractDynamicCard {
     @Override
     public AbstractCard makeCopy()
     {
-        return new Caution();
-    }}
+        return new Probe();
+    }
+
+}

@@ -3,5 +3,10 @@
     "TEXT": [
       "Choose cards to discard"
     ]
+  },
+  "centurion:ReduceToZeroAction": {
+    "TEXT": [
+      "cost 0"
+    ]
   }
 }

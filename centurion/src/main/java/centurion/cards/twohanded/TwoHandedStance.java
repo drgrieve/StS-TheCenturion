@@ -1,4 +1,4 @@
-package centurion.cards.stance;
+package centurion.cards.twohanded;
 
 import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
@@ -12,11 +12,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static centurion.CenturionMod.makeCardPath;
 
-public class SwordShieldStance extends AbstractDynamicCard {
+public class TwoHandedStance extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = centurion.CenturionMod.makeID(SwordShieldStance.class.getSimpleName());
+    public static final String ID = centurion.CenturionMod.makeID(TwoHandedStance.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
@@ -35,7 +35,7 @@ public class SwordShieldStance extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
 
-    public SwordShieldStance() {
+    public TwoHandedStance() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.isInnate = true;
         this.purgeOnUse = true;

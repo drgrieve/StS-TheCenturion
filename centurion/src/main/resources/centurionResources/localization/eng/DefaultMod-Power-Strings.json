@@ -1,4 +1,11 @@
 {
+        "centurion:BladeWorkPower": {
+                "NAME": "Blade Work",
+                "DESCRIPTIONS": [
+                        "Whenever you play an #yAttack card, gain #b",
+                        " #yBlock."
+                ]
+        },
         "centurion:BleedPower": {
         "NAME": "Bleed",
         "DESCRIPTIONS": [

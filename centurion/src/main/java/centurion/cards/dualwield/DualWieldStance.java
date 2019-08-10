@@ -1,14 +1,12 @@
-package centurion.cards.stance;
+package centurion.cards.dualwield;
 
 import basemod.helpers.ModalChoice;
 import basemod.helpers.ModalChoiceBuilder;
 import centurion.cards.AbstractDynamicCard;
-import centurion.cards.dualwield.Caution;
 import centurion.characters.Centurion;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -78,6 +76,14 @@ public class DualWieldStance extends AbstractDynamicCard {
     private void checkStanceUnlock() {
         if (CardLibrary.getCard(Caution.ID).rarity == CardRarity.SPECIAL) {
             CardLibrary.getCard(Caution.ID).rarity = CardRarity.COMMON;
+            CardLibrary.getCard(DoubleStrike.ID).rarity = CardRarity.COMMON;
+            CardLibrary.getCard(Feint.ID).rarity = CardRarity.COMMON;
+            CardLibrary.getCard(Probe.ID).rarity = CardRarity.COMMON;
+            CardLibrary.getCard(Patience.ID).rarity = CardRarity.UNCOMMON;
+            CardLibrary.getCard(SlashAndParry.ID).rarity = CardRarity.UNCOMMON;
+            CardLibrary.getCard(Quicksilver.ID).rarity = CardRarity.UNCOMMON;
+            CardLibrary.getCard(MurderAllTheThings.ID).rarity = CardRarity.UNCOMMON;
+            CardLibrary.getCard(BladeWork.ID).rarity = CardRarity.RARE;
         }
     }
 }

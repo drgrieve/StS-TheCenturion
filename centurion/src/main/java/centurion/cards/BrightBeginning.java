@@ -14,16 +14,9 @@ import static centurion.CenturionMod.makeCardPath;
 
 public class BrightBeginning extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = centurion.CenturionMod.makeID(BrightBeginning.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
+    //public static final String IMG = makeCardPath(makeImageName(TYPE, BrightBeginning.class.getSimpleName()));
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -32,12 +25,11 @@ public class BrightBeginning extends AbstractDynamicCard {
 
     private static final int COST = 3;
 
-    // /STAT DECLARATION/
-
 
     public BrightBeginning() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.isInnate = true;
+        this.setSecondaryValues();
     }
 
     // Actions the card should do.
@@ -49,17 +41,19 @@ public class BrightBeginning extends AbstractDynamicCard {
 
         while(cards.hasNext()) {
             AbstractCard c = (AbstractCard)cards.next();
-            if (c.isInnate) c.setCostForTurn(-9);
+            if (c.isInnate && c.uuid != this.uuid) c.setCostForTurn(-9);
         }
     }
 
     // Upgraded stats.
     @Override
     public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
-        }
+        this.defaultUpgrade();
+    }
+
+    @Override
+    public AbstractCard makeCopy()
+    {
+        return new BrightBeginning();
     }
 }
