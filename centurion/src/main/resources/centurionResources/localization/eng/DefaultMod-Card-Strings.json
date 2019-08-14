@@ -87,6 +87,10 @@
     "NAME": "Slash and Parry",
     "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block."
   },
+  "centurion:SlowBurn": {
+    "NAME": "Slow Burn",
+    "DESCRIPTION": "Gain [R] [R] . Exhaust. NL Retain 1. NL When retained gain [R] next turn."
+  },
   "centurion:StatsUp": {
     "NAME": "Stats Up",
     "DESCRIPTION": "Innate. NL Gain !M! Strength and !centurion:SecondMagic! Dexterity at the start of every combat. NL Fleeting."

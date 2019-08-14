@@ -456,6 +456,7 @@ public class CenturionMod implements
         BaseMod.addCard(new PushOn());
         BaseMod.addCard(new Search());
         BaseMod.addCard(new Setup());
+        BaseMod.addCard(new SlowBurn());
 
         //Generic cards - Rare
         BaseMod.addCard(new BrightBeginning());
