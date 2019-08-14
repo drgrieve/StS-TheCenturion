@@ -34,7 +34,6 @@ public class BloodSpirit extends AbstractDynamicCard {
 
     public BloodSpirit() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.isInnate = true;
         this.baseMagicNumber = MAGIC_NUMBER;
         this.magicNumber = MAGIC_NUMBER;
     }

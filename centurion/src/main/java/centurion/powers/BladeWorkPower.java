@@ -11,13 +11,12 @@ public class BladeWorkPower extends AbstractDefaultPower {
     public static final String POWER_ID = centurion.CenturionMod.makeID(BladeWorkPower.class.getSimpleName());
 
     public BladeWorkPower(AbstractCreature owner, int newAmount) {
-        this.initializePower(POWER_ID, owner, newAmount);
-        this.type = PowerType.BUFF;
+        this.initializePower(POWER_ID, PowerType.BUFF, owner, newAmount);
         this.canGoNegative = false;
-        this.isTurnBased = true;
+        this.isTurnBased = false;
 
-        loadImages();
         this.updateDescription();
+        loadImages();
     }
 
     public void stackPower(int stackAmount) {

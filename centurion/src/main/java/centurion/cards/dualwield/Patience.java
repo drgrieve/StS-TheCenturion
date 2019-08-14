@@ -31,7 +31,7 @@ public class Patience extends AbstractDynamicCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.SPECIAL;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
@@ -45,10 +45,15 @@ public class Patience extends AbstractDynamicCard {
     }
 
     public Patience(int upgrades) {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
         this.timesUpgraded = upgrades;
         this.baseMagicNumber = 1;
         this.magicNumber = timesUpgraded + 1;
+    }
+
+    public Patience(boolean setStanceRarity) {
+        this();
+        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

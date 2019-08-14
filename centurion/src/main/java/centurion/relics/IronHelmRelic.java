@@ -18,19 +18,26 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import centurion.util.TextureLoader;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rooms.MonsterRoom;
+import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static centurion.CenturionMod.makeRelicPath;
 
 public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer> {
 
-    // ID, images, text.
     public static final String ID = centurion.CenturionMod.makeID(IronHelmRelic.class.getSimpleName());
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath(IronHelmRelic.class.getSimpleName() + ".png"));
 
     private int experienceToGainThisFight = 0;
     private int currentRank = 0;
+
+    public static final Logger logger = LogManager.getLogger(centurion.CenturionMod.class.getName());
 
     public IronHelmRelic() {
         super(ID, IMG, RelicTier.STARTER, LandingSound.SOLID);
@@ -40,8 +47,15 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
 
     @Override
     public void atBattleStart() {
-        ArrayList<AbstractMonster> monsters = AbstractDungeon.getCurrRoom().monsters.monsters;
         AbstractMonster.EnemyType enemyType = AbstractMonster.EnemyType.NORMAL;
+
+        if (AbstractDungeon.getCurrRoom() instanceof MonsterRoom) {
+            if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite) enemyType = AbstractMonster.EnemyType.ELITE;
+            else if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) enemyType = AbstractMonster.EnemyType.BOSS;
+        }
+
+        /*
+        ArrayList<AbstractMonster> monsters = AbstractDungeon.getCurrRoom().monsters.monsters;
         for(int i = 0; i < monsters.size(); i++) {
             if (monsters.get(0).type == AbstractMonster.EnemyType.BOSS) {
                 enemyType = AbstractMonster.EnemyType.BOSS;
@@ -50,18 +64,14 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
                 enemyType = AbstractMonster.EnemyType.ELITE;
             }
         }
+         */
+
         experienceToGainThisFight = getXPForEnemyType(enemyType);
         if (experienceToGainThisFight + counter >= 10) {
             flash();
             AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         }
-    }
-
-    public int getCurrentXP() {
-        int experience = 1 * CardCrawlGame.monstersSlain;
-        experience += 5 * (CardCrawlGame.elites1Slain + CardCrawlGame.elites2Slain + CardCrawlGame.elites3Slain);
-        experience += 10 * AbstractDungeon.bossCount;
-        return experience;
+        logger.info("Experience to gain is:" + experienceToGainThisFight);
     }
 
     public int getXPForEnemyType(AbstractMonster.EnemyType enemyType) {
@@ -74,6 +84,15 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
     }
 
     public void onTrigger() {
+
+        AbstractPlayer p = AbstractDungeon.player;
+
+        StanceType stance = StanceType.None;
+        if (p.masterDeck.findCardById(TwoHandedStance.ID) != null) stance = StanceType.TwoHanded;
+        else if (p.masterDeck.findCardById(DualWieldStance.ID) != null) stance = StanceType.DualWield;
+        else if (p.masterDeck.findCardById(SwordShieldStance.ID) != null) stance = StanceType.SwordShield;
+        modifyStanceRewardCard(stance);
+
         this.counter = this.counter + this.experienceToGainThisFight;
         if (counter >= 10) {
             counter = counter - 10;
@@ -84,20 +103,15 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
             addCardsToReward(defaultAward, new String[] {LightHeal.ID, PowerUp.ID });
             AbstractDungeon.getCurrRoom().rewards.add(0, defaultAward);
 
-            AbstractPlayer p = AbstractDungeon.player;
-            boolean hasTwoHandedStance = p.masterDeck.findCardById(TwoHandedStance.ID) != null;
-            boolean hasDualWieldStance = p.masterDeck.findCardById(DualWieldStance.ID) != null;
-            boolean hasSwordShieldStance = p.masterDeck.findCardById(SwordShieldStance.ID) != null;
-
             RewardItem newRankAward = new RewardItem();
             if (this.currentRank == 1) {
                 newRankAward.text = DESCRIPTIONS[2];
                 addCardsToReward(newRankAward, new String[] { TwoHandedStance.ID, DualWieldStance.ID, SwordShieldStance.ID });
             } else if (this.currentRank == 2 || this.currentRank == 5 || this.currentRank == 8) {
                 newRankAward.text = DESCRIPTIONS[3];
-                if (hasTwoHandedStance) addCardToReward(newRankAward, StrengthUp.ID);
-                else if (hasDualWieldStance) addCardToReward(newRankAward, StatsUp.ID);
-                else if (hasSwordShieldStance) addCardToReward(newRankAward, DexterityUp.ID);
+                if (stance == StanceType.TwoHanded) addCardToReward(newRankAward, StrengthUp.ID);
+                else if (stance == StanceType.DualWield) addCardToReward(newRankAward, StatsUp.ID);
+                else if (stance == StanceType.SwordShield) addCardToReward(newRankAward, DexterityUp.ID);
             }
             AbstractDungeon.getCurrRoom().rewards.add(0, newRankAward);
             updateTips();
@@ -115,6 +129,79 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
             AbstractCard c = CardLibrary.getCard(cardIds[i]);
             reward.cards.add(c.makeCopy());
         }
+    }
+
+    private void modifyStanceRewardCard(StanceType stance) {
+        logger.info(("Current stance:" + stance));
+        if (stance == StanceType.None) return;
+
+        //Find existing card rewards
+        RewardItem cardReward = null;
+        Iterator rewards = AbstractDungeon.getCurrRoom().rewards.iterator();
+        while (rewards.hasNext()) {
+            RewardItem reward = (RewardItem) rewards.next();
+            logger.info(("Existing reward:" + reward.type));
+            if (reward.type == RewardItem.RewardType.CARD && reward.cards.size() > 0) cardReward = reward;
+        }
+        if (cardReward == null) return;
+        logger.info("Found card reward. First card is:" + cardReward.cards.get(0).cardID);
+
+        ArrayList<AbstractCard> stanceCards = loadStanceCards(stance);
+        Iterator cards = cardReward.cards.iterator();
+        int i = 0;
+        while (cards.hasNext()) {
+            AbstractCard card = (AbstractCard) cards.next();
+            Float nextFloat = AbstractDungeon.cardRng.random();
+            logger.info("Stance rng:" + nextFloat);
+            //if (AbstractDungeon.cardRng.randomBoolean(0.17f)) {
+            if(nextFloat < 0.17F) {
+                AbstractCard replacementCard = getStanceReplacementCard(card, stanceCards);
+                if (replacementCard != null) {
+                    logger.info("Replace card:" + replacementCard.cardID);
+                    cardReward.cards.set(i, replacementCard);
+                }
+            }
+            i++;
+        }
+    }
+
+    private ArrayList<AbstractCard> loadStanceCards(StanceType stance) {
+        ArrayList<AbstractCard> cards = new ArrayList<AbstractCard>();
+
+        if (stance == StanceType.TwoHanded) {
+
+        } else if (stance == StanceType.DualWield) {
+            cards.add(new Caution(true));
+            cards.add(new DoubleStrike(true));
+            cards.add(new Feint(true));
+            cards.add(new Probe(true));
+            cards.add(new Patience(true));
+            cards.add(new SlashAndParry(true));
+            cards.add(new Quicksilver(true));
+            cards.add(new MurderAllTheThings(true));
+            cards.add(new BladeWork(true));
+        } else {
+
+        }
+        return cards;
+    }
+
+    private AbstractCard getStanceReplacementCard(AbstractCard card, ArrayList<AbstractCard> stanceCards) {
+        ArrayList<AbstractCard> candidates = new ArrayList<AbstractCard>();
+        for(int i = 0; i < stanceCards.size(); i++) {
+            if (stanceCards.get(i).rarity == card.rarity) candidates.add(stanceCards.get(i));
+        }
+        AbstractCard candidate = null;
+        if (candidates.size() > 0) {
+            if (candidates.size() == 1) candidate = candidates.get(0);
+            int index = AbstractDungeon.cardRng.random(0, candidates.size());
+            candidate = candidates.get(index);
+        }
+        if (candidate == null) return null;
+        stanceCards.remove(candidate);
+        candidate = candidate.makeCopy();
+        if (card.upgraded) candidate.upgrade();
+        return candidate;
     }
 
     private void updateTips() {
@@ -141,5 +228,12 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
     public void onLoad(Integer rank) {
         this.currentRank = rank;
         updateTips();
+    }
+
+    public enum StanceType {
+        None,
+        TwoHanded,
+        DualWield,
+        SwordShield
     }
 }

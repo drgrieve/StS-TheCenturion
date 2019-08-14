@@ -10,22 +10,15 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 public class MacePower extends AbstractDefaultPower {
-    public static final String POWER_ID = centurion.CenturionMod.makeID(MacePower.class.getSimpleName());
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public static PowerType POWER_TYPE = PowerType.BUFF;
+    public static final String POWER_ID = centurion.CenturionMod.makeID(MacePower.class.getSimpleName());
     private int weakAmount = 0;
 
     public MacePower(AbstractCreature owner, int weakAmount) {
-        this.ID = POWER_ID;
-        this.name = NAME;
-        this.owner = owner;
-        this.amount = 0;
+        this.initializePower(POWER_ID, PowerType.BUFF, owner, 0);
         this.weakAmount = weakAmount;
-        this.type = POWER_TYPE;
         this.isTurnBased = true;
+
         this.updateDescription();
         this.loadImages();
     }

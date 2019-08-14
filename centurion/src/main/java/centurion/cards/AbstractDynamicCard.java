@@ -36,7 +36,9 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
     protected int UPGRADE_PLUS_MAGIC_NUMBER;
     protected int SECOND_MAGIC_NUMBER;
     protected int UPGRADE_PLUS_SECOND_MAGIC_NUMBER;
-    private CardStrings cardStrings;
+    protected int UPGRADE_REDUCE_COST_BY;
+
+    protected CardStrings cardStrings;
 
     public void setSecondaryValues() {
         this.baseBlock = BLOCK;
@@ -56,6 +58,7 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
             if (UPGRADE_PLUS_DMG != 0) upgradeDamage(UPGRADE_PLUS_DMG);
             if (UPGRADE_PLUS_MAGIC_NUMBER != 0) upgradeMagicNumber(UPGRADE_PLUS_MAGIC_NUMBER);
             if (UPGRADE_PLUS_SECOND_MAGIC_NUMBER != 0) upgradeDefaultSecondMagicNumber(UPGRADE_PLUS_SECOND_MAGIC_NUMBER);
+            if (UPGRADE_REDUCE_COST_BY != 0) upgradeBaseCost(this.cost - UPGRADE_REDUCE_COST_BY);
             if (cardStrings.UPGRADE_DESCRIPTION != null) rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }

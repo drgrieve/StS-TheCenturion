@@ -29,7 +29,7 @@ public class MurderAllTheThings extends AbstractDynamicCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.SPECIAL;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
@@ -38,11 +38,16 @@ public class MurderAllTheThings extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public MurderAllTheThings() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
         this.DAMAGE = 5;
         this.UPGRADE_PLUS_DMG = 3;
         this.setSecondaryValues();
         this.isMultiDamage = true;
+    }
+
+    public MurderAllTheThings(boolean setStanceRarity) {
+        this();
+        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

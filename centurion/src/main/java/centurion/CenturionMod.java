@@ -4,6 +4,7 @@ import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.interfaces.*;
+import centurion.cards.swordshield.DexterityUp;
 import centurion.cards.swordshield.SwordShieldStance;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -408,15 +409,21 @@ public class CenturionMod implements
         // when generating card rewards/shop screen items.
         //Token cards
         BaseMod.addCard(new Axe());
-        BaseMod.addCard(new Dagger());
-        BaseMod.addCard(new LightHeal());
-        BaseMod.addCard(new Mace());
-        BaseMod.addCard(new PowerUp());
         BaseMod.addCard(new Shield());
+
+        //Rank Up rewards
+        BaseMod.addCard(new DexterityUp());
+        BaseMod.addCard(new LightHeal());
+        BaseMod.addCard(new PowerUp());
+        BaseMod.addCard(new StatsUp());
         BaseMod.addCard(new StrengthUp());
-        BaseMod.addCard(new Sword());
+
+        //Stance cards
         BaseMod.addCard(new TwoHandedStance());
         BaseMod.addCard(new DualWieldStance());
+        BaseMod.addCard(new Dagger());
+        BaseMod.addCard(new Mace());
+        BaseMod.addCard(new Sword());
         BaseMod.addCard(new SwordShieldStance());
 
         //Basic cards
@@ -446,6 +453,7 @@ public class CenturionMod implements
         BaseMod.addCard(new GatherBandages());
         BaseMod.addCard(new HoneBlade());
         BaseMod.addCard(new Observe());
+        BaseMod.addCard(new PushOn());
         BaseMod.addCard(new Search());
         BaseMod.addCard(new Setup());
 
@@ -469,14 +477,12 @@ public class CenturionMod implements
         BaseMod.addCard(new MurderAllTheThings());
 
         BaseMod.addCard(new BladeWork());
+        BaseMod.addCard(new BladeStorm());
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
         // This is so that they are all "seen" in the library, for people who like to look at the card list
         // before playing your mod.
-        UnlockTracker.unlockCard(Axe.ID);
-        UnlockTracker.unlockCard(Shield.ID);
-
         UnlockTracker.unlockCard(Strike_Centurion.ID);
         UnlockTracker.unlockCard(Defend.ID);
         UnlockTracker.unlockCard(OpeningManeuver.ID);
@@ -490,26 +496,6 @@ public class CenturionMod implements
         UnlockTracker.unlockCard(StrategicCut.ID);
         UnlockTracker.unlockCard(TrustyAxe.ID);
         UnlockTracker.unlockCard(TrustyShield.ID);
-
-        UnlockTracker.unlockCard(BleedOut.ID);
-        UnlockTracker.unlockCard(BloodSpirit.ID);
-        UnlockTracker.unlockCard(CounterAttack.ID);
-        UnlockTracker.unlockCard(DeepCut.ID);
-        UnlockTracker.unlockCard(Defiance.ID);
-        UnlockTracker.unlockCard(EarlyStart.ID);
-        UnlockTracker.unlockCard(Execution.ID);
-        UnlockTracker.unlockCard(GatherBandages.ID);
-        UnlockTracker.unlockCard(HoneBlade.ID);
-        UnlockTracker.unlockCard(Observe.ID);
-        UnlockTracker.unlockCard(Search.ID);
-        UnlockTracker.unlockCard(Setup.ID);
-
-        UnlockTracker.unlockCard(BrightBeginning.ID);
-        UnlockTracker.unlockCard(Burst.ID);
-        UnlockTracker.unlockCard(DiamondEdgedBlade.ID);
-        UnlockTracker.unlockCard(DefensiveWhirlwind.ID);
-        UnlockTracker.unlockCard(WhirlingBlade.ID);
-        UnlockTracker.unlockCard(UltimateStrike.ID);
 
         logger.info("Done adding cards!");
     }

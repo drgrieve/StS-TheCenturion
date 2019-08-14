@@ -28,7 +28,7 @@ public class Feint extends AbstractDynamicCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.SPECIAL;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
@@ -38,13 +38,18 @@ public class Feint extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public Feint() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
 
         this.DAMAGE = 3;
         this.UPGRADE_PLUS_DMG = 1;
         this.MAGIC_NUMBER = 1;
         this.UPGRADE_PLUS_MAGIC_NUMBER = 1;
         this.setSecondaryValues();
+    }
+
+    public Feint(boolean setStanceRarity) {
+        this();
+        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

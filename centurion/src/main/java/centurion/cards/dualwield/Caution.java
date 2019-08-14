@@ -23,7 +23,7 @@ public class Caution extends AbstractDynamicCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.SPECIAL;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
@@ -34,10 +34,14 @@ public class Caution extends AbstractDynamicCard {
 
     // /STAT DECLARATION/
 
-
     public Caution() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
         baseBlock = BLOCK;
+    }
+
+    public Caution(boolean setStanceRarity) {
+        this();
+        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

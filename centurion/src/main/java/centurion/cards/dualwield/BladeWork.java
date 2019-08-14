@@ -15,7 +15,7 @@ public class BladeWork extends AbstractDynamicCard {
 
     public static final String ID = centurion.CenturionMod.makeID(BladeWork.class.getSimpleName());
 
-    private static final CardRarity RARITY = CardRarity.SPECIAL;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
@@ -27,9 +27,14 @@ public class BladeWork extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public BladeWork() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
         this.MAGIC_NUMBER = 2;
         this.setSecondaryValues();
+    }
+
+    public BladeWork(boolean setStanceRarity) {
+        this();
+        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

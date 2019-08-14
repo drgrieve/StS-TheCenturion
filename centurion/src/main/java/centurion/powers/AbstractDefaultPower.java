@@ -13,7 +13,7 @@ import static centurion.CenturionMod.makePowerPath;
 
 public abstract class AbstractDefaultPower extends AbstractPower {
 
-    private PowerStrings powerStrings;
+    protected PowerStrings powerStrings;
     private String NAME;
     protected String[] DESCRIPTIONS;
 
@@ -21,15 +21,16 @@ public abstract class AbstractDefaultPower extends AbstractPower {
 
     }
 
-    protected void initializePower(String powerId, AbstractCreature owner, int newAmount) {
-        this.name = NAME;
-        this.ID = powerId;
-        this.owner = owner;
-        this.amount = newAmount;
-
+    protected void initializePower(String powerId, PowerType type, AbstractCreature owner, int newAmount) {
         powerStrings = CardCrawlGame.languagePack.getPowerStrings(powerId);
         NAME = powerStrings.NAME;
         DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+
+        this.ID = powerId;
+        this.name = NAME;
+        this.type = type;
+        this.owner = owner;
+        this.amount = newAmount;
     }
 
     protected void loadImages() {

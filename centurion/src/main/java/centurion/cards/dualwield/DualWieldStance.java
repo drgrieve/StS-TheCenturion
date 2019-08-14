@@ -54,7 +54,6 @@ public class DualWieldStance extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        checkStanceUnlock();
         if (this.upgraded) {
             modal.getCard(0).upgrade();
             modal.getCard(1).upgrade();
@@ -73,17 +72,4 @@ public class DualWieldStance extends AbstractDynamicCard {
         }
     }
 
-    private void checkStanceUnlock() {
-        if (CardLibrary.getCard(Caution.ID).rarity == CardRarity.SPECIAL) {
-            CardLibrary.getCard(Caution.ID).rarity = CardRarity.COMMON;
-            CardLibrary.getCard(DoubleStrike.ID).rarity = CardRarity.COMMON;
-            CardLibrary.getCard(Feint.ID).rarity = CardRarity.COMMON;
-            CardLibrary.getCard(Probe.ID).rarity = CardRarity.COMMON;
-            CardLibrary.getCard(Patience.ID).rarity = CardRarity.UNCOMMON;
-            CardLibrary.getCard(SlashAndParry.ID).rarity = CardRarity.UNCOMMON;
-            CardLibrary.getCard(Quicksilver.ID).rarity = CardRarity.UNCOMMON;
-            CardLibrary.getCard(MurderAllTheThings.ID).rarity = CardRarity.UNCOMMON;
-            CardLibrary.getCard(BladeWork.ID).rarity = CardRarity.RARE;
-        }
-    }
 }

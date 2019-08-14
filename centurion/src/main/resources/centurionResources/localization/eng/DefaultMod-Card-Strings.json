@@ -8,6 +8,16 @@
     "DESCRIPTION": "Whenever you play an Attack gain 2 Block.",
     "UPGRADE_DESCRIPTION": "Innate. NL Whenever you play an Attack gain 2 Block."
   },
+  "centurion:BladeStorm": {
+    "NAME": "Blade Storm",
+    "DESCRIPTION": "Play the last Attack you played this turn X times.",
+    "UPGRADE_DESCRIPTION": "Play the last Attack you played this turn X+1 times.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Last Attack : ",
+      ")",
+      " NL (You haven't played an Attack this turn.)"
+    ]
+  },
   "centurion:Caution": {
     "NAME": "Caution",
     "DESCRIPTION": "Gain !B! Block. NL Draw a card."
@@ -45,6 +55,10 @@
     "NAME": "Patience",
     "DESCRIPTION": "Shuffle !M! Ultimate Strike into your draw pile. Can be upgraded any number of times.",
     "UPGRADE_DESCRIPTION": "Shuffle !M! Ultimate Strikes into your draw pile. Can be upgraded any number of times."
+  },
+  "centurion:PushOn": {
+    "NAME": "Push On",
+    "DESCRIPTION": "Discard any number of cards. Gain [R] for each card discarded."
   },
   "centurion:PowerUp": {
     "NAME": "Power Up",
@@ -130,9 +144,9 @@
   },
   "centurion:Anticipate": {
     "NAME": "Anticipate",
-    "DESCRIPTION": "Gain !B! Block. If an enemy intends to not attack, gain double that Block next turn.",
+    "DESCRIPTION": "Gain !B! Block. If an enemy intends to NOT attack, gain double that Block next turn.",
     "EXTENDED_DESCRIPTION": [
-      " NL (Gains !M! Block.)"
+      " NL (Gain !M! Block next turn.)"
     ]
   },
   "centurion:BlurredBlade": {
@@ -195,7 +209,7 @@
     "DESCRIPTION": "Retain. centurion:Heavy !M!. NL Deal !D! Damage, if this kills an enemy, permanently increase this card's centurion:Heavy by !centurion:SecondMagic!. NL Exhaust."
   },
   "centurion:GatherBandages": {
-    "NAME": "GatherBandages",
+    "NAME": "Gather Bandages",
     "DESCRIPTION": "Retain. NL If your have lost HP this combat, shuffle !M! Bandage Up into your discard pile. NL Exhaust."
   },
   "centurion:HoneBlade": {
