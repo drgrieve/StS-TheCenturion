@@ -14,14 +14,6 @@ import static centurion.CenturionMod.makeCardPath;
 
 public class TrustyAxe extends AbstractDynamicCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * Big Slap Deal 10(15)) damage.
-     */
-
-    // TEXT DECLARATION
-
     public static final String ID = centurion.CenturionMod.makeID(TrustyAxe.class.getSimpleName());
     public static final String IMG = makeCardPath("Strike_Centurion.png");
 

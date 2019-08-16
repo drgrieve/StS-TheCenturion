@@ -17,50 +17,45 @@ import static centurion.CenturionMod.makeCardPath;
 
 public class CounterAttack extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = centurion.CenturionMod.makeID(CounterAttack.class.getSimpleName());
-    public static final String IMG = makeCardPath("Strike_Centurion.png");
-
-    // /TEXT DECLARATION/
-
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
+    public static final String IMG = makeCardPath(makeImageName(TYPE, CounterAttack.class.getSimpleName()));
 
     private static final int COST = 2;
-    private static final int DAMAGE = 9;
-    private static final int UPGRADE_PLUS_DMG = 4;
-
-    // /STAT DECLARATION/
 
     public CounterAttack() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.baseDamage = DAMAGE;
+        this.DAMAGE = 9;
+        this.UPGRADE_PLUS_DMG = 4;
+        this.setSecondaryValues();
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int damageMultiplier = m.getIntentDmg() > 0 ? 2 : 1;
+        int damageMultiplier = damageMultiplier(m);
         AbstractGameAction.AttackEffect effect = damageMultiplier == 1 ? AbstractGameAction.AttackEffect.SLASH_HORIZONTAL : AbstractGameAction.AttackEffect.SLASH_HEAVY;
         AbstractDungeon.actionManager.addToBottom(
-            new DamageAction(m, new DamageInfo(p, damage * damageMultiplier, damageTypeForTurn),effect));
+            new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), effect));
     }
 
-    //Upgraded stats.
-    @Override
-    public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            initializeDescription();
-        }
+    private int damageMultiplier(AbstractMonster m) {
+        return m.getIntentDmg() > 0 ? 2 : 1;
     }
+
+    public void calculateCardDamage(AbstractMonster mo) {
+        int baseDamage = this.baseDamage;
+        this.baseDamage *= damageMultiplier(mo);
+        super.calculateCardDamage(mo);
+        this.baseDamage = baseDamage;
+    }
+
+    @Override
+    public void upgrade() { this.defaultUpgrade(); }
 
     @Override
     public AbstractCard makeCopy()

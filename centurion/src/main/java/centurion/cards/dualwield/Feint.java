@@ -18,15 +18,8 @@ import static centurion.CenturionMod.makeCardPath;
 
 public class Feint extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = centurion.CenturionMod.makeID(Feint.class.getSimpleName());
     public static final String IMG = makeCardPath("Strike_Centurion.png");
-
-    // /TEXT DECLARATION/
-
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -34,8 +27,6 @@ public class Feint extends AbstractDynamicCard {
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
 
     private static final int COST = 0;
-
-    // /STAT DECLARATION/
 
     public Feint() {
         super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
@@ -52,7 +43,6 @@ public class Feint extends AbstractDynamicCard {
         if (setStanceRarity) this.rarity = RARITY;
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
@@ -61,7 +51,6 @@ public class Feint extends AbstractDynamicCard {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         this.defaultUpgrade();

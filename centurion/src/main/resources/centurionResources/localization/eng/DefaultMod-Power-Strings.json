@@ -14,12 +14,24 @@
                 " HP."
         ]
         },
+        "centurion:BloodRushPower": {
+                "NAME": "Blood Rush",
+                "DESCRIPTIONS": [
+                        "Whenever you play a card gain #b1 #yFilter for this turn."
+                ]
+        },
         "centurion:DaggerPower": {
                 "NAME": "Dagger",
                 "DESCRIPTIONS": [
                         "Every time you play #b",
                         " #yAttacks in a single turn, gain #b",
                         " #yRazor."
+                ]
+        },
+        "centurion:FilterPower": {
+                "NAME": "Filter",
+                "DESCRIPTIONS": [
+                        "At the end of your turn Filter for #b"
                 ]
         },
         "centurion:MacePower": {
@@ -45,10 +57,17 @@
                 ]
         },
         "centurion:ThornsDownPower": {
-                "NAME": "Despike",
+                "NAME": "Calm",
                 "DESCRIPTIONS": [
                         "Lose #b",
                         " #yThorns at the start of your next turn."
+                ]
+        },
+        "centurion:ThornsUpPower": {
+                "NAME": "Anger",
+                "DESCRIPTIONS": [
+                        "At the end of your turn gain #b",
+                        " #yThorns."
                 ]
         },
         "centurion:DefensiveWhirlwindPower": {

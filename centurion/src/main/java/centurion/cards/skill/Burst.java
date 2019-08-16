@@ -1,12 +1,10 @@
-package centurion.cards;
+package centurion.cards.skill;
 
 import centurion.actions.FilterAction;
+import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static centurion.CenturionMod.makeCardPath;
@@ -41,15 +39,15 @@ public class Burst extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         cardsDiscarded = p.discardPile.size();
-        AbstractDungeon.actionManager.addToBottom(new FilterAction(this.magicNumber, cardStrings.EXTENDED_DESCRIPTION[0]));
+        AbstractDungeon.actionManager.addToBottom(new FilterAction(this.magicNumber, cardStrings.EXTENDED_DESCRIPTION[0], FilterAction.OnDiscardAction.ENERGY, FilterAction.OnNotDiscardAction.DRAW));
     }
 
     @Override
     public void triggerOnExhaust() {
-        cardsDiscarded = AbstractDungeon.player.discardPile.size() - cardsDiscarded;
-        if (cardsDiscarded > 0) AbstractDungeon.player.gainEnergy(cardsDiscarded);
-        int cardsNotDiscarded = this.magicNumber - cardsDiscarded;
-        if (cardsNotDiscarded > 0) AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, cardsNotDiscarded));
+//        cardsDiscarded = AbstractDungeon.player.discardPile.size() - cardsDiscarded;
+//        if (cardsDiscarded > 0) AbstractDungeon.player.gainEnergy(cardsDiscarded);
+//        int cardsNotDiscarded = this.magicNumber - cardsDiscarded;
+//        if (cardsNotDiscarded > 0) AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, cardsNotDiscarded));
     }
 
     // Upgraded stats.

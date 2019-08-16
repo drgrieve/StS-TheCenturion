@@ -1,9 +1,11 @@
 package centurion.actions;
 
+import centurion.CenturionMod;
 import centurion.powers.BleedPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -21,21 +23,37 @@ import java.util.Iterator;
 
 public class FilterAction extends AbstractGameAction {
 
+    public enum OnDiscardAction {
+        NONE,
+        ENERGY,
+        UPGRADE
+    }
+
+    public enum OnNotDiscardAction {
+        NONE,
+        DRAW
+    }
+
     public static final String ACTION_ID = centurion.CenturionMod.makeID(FilterAction.class.getSimpleName());
     private static final UIStrings uiStrings =  CardCrawlGame.languagePack.getUIString(ACTION_ID);
     public static final String[] TEXT = uiStrings.TEXT;
     private float startingDuration;
+    private OnDiscardAction onDiscardAction;
+    private OnNotDiscardAction onNotDiscardAction;
+    private int cardsDiscarded;
 
     public FilterAction(int numCards) {
-        this(numCards, null);
+        this(numCards, null, OnDiscardAction.NONE, OnNotDiscardAction.NONE);
     }
 
-    public FilterAction(int numCards, String customUIText) {
+    public FilterAction(int numCards, String customUIText, OnDiscardAction discardAction, OnNotDiscardAction notDiscardAction) {
         this.amount = numCards;
         this.actionType = ActionType.CARD_MANIPULATION;
         this.startingDuration = Settings.ACTION_DUR_FAST;
         this.duration = this.startingDuration;
         if (customUIText != null) TEXT[0] = customUIText;
+        onDiscardAction = discardAction;
+        onNotDiscardAction = notDiscardAction;
     }
 
     public void update() {
@@ -52,15 +70,27 @@ public class FilterAction extends AbstractGameAction {
             }
 
             AbstractDungeon.gridSelectScreen.open(tmpGroup, this.amount, true, TEXT[0]);
-        } else if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-                Iterator cards = AbstractDungeon.gridSelectScreen.selectedCards.iterator();
-                while (cards.hasNext()) {
-                    AbstractCard c = (AbstractCard) cards.next();
-                    AbstractDungeon.player.drawPile.moveToDiscardPile(c);
-                }
-                AbstractDungeon.gridSelectScreen.selectedCards.clear();
+            AbstractDungeon.actionManager.addToBottom(new WaitAction(0.25F));
+            tickDuration();
+            return;
         }
-        this.tickDuration();
+        if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
+            for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards){
+                AbstractDungeon.player.drawPile.moveToDiscardPile(c);
+                if (onDiscardAction == OnDiscardAction.UPGRADE && c.canUpgrade()) c.upgrade();
+                cardsDiscarded++;
+            }
+            AbstractDungeon.gridSelectScreen.selectedCards.clear();
+            if (onDiscardAction == OnDiscardAction.ENERGY) AbstractDungeon.player.gainEnergy(cardsDiscarded);
+        }
+        int cardsNotDiscarded = this.amount - cardsDiscarded;
+        if (cardsNotDiscarded > 0 && onNotDiscardAction != OnNotDiscardAction.NONE) {
+            if (onNotDiscardAction == OnNotDiscardAction.DRAW) AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, cardsNotDiscarded));
+        }
+        //CenturionMod.logger.info("FilterAction" + duration);
+        //CenturionMod.logger.info("FilterAction" + AbstractDungeon.gridSelectScreen.selectedCards.size());
+        //CenturionMod.logger.info("FilterAction" + cardsDiscarded);
+        this.isDone = true;
     }
 
 }

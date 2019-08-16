@@ -18,6 +18,15 @@
       " NL (You haven't played an Attack this turn.)"
     ]
   },
+  "centurion:BloodRush": {
+    "NAME": "Blood Rush",
+    "DESCRIPTION": "At the end of your turn centurion:filter for each card you play that turn."
+  },
+  "centurion:BringItOn": {
+    "NAME": "Bring It On",
+    "DESCRIPTION": "centurion:Filter for each enemy",
+    "UPGRADE_DESCRIPTION": "centurion:Filter and draw a card for each enemy."
+  },
   "centurion:Caution": {
     "NAME": "Caution",
     "DESCRIPTION": "Gain !B! Block. NL Draw a card."
@@ -79,6 +88,14 @@
     "NAME": "Murder All The Things",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. Twice."
   },
+  "centurion:RepeatingStrike": {
+    "NAME": "Repeating Strike",
+    "DESCRIPTION": "Retain. Deal !D! damage. NL Double the damage of Repeating Strikes played this turn."
+  },
+  "centurion:Retribution": {
+    "NAME": "Retribution",
+    "DESCRIPTION": "At the end of your turn gain !M! Thorns."
+  },
   "centurion:Shield": {
     "NAME": "Shield",
     "DESCRIPTION": "Gain !B! Block."
@@ -90,6 +107,13 @@
   "centurion:SlowBurn": {
     "NAME": "Slow Burn",
     "DESCRIPTION": "Gain [R] [R] . Exhaust. NL Retain 1. NL When retained gain [R] next turn."
+  },
+  "centurion:Smith": {
+    "NAME": "Smith",
+    "DESCRIPTION": "centurion:Filter !M!. Each card discarded is upgraded for the rest of combat.",
+    "EXTENDED_DESCRIPTION": [
+      "Choose cards to discard. Cards discarded are upgraded for the rest of combat."
+    ]
   },
   "centurion:StatsUp": {
     "NAME": "Stats Up",

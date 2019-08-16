@@ -1,5 +1,6 @@
 package centurion.cards;
 
+import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -37,6 +38,7 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
     protected int SECOND_MAGIC_NUMBER;
     protected int UPGRADE_PLUS_SECOND_MAGIC_NUMBER;
     protected int UPGRADE_REDUCE_COST_BY;
+    protected int EXHAUSTIVE_AMT;
 
     protected CardStrings cardStrings;
 
@@ -48,6 +50,7 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
         this.magicNumber = MAGIC_NUMBER;
         this.defaultBaseSecondMagicNumber = SECOND_MAGIC_NUMBER;
         this.defaultSecondMagicNumber = SECOND_MAGIC_NUMBER;
+        if (EXHAUSTIVE_AMT > 0) ExhaustiveVariable.setBaseValue(this, EXHAUSTIVE_AMT);
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
     }
 

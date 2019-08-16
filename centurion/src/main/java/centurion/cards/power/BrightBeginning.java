@@ -1,14 +1,10 @@
-package centurion.cards;
+package centurion.cards.power;
 
+import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import java.util.Iterator;
 
 import static centurion.CenturionMod.makeCardPath;
 
@@ -35,10 +31,7 @@ public class BrightBeginning extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (this.upgraded) this.exhaust = true;
 
-        Iterator cards = AbstractDungeon.player.hand.group.iterator();
-
-        while(cards.hasNext()) {
-            AbstractCard c = (AbstractCard)cards.next();
+        for (AbstractCard c : p.hand.group) {
             if (c.isInnate && c.uuid != this.uuid) c.setCostForTurn(-9);
         }
     }
