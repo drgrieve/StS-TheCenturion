@@ -29,18 +29,13 @@ public class Feint extends AbstractDynamicCard {
     private static final int COST = 0;
 
     public Feint() {
-        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
         this.DAMAGE = 3;
         this.UPGRADE_PLUS_DMG = 1;
         this.MAGIC_NUMBER = 1;
         this.UPGRADE_PLUS_MAGIC_NUMBER = 1;
         this.setSecondaryValues();
-    }
-
-    public Feint(boolean setStanceRarity) {
-        this();
-        if (setStanceRarity) this.rarity = RARITY;
     }
 
     @Override

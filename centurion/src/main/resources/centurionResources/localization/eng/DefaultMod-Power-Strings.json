@@ -17,7 +17,7 @@
         "centurion:BloodRushPower": {
                 "NAME": "Blood Rush",
                 "DESCRIPTIONS": [
-                        "Whenever you play a card gain #b1 #yFilter for this turn."
+                        "Whenever you play a card gain #b1 #yFilter for this turn. (Up to 10)"
                 ]
         },
         "centurion:DaggerPower": {
@@ -26,6 +26,13 @@
                         "Every time you play #b",
                         " #yAttacks in a single turn, gain #b",
                         " #yRazor."
+                ]
+        },
+        "centurion:EnergyPower": {
+                "NAME": "Energy",
+                "DESCRIPTIONS": [
+                        "At the start of your turn, gain ",
+                        ""
                 ]
         },
         "centurion:FilterPower": {
@@ -64,7 +71,7 @@
                 ]
         },
         "centurion:ThornsUpPower": {
-                "NAME": "Anger",
+                "NAME": "Retribution",
                 "DESCRIPTIONS": [
                         "At the end of your turn gain #b",
                         " #yThorns."
@@ -80,6 +87,14 @@
                 "NAME": "Whirling Blade",
                 "DESCRIPTIONS": [
                         "Whenever you play an #yAttack, draw #b1 card."
+                ]
+        },
+        "centurion:WhirlwindPower": {
+                "NAME": "Whirlwind",
+                "DESCRIPTIONS": [
+                        "The first #yAttack card you play each turn is played twice.",
+                        "The first #b",
+                        " #yAttack cards you play each turn are played twice."
                 ]
         },
         "centurion:QuickStrikePower": {

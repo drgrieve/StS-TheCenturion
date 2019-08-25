@@ -27,14 +27,9 @@ public class BladeWork extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public BladeWork() {
-        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.MAGIC_NUMBER = 2;
         this.setSecondaryValues();
-    }
-
-    public BladeWork(boolean setStanceRarity) {
-        this();
-        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

@@ -9,10 +9,12 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
@@ -22,8 +24,10 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import centurion.cards.*;
+import centurion.cards.twohanded.*;
+import centurion.cards.dualwield.*;
+import centurion.cards.swordshield.*;
 import centurion.relics.DefaultClickableRelic;
-import centurion.relics.StrengthUpRelic;
 import centurion.relics.IronHelmRelic;
 
 import java.util.ArrayList;
@@ -182,6 +186,78 @@ public class Centurion extends CustomPlayer {
         UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
 
         return retVal;
+    }
+
+    public AbstractCard modifyCardReward(AbstractCard card, CardGroup stanceCards) {
+        StanceType stance = getStanceType();
+
+        logger.info(("Current stance:" + stance));
+        if (stance == StanceType.None) return card;
+
+        Float nextFloat = AbstractDungeon.cardRng.random();
+        logger.info("Stance rng:" + nextFloat);
+        //if (AbstractDungeon.cardRng.randomBoolean(0.15f)) {
+        if(nextFloat < 0.15F) {
+            AbstractCard replacementCard = getStanceReplacementCard(card, stanceCards);
+            if (replacementCard != null) {
+                logger.info("Card to replace:" + card.cardID);
+                logger.info("Replacement card:" + replacementCard.cardID);
+                return replacementCard;
+            }
+        }
+        return card;
+    }
+
+    private AbstractCard getStanceReplacementCard(AbstractCard card, CardGroup stanceCards) {
+        AbstractCard replacementCard = stanceCards.getRandomCard(true, card.rarity);
+        if (replacementCard != null) {
+            stanceCards.removeCard(replacementCard); //Prevent duplicates
+            if (card.upgraded) replacementCard.upgrade();
+        }
+        return replacementCard;
+    }
+
+    public CardGroup getStanceCardPool() {
+        StanceType stance = getStanceType();
+        CardGroup cards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        switch (stance) {
+            case TwoHanded:
+                cards.addToBottom(new KnockBack());
+                break;
+            case DualWield:
+                cards.addToBottom(new Caution());
+                cards.addToBottom(new DoubleStrike());
+                cards.addToBottom(new Feint());
+                cards.addToBottom(new Probe());
+
+                cards.addToBottom(new Patience());
+                cards.addToBottom(new SlashAndParry());
+                cards.addToBottom(new Quicksilver());
+                cards.addToBottom(new MurderAllTheThings());
+
+                cards.addToBottom(new BladeWork());
+                cards.addToBottom(new BladeStorm());
+                cards.addToBottom(new WindForm());
+                break;
+            case SwordShield:
+                break;
+        }
+        return cards;
+    }
+
+    public StanceType getStanceType() {
+        StanceType stance = StanceType.None;
+        if (masterDeck.findCardById(TwoHandedStance.ID) != null) stance = StanceType.TwoHanded;
+        else if (masterDeck.findCardById(DualWieldStance.ID) != null) stance = StanceType.DualWield;
+        else if (masterDeck.findCardById(SwordShieldStance.ID) != null) stance = StanceType.SwordShield;
+        return stance;
+    }
+
+    public enum StanceType {
+        None,
+        TwoHanded,
+        DualWield,
+        SwordShield
     }
 
     // character Select screen effect

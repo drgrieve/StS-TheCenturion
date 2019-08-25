@@ -20,11 +20,11 @@ public class BladeWorkPower extends AbstractDefaultPower {
     }
 
     public void stackPower(int stackAmount) {
-        this.defaultStack(stackAmount);
+        this.defaultStack(stackAmount, false);
     }
 
     public void reducePower(int reduceAmount) {
-        this.defaultStack(-reduceAmount);
+        this.defaultStack(-reduceAmount, false);
     }
 
     @Override

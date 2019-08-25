@@ -41,14 +41,9 @@ public class DoubleStrike extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public DoubleStrike() {
-        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.baseDamage = DAMAGE;
         this.tags.add(CardTags.STRIKE);
-    }
-
-    public DoubleStrike(boolean setStanceRarity) {
-        this();
-        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

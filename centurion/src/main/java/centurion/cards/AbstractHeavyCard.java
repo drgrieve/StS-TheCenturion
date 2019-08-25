@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
-public abstract class AbstractHeavyCard extends AbstractDefaultCard {
+public abstract class AbstractHeavyCard extends AbstractDynamicCard {
 
     public AbstractHeavyCard(final String id,
                              final String img,
@@ -14,10 +14,13 @@ public abstract class AbstractHeavyCard extends AbstractDefaultCard {
                              final CardType type,
                              final CardColor color,
                              final CardRarity rarity,
-                             final CardTarget target) {
+                             final CardTarget target,
+                             final int heavy,
+                             final int heavyUpgradePlus) {
 
-        super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
-
+        super(id, img, cost, type, color, rarity, target);
+        this.MAGIC_NUMBER = heavy;
+        this.UPGRADE_PLUS_MAGIC_NUMBER = heavyUpgradePlus;
     }
 
     public void applyPowers() {

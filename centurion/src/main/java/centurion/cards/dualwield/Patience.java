@@ -45,15 +45,10 @@ public class Patience extends AbstractDynamicCard {
     }
 
     public Patience(int upgrades) {
-        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.timesUpgraded = upgrades;
         this.baseMagicNumber = 1;
         this.magicNumber = timesUpgraded + 1;
-    }
-
-    public Patience(boolean setStanceRarity) {
-        this();
-        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

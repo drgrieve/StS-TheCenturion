@@ -41,14 +41,6 @@ public class Anticipate extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
 
-        int monsterCount = 0;
-        int attackingCount = 0;
-        for (AbstractMonster mon : (AbstractDungeon.getMonsters()).monsters) {
-            if (!mon.isDeadOrEscaped()) {
-                monsterCount++;
-                if (mon.getIntentBaseDmg() >= 0) attackingCount++;
-            }
-        }
         if (hasBlockNextTurn())
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new NextTurnBlockPower(p, this.block * 2), this.block * 2));
 

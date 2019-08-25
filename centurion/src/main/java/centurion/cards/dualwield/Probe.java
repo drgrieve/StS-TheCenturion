@@ -39,12 +39,7 @@ public class Probe extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public Probe() {
-        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
-    }
-
-    public Probe(boolean setStanceRarity) {
-        this();
-        if (setStanceRarity) this.rarity = RARITY;
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
     }
 
     // Actions the card should do.

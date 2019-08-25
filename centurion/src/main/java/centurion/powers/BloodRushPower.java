@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 public class BloodRushPower extends AbstractDefaultPower {
 
     public static final String POWER_ID = centurion.CenturionMod.makeID(BloodRushPower.class.getSimpleName());
-    private int filterDown = 0;
 
     public BloodRushPower(AbstractCreature owner) {
         this.initializePower(POWER_ID, PowerType.BUFF, owner, 0);
@@ -28,17 +27,19 @@ public class BloodRushPower extends AbstractDefaultPower {
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (this.filterDown == 0) this.flashWithoutSound();
-        this.filterDown++;
-        AbstractCreature p = this.owner;
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FilterPower(p, 1), 1));
+        if (amount < 10) {
+            if (this.amount == 0) this.flashWithoutSound();
+            this.amount++;
+            AbstractCreature p = this.owner;
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FilterPower(p, 1), 1));
+        }
     }
 
     public void atEndOfTurn(boolean isPlayer) {
-        if (isPlayer && this.filterDown > 0) {
+        if (isPlayer && this.amount > 0) {
             AbstractCreature p = this.owner;
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FilterPower(p, -filterDown), -filterDown));
-            this.filterDown = 0;
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FilterPower(p, -amount), -amount));
+            this.amount = 0;
         }
     }
 

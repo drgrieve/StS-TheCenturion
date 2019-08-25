@@ -2,6 +2,7 @@ package centurion.powers;
 
 import centurion.actions.FilterAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -23,7 +24,11 @@ public class FilterPower extends AbstractDefaultPower {
     }
 
     public void stackPower(int amount) {
-        this.defaultStack(amount);
+        this.defaultStack(amount, true);
+    }
+
+    public void reducePower(int amount) {
+        this.defaultStack(-amount, true);
     }
 
     public void atEndOfTurn(boolean isPlayer) {

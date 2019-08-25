@@ -4,10 +4,14 @@ import centurion.CenturionMod;
 import centurion.powers.BleedPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -26,7 +30,8 @@ public class FilterAction extends AbstractGameAction {
     public enum OnDiscardAction {
         NONE,
         ENERGY,
-        UPGRADE
+        UPGRADE,
+        MULTI
     }
 
     public enum OnNotDiscardAction {
@@ -75,13 +80,24 @@ public class FilterAction extends AbstractGameAction {
             return;
         }
         if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
+            int attacks = 0; int skills = 0; int powers = 0;
             for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards){
                 AbstractDungeon.player.drawPile.moveToDiscardPile(c);
                 if (onDiscardAction == OnDiscardAction.UPGRADE && c.canUpgrade()) c.upgrade();
+                switch(c.type) {
+                    case ATTACK: attacks++; break;
+                    case SKILL: skills++; break;
+                    case POWER: powers++; break;
+                }
                 cardsDiscarded++;
             }
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
             if (onDiscardAction == OnDiscardAction.ENERGY) AbstractDungeon.player.gainEnergy(cardsDiscarded);
+            else if (onDiscardAction == OnDiscardAction.MULTI) {
+                if (attacks > 0)  AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(attacks * 2, true), DamageInfo.DamageType.NORMAL, AttackEffect.FIRE));
+                if (skills > 0) AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, skills * 2));
+                if (powers > 0)  AbstractDungeon.player.gainEnergy(powers);
+            }
         }
         int cardsNotDiscarded = this.amount - cardsDiscarded;
         if (cardsNotDiscarded > 0 && onNotDiscardAction != OnNotDiscardAction.NONE) {

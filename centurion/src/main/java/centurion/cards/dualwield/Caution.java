@@ -35,13 +35,8 @@ public class Caution extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public Caution() {
-        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
-    }
-
-    public Caution(boolean setStanceRarity) {
-        this();
-        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

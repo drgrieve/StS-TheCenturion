@@ -33,9 +33,9 @@ public class MacePower extends AbstractDefaultPower {
 
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.ATTACK) {
-            this.flash();
             this.amount++;
             if (this.amount == 2) {
+                this.flash();
                 AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(action.target, this.owner, new WeakPower(action.target, weakAmount, false ), weakAmount));
                 this.amount = 0;
             }

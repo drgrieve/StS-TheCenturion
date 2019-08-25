@@ -42,15 +42,10 @@ public class Quicksilver extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public Quicksilver() {
-        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.baseMagicNumber = MAGIC_NUMBER;
         this.magicNumber = MAGIC_NUMBER;
         AlwaysRetainField.alwaysRetain.set(this, true);
-    }
-
-    public Quicksilver(boolean setStanceRarity) {
-        this();
-        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

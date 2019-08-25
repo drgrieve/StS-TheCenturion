@@ -40,14 +40,9 @@ public class SlashAndParry extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public SlashAndParry() {
-        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.baseDamage = DAMAGE;
         this.baseBlock = BLOCK;
-    }
-
-    public SlashAndParry(boolean setStanceRarity) {
-        this();
-        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.

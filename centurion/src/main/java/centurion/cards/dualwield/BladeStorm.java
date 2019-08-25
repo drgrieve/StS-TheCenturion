@@ -24,13 +24,8 @@ public class BladeStorm extends AbstractDynamicCard {
     private static AbstractCard lastAttack = null;
 
     public BladeStorm() {
-        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.setSecondaryValues();
-    }
-
-    public BladeStorm(boolean setStanceRarity) {
-        this();
-        if (setStanceRarity) this.rarity = RARITY;
     }
 
     public void applyPowers() {

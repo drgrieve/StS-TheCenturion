@@ -1,41 +1,42 @@
 package centurion.cards.skill;
 
-import centurion.actions.PushOnAction;
 import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static centurion.CenturionMod.makeCardPath;
 
-public class PushOn extends AbstractDynamicCard {
+public class BrightBeginning extends AbstractDynamicCard {
 
-    public static final String ID = centurion.CenturionMod.makeID(PushOn.class.getSimpleName());
+    public static final String ID = centurion.CenturionMod.makeID(BrightBeginning.class.getSimpleName());
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
-    public static final String IMG = makeCardPath(makeImageName(TYPE, PushOn.class.getSimpleName()));
+    public static final String IMG = makeCardPath(makeImageName(TYPE, BrightBeginning.class.getSimpleName()));
 
-    private static final int COST = 1;
+    private static final int COST = 3;
 
-
-    public PushOn() {
+    public BrightBeginning() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.UPGRADE_REDUCE_COST_BY = 1;
+        this.isInnate = true;
         this.setSecondaryValues();
     }
 
+    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (p.hand.size() > 1) { //Includes this card.
-            AbstractDungeon.actionManager.addToBottom(new PushOnAction());
+        if (this.upgraded) this.exhaust = true;
+
+        for (AbstractCard c : p.hand.group) {
+            if (c.isInnate && c.uuid != this.uuid) c.setCostForTurn(-9);
         }
     }
 
+    // Upgraded stats.
     @Override
     public void upgrade() {
         this.defaultUpgrade();
@@ -44,5 +45,6 @@ public class PushOn extends AbstractDynamicCard {
     @Override
     public AbstractCard makeCopy()
     {
-        return new PushOn();
-    }}
+        return new BrightBeginning();
+    }
+}

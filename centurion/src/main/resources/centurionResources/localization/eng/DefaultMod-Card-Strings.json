@@ -31,6 +31,10 @@
     "NAME": "Caution",
     "DESCRIPTION": "Gain !B! Block. NL Draw a card."
   },
+  "centurion:CutInHalf": {
+    "NAME": "Cut In Half",
+    "DESCRIPTION": "Enemy loses 50% of their current HP."
+  },
   "centurion:Dagger": {
     "NAME": "Dagger",
     "DESCRIPTION": "Every time you play 2 Attacks in a single turn, gain !M! centurion:Razor."
@@ -43,6 +47,14 @@
     "NAME": "Diamond Edged Blade",
     "DESCRIPTION": "At the start of your turn, gain !M! centurion:Razor."
   },
+  "centurion:Dice": {
+    "NAME": "Dice",
+    "DESCRIPTION": "Deal !D! damage 4 times."
+  },
+  "centurion:Doom": {
+    "NAME": "Doom",
+    "DESCRIPTION": "Apply !M! Vulnerable to all enemies. NL Exhaust."
+  },
   "centurion:DoubleStrike": {
     "NAME": "Double Strike",
     "DESCRIPTION": "Deal !D! damage. Add 1 Quick Strike to your hand.",
@@ -52,6 +64,35 @@
     "NAME": "Feint",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
   },
+  "centurion:Focus": {
+    "NAME": "Focus",
+    "DESCRIPTION": "centurion:Filter 4X. NL For each Skill, Attack, and Power card discarded; respectively gain 2 Block, deal 2 damage to all enemies, or gain [E] .",
+    "UPGRADE_DESCRIPTION": "centurion:Filter 4(X+1). NL For each Skill, Attack, and Power card discarded; respectively gain 2 Block, deal 2 damage to all enemies, or gain [E] .",
+    "EXTENDED_DESCRIPTION": [
+      "Choose cards to discard. For each Skill, Attack, and Power card discarded; respectively gain 2 Block, deal 2 damage to all enemies, or gain [E] ."
+    ]
+  },
+  "centurion:Gloom": {
+    "NAME": "Gloom",
+    "DESCRIPTION": "Apply !M! Weak to all enemies. NL Exhaust."
+  },
+  "centurion:GloomAndDoom": {
+    "NAME": "Doom and Gloom",
+    "DESCRIPTION": "Add a Doom and a Gloom to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Add an upgraded Doom and an upgraded Gloom to your hand. NL Exhaust."
+  },
+  "centurion:InTheZone": {
+    "NAME": "In the Zone",
+    "DESCRIPTION": "At the start of your turn gain [E] . NL Retain. When retained this costs 1 less."
+  },
+  "centurion:Jab": {
+    "NAME": "Jab",
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage."
+  },
+  "centurion:KnockBack": {
+    "NAME": "Knock Back",
+    "DESCRIPTION": "Deal !D! damage. Gain block equal to the unblocked damage dealt."
+  },
   "centurion:LightHeal": {
     "NAME": "Light Heal",
     "DESCRIPTION": "Innate. NL Heal for !M!% of your Max HP. NL Fleeting."
@@ -60,14 +101,18 @@
     "NAME": "Mace",
     "DESCRIPTION": "Every time you play 2 Attacks in a single turn, apply !M! Weak."
   },
+  "centurion:OpportuneStrike": {
+    "NAME": "Opportune Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Gain Block instead for each unblocked damage you are receiving. NL (Gain !M! Block)"
+  },
   "centurion:Patience": {
     "NAME": "Patience",
     "DESCRIPTION": "Shuffle !M! Ultimate Strike into your draw pile. Can be upgraded any number of times.",
     "UPGRADE_DESCRIPTION": "Shuffle !M! Ultimate Strikes into your draw pile. Can be upgraded any number of times."
   },
-  "centurion:PushOn": {
-    "NAME": "Push On",
-    "DESCRIPTION": "Discard any number of cards. Gain [R] for each card discarded."
+  "centurion:PushForward": {
+    "NAME": "Push Forward",
+    "DESCRIPTION": "Discard any number of cards. Gain [E] for each card discarded."
   },
   "centurion:PowerUp": {
     "NAME": "Power Up",
@@ -104,9 +149,18 @@
     "NAME": "Slash and Parry",
     "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block."
   },
+  "centurion:Slice": {
+    "NAME": "Slice",
+    "DESCRIPTION": "Deal !D! damage to all enemies."
+  },
+  "centurion:SliceAndDice": {
+    "NAME": "Slice and Dice",
+    "DESCRIPTION": "Add a Slice and a Dice to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Add an upgraded Slice and an upgraded Dice to your hand. NL Exhaust."
+  },
   "centurion:SlowBurn": {
     "NAME": "Slow Burn",
-    "DESCRIPTION": "Gain [R] [R] . Exhaust. NL Retain 1. NL When retained gain [R] next turn."
+    "DESCRIPTION": "Gain [E] [E] . Exhaust. NL Retain 1. NL When retained gain [E] next turn."
   },
   "centurion:Smith": {
     "NAME": "Smith",
@@ -115,6 +169,10 @@
       "Choose cards to discard. Cards discarded are upgraded for the rest of combat."
     ]
   },
+  "centurion:Stagger": {
+    "NAME": "Stagger",
+    "DESCRIPTION": "Deal !D! damage. Gain block equal to the unblocked damage dealt."
+  },
   "centurion:StatsUp": {
     "NAME": "Stats Up",
     "DESCRIPTION": "Innate. NL Gain !M! Strength and !centurion:SecondMagic! Dexterity at the start of every combat. NL Fleeting."
@@ -122,6 +180,23 @@
   "centurion:StrengthUp": {
     "NAME": "Strength Up",
     "DESCRIPTION": "Innate. NL Gain !M! Strength at the start of every combat. NL Fleeting."
+  },
+  "centurion:WeightedStrike": {
+    "NAME": "Weighted Strike",
+    "DESCRIPTION": "centurion:Heavy !M!. NL Deal !D! Damage. NL. Gain 1 Strength."
+  },
+  "centurion:WindForm": {
+    "NAME": "Wind Form",
+    "DESCRIPTION": "The first Attack card you play each turn is played twice.",
+    "UPGRADE_DESCRIPTION": "The first !M! Attack cards you play each turn are played twice."
+  },
+  "centurion:Wish": {
+    "NAME": "Wish",
+    "DESCRIPTION": "Choose a X-1 cost card to add to your hand. It costs 0 until played. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose a X-1 cost upgraded card to add to your hand. It costs 0 until played. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "There are no cards available at this cost."
+    ]
   },
   "centurion:QuickStrike": {
     "NAME": "Quick Strike",
@@ -136,12 +211,12 @@
     "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded weapon: Greatsword, Battle Axe, or a Warhammer. NL Purge."
   },
   "centurion:DualWieldStance": {
-    "NAME": "Dual Wield",
-    "DESCRIPTION": "Innate. NL centurion:Equip an offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
-    "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
-    "EXTENDED_DESCRIPTION": [
-      "Equip an offhand weapon."
-    ]
+      "NAME": "Dual Wield",
+      "DESCRIPTION": "Innate. NL centurion:Equip an offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
+      "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
+      "EXTENDED_DESCRIPTION": [
+        "Equip an offhand weapon."
+      ]
   },
   "centurion:Sword": {
     "NAME": "Sword",
@@ -263,7 +338,7 @@
   },
   "centurion:Burst": {
     "NAME": "Burst",
-    "DESCRIPTION": "centurion:Filter !M!. Gain [R] for each card discarded. Draw the cards not discarded.",
+    "DESCRIPTION": "centurion:Filter !M!. Gain [E] for each card discarded. Draw the cards not discarded.",
     "EXTENDED_DESCRIPTION": [
       "Choose cards to discard. Gain energy for each card discarded. Draw the cards not discarded."
     ]

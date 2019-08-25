@@ -1,42 +1,45 @@
-package centurion.cards.power;
+package centurion.cards.dualwield;
 
 import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
+import centurion.powers.WhirlwindPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static centurion.CenturionMod.makeCardPath;
 
-public class BrightBeginning extends AbstractDynamicCard {
+public class WindForm extends AbstractDynamicCard {
 
-    public static final String ID = centurion.CenturionMod.makeID(BrightBeginning.class.getSimpleName());
+    public static final String ID = centurion.CenturionMod.makeID(WindForm.class.getSimpleName());
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
-    public static final String IMG = makeCardPath(makeImageName(TYPE, BrightBeginning.class.getSimpleName()));
 
     private static final int COST = 3;
 
-    public BrightBeginning() {
+    public static final String IMG = makeCardPath(makeImageName(TYPE, WindForm.class.getSimpleName()));
+
+    // /STAT DECLARATION/
+
+    public WindForm() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.isInnate = true;
+        this.MAGIC_NUMBER = 1;
+        this.UPGRADE_PLUS_MAGIC_NUMBER = 1;
         this.setSecondaryValues();
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.upgraded) this.exhaust = true;
-
-        for (AbstractCard c : p.hand.group) {
-            if (c.isInnate && c.uuid != this.uuid) c.setCostForTurn(-9);
-        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new WhirlwindPower(p, this.magicNumber), this.magicNumber));
     }
 
-    // Upgraded stats.
+    //Upgraded stats.
     @Override
     public void upgrade() {
         this.defaultUpgrade();
@@ -45,6 +48,7 @@ public class BrightBeginning extends AbstractDynamicCard {
     @Override
     public AbstractCard makeCopy()
     {
-        return new BrightBeginning();
+        return new WindForm();
     }
+
 }

@@ -4,7 +4,7 @@ import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.interfaces.*;
-import centurion.cards.attack.RepeatingStrike;
+import centurion.cards.attack.*;
 import centurion.cards.power.*;
 import centurion.cards.skill.*;
 import centurion.cards.swordshield.*;
@@ -90,7 +90,7 @@ public class CenturionMod implements
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Centurion Mod";
-    private static final String AUTHOR = "Gremious,DrGrieve"; // And pretty soon - You!
+    private static final String AUTHOR = "Gremious,Iridium"; // And pretty soon - You!
     private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
     
     // =============== INPUT TEXTURE LOCATION =================
@@ -279,7 +279,7 @@ public class CenturionMod implements
         centurion.CenturionMod defaultmod = new centurion.CenturionMod();
         logger.info("========================= /Default Mod Initialized. Hello World./ =========================");
     }
-    
+
     // ============== /SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE/ =================
     
     
@@ -436,14 +436,18 @@ public class CenturionMod implements
         BaseMod.addCard(new Anticipate());
         BaseMod.addCard(new BlurredBlade());
         BaseMod.addCard(new CounterOffensive());
+        BaseMod.addCard(new Jab());
+        BaseMod.addCard(new OpportuneStrike());
         BaseMod.addCard(new Prepared());
         BaseMod.addCard(new Reconnaissance());
         BaseMod.addCard(new Retribution());
         BaseMod.addCard(new RepeatingStrike());
         BaseMod.addCard(new Smith());
+        BaseMod.addCard(new Stagger());
         BaseMod.addCard(new StrategicCut());
         BaseMod.addCard(new TrustyAxe());
         BaseMod.addCard(new TrustyShield());
+        BaseMod.addCard(new WeightedStrike());
 
         //Generic cards - Uncommon
         BaseMod.addCard(new BleedOut());
@@ -455,35 +459,29 @@ public class CenturionMod implements
         BaseMod.addCard(new Defiance());
         BaseMod.addCard(new EarlyStart());
         BaseMod.addCard(new Execution());
+        BaseMod.addCard(new Focus());
         BaseMod.addCard(new GatherBandages());
+        BaseMod.addCard(new GloomAndDoom());
         BaseMod.addCard(new HoneBlade());
         BaseMod.addCard(new Observe());
-        BaseMod.addCard(new PushOn());
+        BaseMod.addCard(new PushForward());
         BaseMod.addCard(new Search());
         BaseMod.addCard(new Setup());
+        BaseMod.addCard(new SliceAndDice());
         BaseMod.addCard(new SlowBurn());
 
         //Generic cards - Rare
         BaseMod.addCard(new BrightBeginning());
         BaseMod.addCard(new Burst());
+        BaseMod.addCard(new CutInHalf());
         BaseMod.addCard(new DiamondEdgedBlade());
         BaseMod.addCard(new DefensiveWhirlwind());
+        BaseMod.addCard(new InTheZone());
         BaseMod.addCard(new WhirlingBlade());
+        BaseMod.addCard(new Wish());
         BaseMod.addCard(new UltimateStrike());
 
-        //Dual Wield card
-        BaseMod.addCard(new Caution());
-        BaseMod.addCard(new DoubleStrike());
-        BaseMod.addCard(new Feint());
-        BaseMod.addCard(new Probe());
-
-        BaseMod.addCard(new Patience());
-        BaseMod.addCard(new SlashAndParry());
-        BaseMod.addCard(new Quicksilver());
-        BaseMod.addCard(new MurderAllTheThings());
-
-        BaseMod.addCard(new BladeWork());
-        BaseMod.addCard(new BladeStorm());
+        //Testing stance cards
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -497,17 +495,19 @@ public class CenturionMod implements
         UnlockTracker.unlockCard(Anticipate.ID);
         UnlockTracker.unlockCard(BlurredBlade.ID);
         UnlockTracker.unlockCard(CounterOffensive.ID);
+        UnlockTracker.unlockCard(Jab.ID);
         UnlockTracker.unlockCard(Prepared.ID);
         UnlockTracker.unlockCard(Reconnaissance.ID);
         UnlockTracker.unlockCard(RepeatingStrike.ID);
         UnlockTracker.unlockCard(Smith.ID);
+        UnlockTracker.unlockCard(Stagger.ID);
         UnlockTracker.unlockCard(StrategicCut.ID);
         UnlockTracker.unlockCard(TrustyAxe.ID);
         UnlockTracker.unlockCard(TrustyShield.ID);
 
         logger.info("Done adding cards!");
     }
-    
+
     // There are better ways to do this than listing every single individual card, but I do not want to complicate things
     // in a "tutorial" mod. This will do and it's completely ok to use. If you ever want to clean up and
     // shorten all the imports, go look take a look at other mods, such as Hubris.

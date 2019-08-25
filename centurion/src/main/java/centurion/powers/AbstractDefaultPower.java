@@ -3,8 +3,10 @@ package centurion.powers;
 import centurion.util.TextureLoader;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -43,15 +45,17 @@ public abstract class AbstractDefaultPower extends AbstractPower {
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
     }
 
-    protected void defaultStack(int amount) {
+    protected void defaultStack(int amount, boolean selfRemove) {
         this.fontScale = 8.0F;
         this.amount += amount;
         if (this.amount <= 0) {
             this.amount = 0;
         }
-
         if (this.amount >= 999) {
             this.amount = 999;
+        }
+        if (selfRemove && (amount == 0 || (!this.canGoNegative && amount < 0))) {
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
         }
     }
 }

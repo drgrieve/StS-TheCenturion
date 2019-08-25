@@ -38,16 +38,11 @@ public class MurderAllTheThings extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public MurderAllTheThings() {
-        super(ID, IMG, COST, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.DAMAGE = 5;
         this.UPGRADE_PLUS_DMG = 3;
         this.setSecondaryValues();
         this.isMultiDamage = true;
-    }
-
-    public MurderAllTheThings(boolean setStanceRarity) {
-        this();
-        if (setStanceRarity) this.rarity = RARITY;
     }
 
     // Actions the card should do.
