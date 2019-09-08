@@ -1,5 +1,7 @@
-package centurion.cards;
+package centurion.cards.skill;
 
+import basemod.helpers.BaseModCardTags;
+import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
 import centurion.tags.CustomTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -12,54 +14,32 @@ import static centurion.CenturionMod.makeCardPath;
 
 public class Shield extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = centurion.CenturionMod.makeID(Shield.class.getSimpleName());
-    public static final String IMG = makeCardPath("Defend.png");
 
-    // /TEXT DECLARATION/
-
-
-    // STAT DECLARATION
-
-    private static final CardRarity RARITY = CardRarity.SPECIAL;
+    private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
+    public static final String IMG = makeCardPath(makeImageName(TYPE, Shield.class.getSimpleName()));
 
     private static final int COST = 1;
-    private static final int BLOCK = 8;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
-
-    // /STAT DECLARATION/
-
 
     public Shield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseBlock = BLOCK;
+        this.BLOCK = 4;
+        this.UPGRADE_PLUS_BLOCK = 3;
+        this.setSecondaryValues();
+        this.tags.add(BaseModCardTags.BASIC_DEFEND);
         tags.add(CustomTags.SHIELD);
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.freeToPlayOnce) {
-            AbstractCard c = this.makeStatEquivalentCopy();
-            c.freeToPlayOnce = false;
-            p.discardPile.addToTop(c);
-        }
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
     }
 
-    //Upgraded stats.
     @Override
-    public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
-            initializeDescription();
-        }
-    }
+    public void upgrade() { this.defaultUpgrade(); }
 
     @Override
     public AbstractCard makeCopy()

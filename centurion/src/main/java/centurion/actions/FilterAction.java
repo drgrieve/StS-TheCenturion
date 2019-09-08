@@ -2,6 +2,7 @@ package centurion.actions;
 
 import centurion.CenturionMod;
 import centurion.powers.BleedPower;
+import centurion.powers.RepurposePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -98,6 +99,8 @@ public class FilterAction extends AbstractGameAction {
                 if (skills > 0) AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, skills * 2));
                 if (powers > 0)  AbstractDungeon.player.gainEnergy(powers);
             }
+            if (AbstractDungeon.player.hasPower(RepurposePower.POWER_ID))
+                ((RepurposePower)AbstractDungeon.player.getPower(RepurposePower.POWER_ID)).onTrigger(cardsDiscarded);
         }
         int cardsNotDiscarded = this.amount - cardsDiscarded;
         if (cardsNotDiscarded > 0 && onNotDiscardAction != OnNotDiscardAction.NONE) {

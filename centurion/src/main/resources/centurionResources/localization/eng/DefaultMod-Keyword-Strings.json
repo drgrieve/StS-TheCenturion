@@ -7,6 +7,13 @@
     "DESCRIPTION": "Blades are #b0 cost Attack cards which Exhaust."
   },
   {
+    "NAMES": [
+      "enhance",
+      "enhancement"
+    ],
+    "DESCRIPTION": "If a card has Block or Damage, increase it by #b1 for this combat."
+  },
+  {
     "PROPER_NAME": "Rank Up",
     "NAMES": [
       "Rank Up",
@@ -44,7 +51,19 @@
     "NAMES": [
       "razor"
     ],
-    "DESCRIPTION": "Filter"
+    "DESCRIPTION": "Whenever you deal unblocked attack damage, apply 1 Bleed"
+  },
+  {
+    "NAMES": [
+      "fetch"
+    ],
+    "DESCRIPTION": "Choose a specified card from a specified pile and place it into your hand."
+  },
+  {
+    "NAMES": [
+      "exhaustive"
+    ],
+    "DESCRIPTION": "Exhausts after a certain number of uses."
   },
   {
     "NAMES": [

@@ -60,6 +60,25 @@
     "DESCRIPTION": "Deal !D! damage. Add 1 Quick Strike to your hand.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. Add 1 Upgraded Quick Strike to your hand."
   },
+  "centurion:Enhancement": {
+    "NAME": "Enhancement",
+    "DESCRIPTION": "At the start of your turn, Enhance a card in your hand at random.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, Enhance a card in your hand."
+  },
+  "centurion:EnhancingShield": {
+    "NAME": "Enhancing Shield",
+    "DESCRIPTION": "Gain !B! Block. NL centurion:Enhance this card. NL For each Enhancement, Enhance a random Skill in your draw pile.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Enhanced !M! times.)"
+    ]
+  },
+  "centurion:EnhancingStrike": {
+    "NAME": "Enhancing Strike",
+    "DESCRIPTION": "Deal !D! damage. NL centurion:Enhance this card. NL For each Enhancement, Enhance a random Attack in your draw pile.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Enhanced !M! times.)"
+    ]
+  },
   "centurion:Feint": {
     "NAME": "Feint",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
@@ -81,6 +100,10 @@
     "DESCRIPTION": "Add a Doom and a Gloom to your hand. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Add an upgraded Doom and an upgraded Gloom to your hand. NL Exhaust."
   },
+  "centurion:HeavyBlow": {
+    "NAME": "Heavy Blow",
+    "DESCRIPTION": "centurion:Heavy !M!. NL Deal !D! Damage. NL Retain. When retained gain !centurion:SecondMagic! centurion:Heavy. NL Exhaust."
+  },
   "centurion:InTheZone": {
     "NAME": "In the Zone",
     "DESCRIPTION": "At the start of your turn gain [E] . NL Retain. When retained this costs 1 less."
@@ -100,6 +123,16 @@
   "centurion:Mace": {
     "NAME": "Mace",
     "DESCRIPTION": "Every time you play 2 Attacks in a single turn, apply !M! Weak."
+  },
+  "centurion:MassEnhance": {
+    "NAME": "Mass Enhance",
+    "DESCRIPTION": "Enhance all your Strike and Shield cards. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Enhance all your Strike and Shield cards. NL centurion:Exhaustive !stslib:ex!."
+  },
+  "centurion:OpeningManeuver": {
+    "NAME": "Opening Maneuver",
+    "DESCRIPTION": "Innate. NL Add to your hand a Strike+3 or a Shield+3 card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Add to your hand an Upgraded Strike+3 or an Upgraded Shield+3 card. NL Exhaust."
   },
   "centurion:OpportuneStrike": {
     "NAME": "Opportune Strike",
@@ -133,9 +166,19 @@
     "NAME": "Murder All The Things",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. Twice."
   },
+  "centurion:Reminisce": {
+    "NAME": "Reminisce",
+    "DESCRIPTION": "Shuffle your discarded Innate cards. NL At the start of your turn, centurion:Fetch a random Innate card from your draw pile.",
+    "UPGRADE_DESCRIPTION": "Shuffle your discarded Innate cards. NL At the start of your turn, centurion:Fetch an Innate card from your draw pile."
+  },
   "centurion:RepeatingStrike": {
     "NAME": "Repeating Strike",
     "DESCRIPTION": "Retain. Deal !D! damage. NL Double the damage of Repeating Strikes played this turn."
+  },
+  "centurion:Repurpose": {
+    "NAME": "Repurpose",
+    "DESCRIPTION": "When you centurion:Filter and discard a card, gain 2 Block.",
+    "UPGRADE_DESCRIPTION": "Innate. NL When you centurion:Filter and discard a card, gain 2 Block."
   },
   "centurion:Retribution": {
     "NAME": "Retribution",
@@ -144,6 +187,11 @@
   "centurion:Shield": {
     "NAME": "Shield",
     "DESCRIPTION": "Gain !B! Block."
+  },
+  "centurion:ShiftingPlan": {
+    "NAME": "Shifting Plan",
+    "DESCRIPTION": "Innate. NL Retain. When retained transform into a random Attack or Skill card, that keeps this ability.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Retain. When retained transform into a random Upgraded Attack or Skill card, that keeps this ability."
   },
   "centurion:SlashAndParry": {
     "NAME": "Slash and Parry",
@@ -181,9 +229,13 @@
     "NAME": "Strength Up",
     "DESCRIPTION": "Innate. NL Gain !M! Strength at the start of every combat. NL Fleeting."
   },
+  "centurion:WakeUpJuice": {
+    "NAME": "Wake Up Juice",
+    "DESCRIPTION": "Innate. NL Draw !M! cards."
+  },
   "centurion:WeightedStrike": {
     "NAME": "Weighted Strike",
-    "DESCRIPTION": "centurion:Heavy !M!. NL Deal !D! Damage. NL. Gain 1 Strength."
+    "DESCRIPTION": "centurion:Heavy !M!. NL Deal !D! Damage. NL Gain 1 Strength."
   },
   "centurion:WindForm": {
     "NAME": "Wind Form",
@@ -196,6 +248,13 @@
     "UPGRADE_DESCRIPTION": "Choose a X-1 cost upgraded card to add to your hand. It costs 0 until played. NL Exhaust.",
     "EXTENDED_DESCRIPTION": [
       "There are no cards available at this cost."
+    ]
+  },
+  "centurion:WitheringStrike": {
+    "NAME": "Withering Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Then deal the damage halved until 1 damage is dealt.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deals !M! damage over !centurion:SecondMagic! attacks)"
     ]
   },
   "centurion:QuickStrike": {
@@ -236,11 +295,6 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
-  "centurion:OpeningManeuver": {
-    "NAME": "Opening Maneuver",
-    "DESCRIPTION": "Innate. NL Choose to play an Axe or a Shield card. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Choose to play an Upgraded Axe or an Upgraded Shield card. Exhaust."
-  },
   "centurion:SharpenBlade": {
     "NAME": "Sharpen Blade",
     "DESCRIPTION": "Gain !M! centurion:Razor"
@@ -275,11 +329,11 @@
   },
   "centurion:TrustyAxe": {
     "NAME": "Trusty Axe",
-    "DESCRIPTION": "Innate. Deal !D! damage."
+    "DESCRIPTION": "Innate. NL Deal !D! damage."
   },
   "centurion:TrustyShield": {
     "NAME": "Trusty Shield",
-    "DESCRIPTION": "Innate. Gain !B! Block."
+    "DESCRIPTION": "Innate. NL Gain !B! Block."
   },
   "centurion:BleedOut": {
     "NAME": "Bleed Out",
@@ -296,16 +350,12 @@
   },
   "centurion:Defiance": {
     "NAME": "Defiance",
-    "DESCRIPTION": "Gain !B! Block. Gain !M! Strength. NL Exhaustive !stslib:ex!."
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Strength. NL centurion:Exhaustive !stslib:ex!."
   },
   "centurion:DeepCut": {
     "NAME": "Deep Cut",
     "DESCRIPTION": "Double the enemy's centurion:Bleed. Exhaust.",
     "UPGRADE_DESCRIPTION": "Triple the enemy's centurion:Bleed. Exhaust."
-  },
-  "centurion:EarlyStart": {
-    "NAME": "Early Start",
-    "DESCRIPTION": "Innate. Draw !M! cards."
   },
   "centurion:Execution": {
     "NAME": "Execution",
@@ -321,11 +371,11 @@
   },
   "centurion:Observe": {
     "NAME": "Observe",
-    "DESCRIPTION": "Deal !D! damage. Gain !M! Dexterity. NL Exhaustive !stslib:ex!."
+    "DESCRIPTION": "Deal !D! damage. Gain !M! Dexterity. NL centurion:Exhaustive !stslib:ex!."
   },
   "centurion:Search": {
     "NAME": "Search",
-    "DESCRIPTION": "centurion:Filter !M!. Draw a card. NL Exhaustive !stslib:ex!."
+    "DESCRIPTION": "centurion:Filter !M!. Draw a card. NL centurion:Exhaustive !stslib:ex!."
   },
   "centurion:Setup": {
     "NAME": "Setup",

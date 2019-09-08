@@ -35,10 +35,49 @@
                         ""
                 ]
         },
+        "centurion:EnhancementPower": {
+                "NAME": "Enhancement",
+                "DESCRIPTIONS": [
+                        "At the start of your turn, #yEnhance #b1 card in your hand",
+                        "At the start of your turn, #yEnhance #b",
+                        " cards in your hand"
+                ]
+        },
+        "centurion:EnhancementRandomPower": {
+                "NAME": "Enhancement?",
+                "DESCRIPTIONS": [
+                        "At the start of your turn, #yEnhance #b1 card in your hand at random",
+                        "At the start of your turn, #yEnhance #b",
+                        " cards in your hand at random"
+                ]
+        },
         "centurion:FilterPower": {
                 "NAME": "Filter",
                 "DESCRIPTIONS": [
                         "At the end of your turn Filter for #b"
+                ]
+        },
+        "centurion:ReminiscePower": {
+                "NAME": "Reminisce",
+                "DESCRIPTIONS": [
+                        "At the start of your turn, #yfetch #b1 #yInnate card from your draw pile",
+                        "At the start of your turn, #yfetch #b",
+                        " Innate cards from your draw pile"
+                ]
+        },
+        "centurion:ReminisceRandomPower": {
+                "NAME": "Reminisce?",
+                "DESCRIPTIONS": [
+                        "At the start of your turn, #yfetch #b1 random #yInnate card from your draw pile",
+                        "At the start of your turn, #yfetch #b",
+                        " random Innate cards from your draw pile"
+                ]
+        },
+        "centurion:RepurposePower": {
+                "NAME": "Repurpose",
+                "DESCRIPTIONS": [
+                        "When you #yFilter and discard a card, gain #b",
+                        " #yBlock."
                 ]
         },
         "centurion:MacePower": {

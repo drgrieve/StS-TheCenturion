@@ -8,6 +8,7 @@ import centurion.cards.attack.*;
 import centurion.cards.power.*;
 import centurion.cards.skill.*;
 import centurion.cards.swordshield.*;
+import centurion.util.DiscoveryCardScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -137,7 +138,9 @@ public class CenturionMod implements
     // Atlas and JSON files for the Animations
     public static final String THE_DEFAULT_SKELETON_ATLAS = "centurionResources/images/char/defaultCharacter/skeleton.atlas";
     public static final String THE_DEFAULT_SKELETON_JSON = "centurionResources/images/char/defaultCharacter/skeleton.json";
-    
+
+    public static DiscoveryCardScreen discoveryCardScreen;
+
     // =============== MAKE IMAGE PATHS =================
     
     public static String makeCardPath(String resourcePath) {
@@ -225,6 +228,7 @@ public class CenturionMod implements
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         logger.info("Done adding mod settings");
         
     }
@@ -408,8 +412,6 @@ public class CenturionMod implements
         // Don't comment out/delete these cards (yet). You need 1 of each type and rarity (technically) for your game not to crash
         // when generating card rewards/shop screen items.
         //Token cards
-        BaseMod.addCard(new Axe());
-        BaseMod.addCard(new Shield());
 
         //Rank Up rewards
         BaseMod.addCard(new DexterityUp());
@@ -428,7 +430,7 @@ public class CenturionMod implements
 
         //Basic cards
         BaseMod.addCard(new Strike_Centurion());
-        BaseMod.addCard(new Defend());
+        BaseMod.addCard(new Shield());
         BaseMod.addCard(new OpeningManeuver());
         BaseMod.addCard(new SharpenBlade());
 
@@ -436,6 +438,8 @@ public class CenturionMod implements
         BaseMod.addCard(new Anticipate());
         BaseMod.addCard(new BlurredBlade());
         BaseMod.addCard(new CounterOffensive());
+        BaseMod.addCard(new EnhancingShield());
+        BaseMod.addCard(new EnhancingStrike());
         BaseMod.addCard(new Jab());
         BaseMod.addCard(new OpportuneStrike());
         BaseMod.addCard(new Prepared());
@@ -448,6 +452,7 @@ public class CenturionMod implements
         BaseMod.addCard(new TrustyAxe());
         BaseMod.addCard(new TrustyShield());
         BaseMod.addCard(new WeightedStrike());
+        BaseMod.addCard(new WitheringStrike());
 
         //Generic cards - Uncommon
         BaseMod.addCard(new BleedOut());
@@ -457,18 +462,21 @@ public class CenturionMod implements
         BaseMod.addCard(new CounterAttack());
         BaseMod.addCard(new DeepCut());
         BaseMod.addCard(new Defiance());
-        BaseMod.addCard(new EarlyStart());
         BaseMod.addCard(new Execution());
         BaseMod.addCard(new Focus());
         BaseMod.addCard(new GatherBandages());
         BaseMod.addCard(new GloomAndDoom());
         BaseMod.addCard(new HoneBlade());
+        BaseMod.addCard(new MassEnhance());
         BaseMod.addCard(new Observe());
         BaseMod.addCard(new PushForward());
+        BaseMod.addCard(new Reminisce());
         BaseMod.addCard(new Search());
         BaseMod.addCard(new Setup());
+        BaseMod.addCard(new ShiftingPlan());
         BaseMod.addCard(new SliceAndDice());
         BaseMod.addCard(new SlowBurn());
+        BaseMod.addCard(new WakeUpJuice());
 
         //Generic cards - Rare
         BaseMod.addCard(new BrightBeginning());
@@ -476,7 +484,9 @@ public class CenturionMod implements
         BaseMod.addCard(new CutInHalf());
         BaseMod.addCard(new DiamondEdgedBlade());
         BaseMod.addCard(new DefensiveWhirlwind());
+        BaseMod.addCard(new Enhancement());
         BaseMod.addCard(new InTheZone());
+        BaseMod.addCard(new Repurpose());
         BaseMod.addCard(new WhirlingBlade());
         BaseMod.addCard(new Wish());
         BaseMod.addCard(new UltimateStrike());
@@ -488,13 +498,15 @@ public class CenturionMod implements
         // This is so that they are all "seen" in the library, for people who like to look at the card list
         // before playing your mod.
         UnlockTracker.unlockCard(Strike_Centurion.ID);
-        UnlockTracker.unlockCard(Defend.ID);
+        UnlockTracker.unlockCard(Shield.ID);
         UnlockTracker.unlockCard(OpeningManeuver.ID);
         UnlockTracker.unlockCard(SharpenBlade.ID);
 
         UnlockTracker.unlockCard(Anticipate.ID);
         UnlockTracker.unlockCard(BlurredBlade.ID);
         UnlockTracker.unlockCard(CounterOffensive.ID);
+        UnlockTracker.unlockCard(EnhancingShield.ID);
+        UnlockTracker.unlockCard(EnhancingStrike.ID);
         UnlockTracker.unlockCard(Jab.ID);
         UnlockTracker.unlockCard(Prepared.ID);
         UnlockTracker.unlockCard(Reconnaissance.ID);
@@ -504,6 +516,7 @@ public class CenturionMod implements
         UnlockTracker.unlockCard(StrategicCut.ID);
         UnlockTracker.unlockCard(TrustyAxe.ID);
         UnlockTracker.unlockCard(TrustyShield.ID);
+        UnlockTracker.unlockCard(WitheringStrike.ID);
 
         logger.info("Done adding cards!");
     }

@@ -1,4 +1,14 @@
 {
+  "centurion:DiscoveryCardScreen": {
+    "TEXT": [
+      "Choose a Card"
+    ]
+  },
+  "centurion:EnhanceAction": {
+    "TEXT": [
+      "Choose a card to enhance"
+    ]
+  },
   "centurion:FilterAction": {
     "TEXT": [
       "Choose cards to discard"

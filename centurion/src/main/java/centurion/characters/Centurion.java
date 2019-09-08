@@ -24,6 +24,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import centurion.cards.*;
+import centurion.cards.skill.*;
 import centurion.cards.twohanded.*;
 import centurion.cards.dualwield.*;
 import centurion.cards.swordshield.*;
@@ -164,10 +165,10 @@ public class Centurion extends CustomPlayer {
         retVal.add(Strike_Centurion.ID);
         retVal.add(Strike_Centurion.ID);
 
-        retVal.add(Defend.ID);
-        retVal.add(Defend.ID);
-        retVal.add(Defend.ID);
-        retVal.add(Defend.ID);
+        retVal.add(Shield.ID);
+        retVal.add(Shield.ID);
+        retVal.add(Shield.ID);
+        retVal.add(Shield.ID);
 
         retVal.add(OpeningManeuver.ID);
         retVal.add(SharpenBlade.ID);
@@ -223,6 +224,8 @@ public class Centurion extends CustomPlayer {
         switch (stance) {
             case TwoHanded:
                 cards.addToBottom(new KnockBack());
+
+                cards.addToBottom(new HeavyBlow());
                 break;
             case DualWield:
                 cards.addToBottom(new Caution());
