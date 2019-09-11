@@ -1,7 +1,7 @@
 {
-  "centurion:Axe": {
-    "NAME": "Axe",
-    "DESCRIPTION": "Deal !D! damage."
+  "centurion:BatheInBlood": {
+    "NAME": "Bathe in Blood",
+    "DESCRIPTION": "Heal HP equal to all enemies centurion:Bleed. NL Exhaust."
   },
   "centurion:BladeWork": {
     "NAME": "Blade Work",
@@ -79,6 +79,10 @@
       " NL (Enhanced !M! times.)"
     ]
   },
+  "centurion:FatalBlow": {
+    "NAME": "Fatal Blow",
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust. NL Retain !centurion:RETAIN!: when retained damage is doubled."
+  },
   "centurion:Feint": {
     "NAME": "Feint",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
@@ -124,6 +128,10 @@
     "NAME": "Mace",
     "DESCRIPTION": "Every time you play 2 Attacks in a single turn, apply !M! Weak."
   },
+  "centurion:MarkOfDeath": {
+    "NAME": "MarkOfDeath",
+    "DESCRIPTION": "Deal !D! damage. NL Apply 1 Death Mark. NL Draw a card. NL Exhaust."
+  },
   "centurion:MassEnhance": {
     "NAME": "Mass Enhance",
     "DESCRIPTION": "Enhance all your Strike and Shield cards. NL Exhaust.",
@@ -154,17 +162,29 @@
   },
   "centurion:Probe": {
     "NAME": "Probe",
-    "DESCRIPTION": "Add 1 Quick Strike that draws a card to your hand.",
-    "UPGRADE_DESCRIPTION": "Add 1 upgraded Quick Strike that draws a card to your hand."
+    "DESCRIPTION": "Deal !D! damage. NL Draw a card."
   },
   "centurion:Quicksilver": {
     "NAME": "Quicksilver",
     "DESCRIPTION": "Retain. NL Choose 1 Attack card. NL It costs 0 this turn. NL Shuffle a Dazed into your draw pile.",
     "UPGRADE_DESCRIPTION": "Retain. NL Choose 2 Attack cards. They cost 0 this turn. NL Shuffle a Dazed into your draw pile."
   },
+  "centurion:QuickStrike": {
+    "NAME": "Quick Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust."
+  },
   "centurion:MurderAllTheThings": {
     "NAME": "Murder All The Things",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. Twice."
+  },
+  "centurion:Reap": {
+    "NAME": "Reap",
+    "DESCRIPTION": "Deal !D! damage. NL Double the damage for each Death Mark. NL Remove 1 Death Mark or Exhaust."
+  },
+  "centurion:ReapAndSow": {
+    "NAME": "Reap and Sow",
+    "DESCRIPTION": "Add a Reap and a Sow to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Add an upgraded Reap and an upgraded Sow to your hand. NL Exhaust."
   },
   "centurion:Reminisce": {
     "NAME": "Reminisce",
@@ -217,6 +237,11 @@
       "Choose cards to discard. Cards discarded are upgraded for the rest of combat."
     ]
   },
+  "centurion:Sow": {
+    "NAME": "Sow",
+    "DESCRIPTION": "Shuffle 5 Marks of Death into your discard pile.",
+    "UPGRADE_DESCRIPTION": "Shuffle 5 Marks of Death into your discard and draw piles."
+  },
   "centurion:Stagger": {
     "NAME": "Stagger",
     "DESCRIPTION": "Deal !D! damage. Gain block equal to the unblocked damage dealt."
@@ -255,13 +280,6 @@
     "DESCRIPTION": "Deal !D! damage. NL Then deal the damage halved until 1 damage is dealt.",
     "EXTENDED_DESCRIPTION": [
       " NL (Deals !M! damage over !centurion:SecondMagic! attacks)"
-    ]
-  },
-  "centurion:QuickStrike": {
-    "NAME": "Quick Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Exhaust.",
-    "EXTENDED_DESCRIPTION": [
-      "Deal !D! damage. NL Draw a card. NL Exhaust."
     ]
   },
   "centurion:TwoHandedStance": {

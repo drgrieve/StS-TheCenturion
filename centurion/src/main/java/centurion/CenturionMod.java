@@ -35,8 +35,7 @@ import centurion.potions.PlaceholderPotion;
 import centurion.relics.*;
 import centurion.util.IDCheckDontTouchPls;
 import centurion.util.TextureLoader;
-import centurion.variables.DefaultCustomVariable;
-import centurion.variables.DefaultSecondMagicNumber;
+import centurion.variables.*;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -399,14 +398,12 @@ public class CenturionMod implements
     @Override
     public void receiveEditCards() {
         logger.info("Adding variables");
-        //Ignore this
         pathCheck();
-        // Add the Custom Dynamic Variables
-        logger.info("Add variabls");
-        // Add the Custom Dynamic variabls
+        logger.info("Add variables");
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
-        
+        BaseMod.addDynamicVariable(new RetainVariable());
+
         logger.info("Adding cards");
         // Add the cards
         // Don't comment out/delete these cards (yet). You need 1 of each type and rarity (technically) for your game not to crash
@@ -440,6 +437,7 @@ public class CenturionMod implements
         BaseMod.addCard(new CounterOffensive());
         BaseMod.addCard(new EnhancingShield());
         BaseMod.addCard(new EnhancingStrike());
+        BaseMod.addCard(new FatalBlow());
         BaseMod.addCard(new Jab());
         BaseMod.addCard(new OpportuneStrike());
         BaseMod.addCard(new Prepared());
@@ -479,6 +477,7 @@ public class CenturionMod implements
         BaseMod.addCard(new WakeUpJuice());
 
         //Generic cards - Rare
+        BaseMod.addCard(new BatheInBlood());
         BaseMod.addCard(new BrightBeginning());
         BaseMod.addCard(new Burst());
         BaseMod.addCard(new CutInHalf());
@@ -486,12 +485,15 @@ public class CenturionMod implements
         BaseMod.addCard(new DefensiveWhirlwind());
         BaseMod.addCard(new Enhancement());
         BaseMod.addCard(new InTheZone());
+        BaseMod.addCard(new ReapAndSow());
         BaseMod.addCard(new Repurpose());
         BaseMod.addCard(new WhirlingBlade());
         BaseMod.addCard(new Wish());
         BaseMod.addCard(new UltimateStrike());
 
         //Testing stance cards
+        BaseMod.addCard(new Probe());
+        BaseMod.addCard(new QuickStrike());
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards

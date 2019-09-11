@@ -39,6 +39,7 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
     protected int UPGRADE_PLUS_SECOND_MAGIC_NUMBER;
     protected int UPGRADE_REDUCE_COST_BY;
     protected int EXHAUSTIVE_AMT;
+    protected int RETAIN_COUNT;
 
     protected CardStrings cardStrings;
 
@@ -51,6 +52,11 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
         this.defaultBaseSecondMagicNumber = SECOND_MAGIC_NUMBER;
         this.defaultSecondMagicNumber = SECOND_MAGIC_NUMBER;
         if (EXHAUSTIVE_AMT > 0) ExhaustiveVariable.setBaseValue(this, EXHAUSTIVE_AMT);
+        if (RETAIN_COUNT > 0) {
+            this.retain = true;
+            this.baseRetainVariable = RETAIN_COUNT;
+            this.retainVariable = RETAIN_COUNT;
+        }
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
     }
 

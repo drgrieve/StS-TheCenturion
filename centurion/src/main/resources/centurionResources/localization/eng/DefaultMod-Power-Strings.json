@@ -28,6 +28,12 @@
                         " #yRazor."
                 ]
         },
+        "centurion:DeathMarkPower": {
+                "NAME": "Death Mark",
+                "DESCRIPTIONS": [
+                        "Doubles the damage of #yReap"
+                ]
+        },
         "centurion:EnergyPower": {
                 "NAME": "Energy",
                 "DESCRIPTIONS": [
