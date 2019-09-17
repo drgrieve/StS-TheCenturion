@@ -20,6 +20,7 @@ public abstract class AbstractDefaultCard extends CustomCard {
     public int baseRetainVariable;
     public boolean isRetainVariableModified;
     public boolean upgradedRetainVariable;
+    public int enhanceCount;
 
     public AbstractDefaultCard(final String id,
                                final String name,
@@ -70,4 +71,26 @@ public abstract class AbstractDefaultCard extends CustomCard {
         this.retainVariable--;
         this.isRetainVariableModified = true;
     }
+
+    public void enhance() {
+        enhance(1);
+    }
+
+    public void enhance(int amount) {
+        if (baseDamage > 0) baseDamage+=amount;
+        if (baseBlock > 0) baseBlock+=amount;
+        enhanceCount+= amount;
+        this.name = this.originalName + "+" + enhanceCount;
+        initializeTitle();
+    }
+
+    @Override
+    protected void upgradeName() {
+        ++this.timesUpgraded;
+        this.upgraded = true;
+        this.name = this.name + "+";
+        if (this.enhanceCount > 0) this.name+= enhanceCount;
+        this.initializeTitle();
+    }
+
 }

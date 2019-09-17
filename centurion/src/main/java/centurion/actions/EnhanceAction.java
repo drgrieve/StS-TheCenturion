@@ -1,6 +1,7 @@
 package centurion.actions;
 
 import centurion.CenturionMod;
+import centurion.cards.AbstractDefaultCard;
 import centurion.cards.attack.EnhancingStrike;
 import centurion.cards.skill.EnhancingShield;
 import centurion.tags.CustomTags;
@@ -112,10 +113,12 @@ public class EnhanceAction extends AbstractGameAction {
     }
 
     private void enhance(AbstractCard c) {
-        if (c.baseDamage > 0) c.baseDamage++;
-        if (c.baseBlock > 0) c.baseBlock++;
-        if (c.cardID == EnhancingStrike.ID || c.cardID == EnhancingShield.ID) c.baseMagicNumber++;
-
+        if (c instanceof AbstractDefaultCard) {
+            ((AbstractDefaultCard)c).enhance();
+        } else {
+            if (c.baseDamage > 0) c.baseDamage++;
+            if (c.baseBlock > 0) c.baseBlock++;
+        }
     }
 
 }

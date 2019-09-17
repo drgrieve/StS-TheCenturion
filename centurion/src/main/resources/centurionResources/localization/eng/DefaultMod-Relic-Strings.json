@@ -14,7 +14,9 @@
       "Defeat enemies to gain #ycenturion:XP. NL Gain #b10 #ycenturion:XP to gain a #ycenturion:Rank_Up reward. NL Your current Rank is #b",
       "Rank Up - Health or Power",
       "Rank Up - Choose a stance",
-      "Rank Up - Get a boost"
+      "Rank Up - Get a boost",
+      "Rank Up - Get healthy",
+      "Rank Up - Choose a quest"
     ]
   },
   "centurion:StrengthUpRelic": {

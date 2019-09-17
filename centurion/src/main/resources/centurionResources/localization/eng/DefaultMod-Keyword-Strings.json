@@ -14,6 +14,12 @@
     "DESCRIPTION": "If a card has Block or Damage, increase it by #b1 for this combat."
   },
   {
+    "NAMES": [
+      "quest"
+    ],
+    "DESCRIPTION": "A quest is innate and can be accomplished over many combats."
+  },
+  {
     "PROPER_NAME": "Rank Up",
     "NAMES": [
       "Rank Up",
@@ -21,6 +27,12 @@
       "rank_up"
     ],
     "DESCRIPTION": "A Rank Up is a one time use card that will you allow to choose from different rewards."
+  },
+  {
+    "NAMES": [
+      "reward"
+    ],
+    "DESCRIPTION": "Fulfill the quest objectives to receive the reward. Rewards are permanent."
   },
   {
     "PROPER_NAME": "XP",

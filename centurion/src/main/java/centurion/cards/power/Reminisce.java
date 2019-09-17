@@ -28,15 +28,12 @@ public class Reminisce extends AbstractDynamicCard {
 
     public static final String IMG = makeCardPath(makeImageName(TYPE, Reminisce.class.getSimpleName()));
 
-    // /STAT DECLARATION/
-
     public Reminisce() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.MAGIC_NUMBER = 1;
         this.setSecondaryValues();
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player.discardPile.size() > 0) {
@@ -50,7 +47,6 @@ public class Reminisce extends AbstractDynamicCard {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, power, this.magicNumber));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         this.defaultUpgrade();

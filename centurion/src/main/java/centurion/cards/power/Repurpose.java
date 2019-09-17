@@ -19,16 +19,15 @@ public class Repurpose extends AbstractDynamicCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
+    public static final String IMG = makeCardPath(makeImageName(TYPE, Repurpose.class.getSimpleName()));
 
     private static final int COST = 1;
 
-    public static final String IMG = makeCardPath(makeImageName(TYPE, Repurpose.class.getSimpleName()));
 
     public Repurpose() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.MAGIC_NUMBER = 2;
         this.setSecondaryValues();
-        if (this.upgraded) this.isInnate = true;
     }
 
     @Override
@@ -38,6 +37,7 @@ public class Repurpose extends AbstractDynamicCard {
 
     @Override
     public void upgrade() {
+        if (!this.upgraded) this.isInnate = true;
         this.defaultUpgrade();
     }
 

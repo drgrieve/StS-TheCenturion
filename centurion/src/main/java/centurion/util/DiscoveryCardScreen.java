@@ -6,43 +6,29 @@
 package centurion.util;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.MathHelper;
-import com.megacrit.cardcrawl.helpers.TipTracker;
 import com.megacrit.cardcrawl.helpers.controller.CInputActionSet;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.screens.mainMenu.HorizontalScrollBar;
 import com.megacrit.cardcrawl.screens.mainMenu.ScrollBarListener;
-import com.megacrit.cardcrawl.ui.FtueTip;
-import com.megacrit.cardcrawl.ui.FtueTip.TipType;
 import com.megacrit.cardcrawl.ui.buttons.ConfirmButton;
 import com.megacrit.cardcrawl.ui.buttons.SingingBowlButton;
 import com.megacrit.cardcrawl.ui.buttons.SkipCardButton;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.FastCardObtainEffect;
-import de.robojumper.ststwitch.TwitchPanel;
-import de.robojumper.ststwitch.TwitchVoteListener;
-import de.robojumper.ststwitch.TwitchVoteOption;
-import de.robojumper.ststwitch.TwitchVoter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Optional;
-import java.util.stream.Stream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -56,19 +42,12 @@ public class DiscoveryCardScreen implements ScrollBarListener {
     public AbstractCard codexCard = null;
     public AbstractCard discoveryCard = null;
     public boolean onCardSelect = true;
-    public boolean hasTakenAll = false;
-    public boolean cardOnly = false;
     public RewardItem rItem = null;
     private boolean codex = false;
     private boolean draft = false;
     private boolean discovery = false;
     private SkipCardButton skipButton = new SkipCardButton();
     private SingingBowlButton bowlButton = new SingingBowlButton();
-    private final int SKIP_BUTTON_IDX = 0;
-    private final int BOWL_BUTTON_IDX = 1;
-    private int draftCount = 0;
-    private static final int MAX_CARDS_ON_SCREEN = 4;
-    private static final int MAX_CARDS_BEFORE_SCROLL = 5;
     private static final float START_X;
     private boolean grabbedScreen = false;
     private float grabStartX = 0.0F;
@@ -80,7 +59,7 @@ public class DiscoveryCardScreen implements ScrollBarListener {
     public ConfirmButton confirmButton;
     private AbstractCard touchCard;
     private boolean isVoting;
-    private boolean mayVote;
+    private String bannerText;
 
     public DiscoveryCardScreen() {
         this.scrollX = START_X;
@@ -90,8 +69,9 @@ public class DiscoveryCardScreen implements ScrollBarListener {
         this.confirmButton = new ConfirmButton();
         this.touchCard = null;
         this.isVoting = false;
-        this.mayVote = false;
         this.scrollBar = new HorizontalScrollBar(this, (float)Settings.WIDTH / 2.0F, 50.0F * Settings.scale + HorizontalScrollBar.TRACK_H / 2.0F, (float)Settings.WIDTH - 256.0F * Settings.scale);
+        this.uiStrings = CardCrawlGame.languagePack.getUIString("centurion:DiscoveryCardScreen");
+        this.TEXT = uiStrings.TEXT;
     }
 
     public void update() {
@@ -244,7 +224,6 @@ public class DiscoveryCardScreen implements ScrollBarListener {
 
                 this.takeReward();
                 AbstractDungeon.closeCurrentScreen();
-                this.draftCount = 0;
             } else if (!this.confirmButton.hb.clicked) {
                 this.touchCard = hoveredCard;
                 this.confirmButton.show();
@@ -312,49 +291,6 @@ public class DiscoveryCardScreen implements ScrollBarListener {
 
     }
 
-    private void renderTwitchVotes(SpriteBatch sb) {
-        if (this.isVoting) {
-            if (this.getVoter().isPresent()) {
-                TwitchVoter twitchVoter = (TwitchVoter)this.getVoter().get();
-                TwitchVoteOption[] options = twitchVoter.getOptions();
-                int voteCountOffset = this.bowlButton.isHidden() ? 1 : 2;
-                int sum = (Integer)Arrays.stream(options).map((cx) -> {
-                    return cx.voteCount;
-                }).reduce(0, Integer::sum);
-
-                for(int i = 0; i < this.rewardGroup.size(); ++i) {
-                    AbstractCard c = (AbstractCard)this.rewardGroup.get(i);
-                    StringBuilder cardVoteText = (new StringBuilder("#")).append(i + voteCountOffset).append(": ").append(options[i + voteCountOffset].voteCount);
-                    if (sum > 0) {
-                        cardVoteText.append(" (").append(options[i + voteCountOffset].voteCount * 100 / sum).append("%)");
-                    }
-
-                    FontHelper.renderFontCentered(sb, FontHelper.panelNameFont, cardVoteText.toString(), c.target_x, c.target_y - 200.0F * Settings.scale, Color.WHITE.cpy());
-                }
-
-                StringBuilder skipVoteText = (new StringBuilder("#0: ")).append(options[0].voteCount);
-                if (sum > 0) {
-                    skipVoteText.append(" (").append(options[0].voteCount * 100 / sum).append("%)");
-                }
-
-                if (this.bowlButton.isHidden()) {
-                    FontHelper.renderFontCentered(sb, FontHelper.panelNameFont, skipVoteText.toString(), (float)Settings.WIDTH / 2.0F, 150.0F * Settings.scale, Color.WHITE.cpy());
-                } else {
-                    FontHelper.renderFontCentered(sb, FontHelper.panelNameFont, skipVoteText.toString(), (float)Settings.WIDTH / 2.0F - 100.0F, 150.0F * Settings.scale, Color.WHITE.cpy());
-                    StringBuilder bowlVoteText = (new StringBuilder("#1: ")).append(options[1].voteCount);
-                    if (sum > 0) {
-                        bowlVoteText.append(" (").append(options[1].voteCount * 100 / sum).append("%)");
-                    }
-
-                    FontHelper.renderFontCentered(sb, FontHelper.panelNameFont, bowlVoteText.toString(), (float)Settings.WIDTH / 2.0F + 100.0F, 150.0F * Settings.scale, Color.WHITE.cpy());
-                }
-
-                FontHelper.renderFontCentered(sb, FontHelper.panelNameFont, TEXT[3] + twitchVoter.getSecondsRemaining() + TEXT[4], (float)Settings.WIDTH / 2.0F, AbstractDungeon.dynamicBanner.y - 70.0F * Settings.scale, Color.WHITE.cpy());
-            }
-
-        }
-    }
-
     public void render(SpriteBatch sb) {
         this.confirmButton.render(sb);
         this.skipButton.render(sb);
@@ -362,10 +298,6 @@ public class DiscoveryCardScreen implements ScrollBarListener {
         this.renderCardReward(sb);
         if (this.shouldShowScrollBar()) {
             this.scrollBar.render(sb);
-        }
-
-        if (!this.codex && !this.discovery) {
-            this.renderTwitchVotes(sb);
         }
 
         if (this.codex || this.discovery) {
@@ -425,16 +357,11 @@ public class DiscoveryCardScreen implements ScrollBarListener {
 
         AbstractDungeon.topPanel.unhoverHitboxes();
         AbstractDungeon.isScreenUp = true;
-        AbstractDungeon.dynamicBanner.appear(TEXT[0]);
+        AbstractDungeon.dynamicBanner.appear(getBannerText());
         AbstractDungeon.overlayMenu.proceedButton.hide();
     }
 
-    public void discoveryOpen(CardGroup cards) {
-
-        if (this.uiStrings == null) {
-            uiStrings = CardCrawlGame.languagePack.getUIString("centurion:DiscoveryCardScreen");
-            TEXT = uiStrings.TEXT;
-        }
+    public void discoveryOpen(CardGroup cards, String bannerText) {
 
         this.confirmButton.hideInstantly();
         this.touchCard = null;
@@ -447,17 +374,22 @@ public class DiscoveryCardScreen implements ScrollBarListener {
         this.bowlButton.hide();
         this.skipButton.hide();
         this.onCardSelect = true;
+        this.bannerText = bannerText;
         AbstractDungeon.topPanel.unhoverHitboxes();
 
         this.rewardGroup = cards.group;
         AbstractDungeon.isScreenUp = true;
         AbstractDungeon.screen = Enum.DISCOVERY;
-        AbstractDungeon.dynamicBanner.appear(TEXT[0]);
+        AbstractDungeon.dynamicBanner.appear(getBannerText());
         AbstractDungeon.overlayMenu.showBlackScreen();
         this.placeCards((float)Settings.WIDTH / 2.0F, CARD_TARGET_Y);
         Iterator var6 = this.rewardGroup.iterator();
 
         for(AbstractCard c: cards.group) UnlockTracker.markCardAsSeen(c.cardID);
+    }
+
+    private String getBannerText() {
+        return bannerText == null ? TEXT[0] : bannerText;
     }
 
     private void placeCards(float x, float y) {
@@ -497,25 +429,6 @@ public class DiscoveryCardScreen implements ScrollBarListener {
             Gdx.input.setCursorPosition(10, Settings.HEIGHT / 2);
         }
 
-    }
-
-    public void reset() {
-        this.draftCount = 0;
-        this.codex = false;
-        this.discovery = false;
-        this.draft = false;
-    }
-
-    public void skippedCards() {
-        this.recordMetrics("SKIP");
-    }
-
-    public void closeFromBowlButton() {
-        this.recordMetrics("Singing Bowl");
-    }
-
-    private Optional<TwitchVoter> getVoter() {
-        return TwitchPanel.getDefaultVoter();
     }
 
     public void scrolledUsingBar(float newPercent) {

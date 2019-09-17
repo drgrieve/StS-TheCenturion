@@ -10,20 +10,20 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static centurion.CenturionMod.makeCardPath;
 
-public class PushForward extends AbstractDynamicCard {
+public class PushOnward extends AbstractDynamicCard {
 
-    public static final String ID = centurion.CenturionMod.makeID(PushForward.class.getSimpleName());
+    public static final String ID = centurion.CenturionMod.makeID(PushOnward.class.getSimpleName());
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
-    public static final String IMG = makeCardPath(makeImageName(TYPE, PushForward.class.getSimpleName()));
+    public static final String IMG = makeCardPath(makeImageName(TYPE, PushOnward.class.getSimpleName()));
 
     private static final int COST = 1;
 
 
-    public PushForward() {
+    public PushOnward() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.UPGRADE_REDUCE_COST_BY = 1;
         this.setSecondaryValues();
@@ -44,5 +44,5 @@ public class PushForward extends AbstractDynamicCard {
     @Override
     public AbstractCard makeCopy()
     {
-        return new PushForward();
+        return new PushOnward();
     }}

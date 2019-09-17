@@ -4,11 +4,13 @@ import centurion.util.TextureLoader;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 
 import static centurion.CenturionMod.getModID;
 import static centurion.CenturionMod.makePowerPath;
@@ -39,6 +41,10 @@ public abstract class AbstractDefaultPower extends AbstractPower {
         int modIDLength = (getModID() + ":").length();
         int powerLength = "Power".length();
         String baseImageName = this.ID.substring(modIDLength, this.ID.length() - powerLength);
+        loadImages(baseImageName);
+    }
+
+    protected void loadImages(String baseImageName) {
         Texture tex84 = TextureLoader.getTexture(makePowerPath(baseImageName + ".png"));
         Texture tex32 = TextureLoader.getTexture(makePowerPath(baseImageName + "Small.png"));
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 96, 96);
@@ -58,4 +64,15 @@ public abstract class AbstractDefaultPower extends AbstractPower {
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
         }
     }
+
+    protected void adjustMasterQuestCard(String id, int amount) {
+        AbstractCard c = AbstractDungeon.player.masterDeck.findCardById(id);
+        if (amount == 0) {
+            AbstractDungeon.effectList.add(new PurgeCardEffect(c));
+            AbstractDungeon.player.masterDeck.removeCard(c);
+        } else {
+            c.baseMagicNumber = amount;
+        }
+    }
+
 }

@@ -28,7 +28,7 @@ public class EnhancingStrike extends AbstractDynamicCard {
 
     public EnhancingStrike() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.DAMAGE = 4;
+        this.DAMAGE = 6;
         this.UPGRADE_PLUS_DMG = 3;
         this.setSecondaryValues();
         this.tags.add(CardTags.STRIKE);
@@ -38,14 +38,8 @@ public class EnhancingStrike extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        this.baseMagicNumber++;
-        this.baseDamage++;
-        this.applyPowers();
-        if (baseMagicNumber == 1) {
-            this.rawDescription = this.cardStrings.DESCRIPTION + this.cardStrings.EXTENDED_DESCRIPTION[0];
-            this.initializeDescription();
-        }
-        AbstractDungeon.actionManager.addToBottom(new EnhanceAction(p.drawPile, this.baseMagicNumber, CardType.ATTACK));
+        this.enhance();
+        AbstractDungeon.actionManager.addToBottom(new EnhanceAction(p.drawPile, this.enhanceCount, CardType.ATTACK));
     }
 
     @Override

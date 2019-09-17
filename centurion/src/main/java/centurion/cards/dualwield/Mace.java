@@ -15,48 +15,31 @@ import static centurion.CenturionMod.makeCardPath;
 
 public class Mace extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = centurion.CenturionMod.makeID(Mace.class.getSimpleName());
-    public static final String IMG = makeCardPath("Strike_Centurion.png");
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
+    public static final String IMG = makeCardPath(makeImageName(TYPE, Mace.class.getSimpleName()));
 
     private static final int COST = 1;
-    private static final int MAGIC_NUMBER = 1;
-    private static final int UPGRADE_PLUS_MAGIC_NUMBER = 1;
-
-    // /STAT DECLARATION/
-
 
     public Mace() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.baseMagicNumber = MAGIC_NUMBER;
-        this.magicNumber = MAGIC_NUMBER;
+        this.MAGIC_NUMBER = 1;
+        this.UPGRADE_PLUS_MAGIC_NUMBER = 1;
+        this.setSecondaryValues();
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new MacePower(p, this.magicNumber), this.magicNumber));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_MAGIC_NUMBER);
-            initializeDescription();
-        }
+        this.defaultUpgrade();
     }
 
     @Override

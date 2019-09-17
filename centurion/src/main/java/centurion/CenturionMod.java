@@ -412,6 +412,7 @@ public class CenturionMod implements
 
         //Rank Up rewards
         BaseMod.addCard(new DexterityUp());
+        BaseMod.addCard(new HealthUp());
         BaseMod.addCard(new LightHeal());
         BaseMod.addCard(new PowerUp());
         BaseMod.addCard(new StatsUp());
@@ -441,6 +442,7 @@ public class CenturionMod implements
         BaseMod.addCard(new Jab());
         BaseMod.addCard(new OpportuneStrike());
         BaseMod.addCard(new Prepared());
+        BaseMod.addCard(new ReadyShield());
         BaseMod.addCard(new Reconnaissance());
         BaseMod.addCard(new Retribution());
         BaseMod.addCard(new RepeatingStrike());
@@ -467,7 +469,7 @@ public class CenturionMod implements
         BaseMod.addCard(new HoneBlade());
         BaseMod.addCard(new MassEnhance());
         BaseMod.addCard(new Observe());
-        BaseMod.addCard(new PushForward());
+        BaseMod.addCard(new PushOnward());
         BaseMod.addCard(new Reminisce());
         BaseMod.addCard(new Search());
         BaseMod.addCard(new Setup());
@@ -492,8 +494,6 @@ public class CenturionMod implements
         BaseMod.addCard(new UltimateStrike());
 
         //Testing stance cards
-        BaseMod.addCard(new Probe());
-        BaseMod.addCard(new QuickStrike());
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards

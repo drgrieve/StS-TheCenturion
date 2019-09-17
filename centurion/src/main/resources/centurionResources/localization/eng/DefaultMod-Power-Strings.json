@@ -1,4 +1,11 @@
 {
+        "centurion:BeatDownPower": {
+                "NAME": "Beat Down",
+                "DESCRIPTIONS": [
+                        "Deal #b",
+                        " damage to complete the #yQuest."
+                ]
+        },
         "centurion:BladeWorkPower": {
                 "NAME": "Blade Work",
                 "DESCRIPTIONS": [
@@ -13,6 +20,13 @@
                 "At the start of its turn, loses #b",
                 " HP."
         ]
+        },
+        "centurion:BloodDrivePower": {
+                "NAME": "Blood Drive",
+                "DESCRIPTIONS": [
+                        "Deal #b",
+                        " #yBleed damage to complete the #yQuest."
+                ]
         },
         "centurion:BloodRushPower": {
                 "NAME": "Blood Rush",
@@ -32,6 +46,13 @@
                 "NAME": "Death Mark",
                 "DESCRIPTIONS": [
                         "Doubles the damage of #yReap"
+                ]
+        },
+        "centurion:Draw1000Power": {
+                "NAME": "Draw!",
+                "DESCRIPTIONS": [
+                        "Draw #b",
+                        " cards to complete the #YQuest."
                 ]
         },
         "centurion:EnergyPower": {
@@ -61,6 +82,13 @@
                 "NAME": "Filter",
                 "DESCRIPTIONS": [
                         "At the end of your turn Filter for #b"
+                ]
+        },
+        "centurion:PunchPagPower": {
+                "NAME": "Pag Bag",
+                "DESCRIPTIONS": [
+                        "Block #b",
+                        " damage to complete the #yQuest."
                 ]
         },
         "centurion:ReminiscePower": {

@@ -3,16 +3,18 @@ package centurion.relics;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
 import centurion.cards.dualwield.*;
+import centurion.cards.quest.*;
 import centurion.cards.swordshield.*;
 import centurion.cards.twohanded.*;
 import centurion.cards.token.*;
 import centurion.characters.Centurion;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Array;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import centurion.util.TextureLoader;
@@ -23,6 +25,8 @@ import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
 
 import static centurion.CenturionMod.makeRelicPath;
 
@@ -81,34 +85,53 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
 
             RewardItem defaultAward = new RewardItem();
             defaultAward.text = DESCRIPTIONS[1];
-            addCardsToReward(defaultAward, new String[] {LightHeal.ID, PowerUp.ID });
+            addCardsToReward(defaultAward, new LightHeal(), new PowerUp());
             AbstractDungeon.getCurrRoom().rewards.add(0, defaultAward);
 
             RewardItem newRankAward = new RewardItem();
             if (this.currentRank == 1) {
                 newRankAward.text = DESCRIPTIONS[2];
-                addCardsToReward(newRankAward, new String[] { TwoHandedStance.ID, DualWieldStance.ID, SwordShieldStance.ID });
+                addCardsToReward(newRankAward, new TwoHandedStance(), new DualWieldStance(), new SwordShieldStance());
             } else if (this.currentRank == 2 || this.currentRank == 5 || this.currentRank == 8) {
                 newRankAward.text = DESCRIPTIONS[3];
-                if (stance == Centurion.StanceType.TwoHanded) addCardToReward(newRankAward, StrengthUp.ID);
-                else if (stance == Centurion.StanceType.DualWield) addCardToReward(newRankAward, StatsUp.ID);
-                else if (stance == Centurion.StanceType.SwordShield) addCardToReward(newRankAward, DexterityUp.ID);
+                if (stance == Centurion.StanceType.TwoHanded) addCardsToReward(newRankAward, new StrengthUp());
+                else if (stance == Centurion.StanceType.DualWield) addCardsToReward(newRankAward, new StatsUp());
+                else if (stance == Centurion.StanceType.SwordShield) addCardsToReward(newRankAward, new DexterityUp());
+            } else if (this.currentRank == 3 || this.currentRank == 6 || this.currentRank == 9) {
+                newRankAward.text = DESCRIPTIONS[4];
+                HealthUp c = new HealthUp();
+                if (stance == Centurion.StanceType.TwoHanded) c.increase(2);
+                else if (stance == Centurion.StanceType.DualWield) c.increase(1);;
+                addCardsToReward(newRankAward, c);
+            } else if (this.currentRank == 4) {
+                newRankAward.text = DESCRIPTIONS[5];
+                AddThreeQuestsForStance(newRankAward, stance);
             }
+
             AbstractDungeon.getCurrRoom().rewards.add(0, newRankAward);
             updateTips();
         }
     }
 
-    private void addCardToReward(RewardItem reward, String cardId) {
-        addCardsToReward(reward, new String[] { cardId });
-    }
-
-    private void addCardsToReward(RewardItem reward, String[] cardIds) {
+    private void addCardsToReward(RewardItem reward, AbstractCard... cards) {
         reward.type = RewardItem.RewardType.CARD;
         reward.cards.clear();
-        for(int i = 0; i < cardIds.length; i++) {
-            AbstractCard c = CardLibrary.getCard(cardIds[i]);
-            reward.cards.add(c.makeCopy());
+        for(AbstractCard c: cards) reward.cards.add(c);
+    }
+
+    private void AddThreeQuestsForStance(RewardItem item, Centurion.StanceType stance) {
+        CardGroup quests = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        quests.addToTop(new Draw1000());
+        quests.addToTop(new BloodDrive());
+        if (stance == Centurion.StanceType.SwordShield) {
+            quests.addToTop(new PunchBag());
+        } else {
+            quests.addToTop(new BeatDown());
+        }
+        for(int i = 0; i < 3; i++) {
+            AbstractCard card = quests.getRandomCard(true);
+            item.cards.add(card);
+            quests.removeCard(card);
         }
     }
 

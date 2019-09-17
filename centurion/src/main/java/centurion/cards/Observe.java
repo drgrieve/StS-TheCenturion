@@ -17,15 +17,8 @@ import static centurion.CenturionMod.makeCardPath;
 
 public class Observe extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = centurion.CenturionMod.makeID(Observe.class.getSimpleName());
     public static final String IMG = makeCardPath("Strike_Centurion.png");
-
-    // /TEXT DECLARATION/
-
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -33,23 +26,17 @@ public class Observe extends AbstractDynamicCard {
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 5;
-    private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int MAGIC_NUMBER = 1;
-    private static final int UPGRADE_MAGIC_NUMBER = 1;
-    private static final int EXHAUSTIVE_AMT = 2;
-
-    // /STAT DECLARATION/
 
     public Observe() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.baseDamage = DAMAGE;
-        this.baseMagicNumber = MAGIC_NUMBER;
-        this.magicNumber = MAGIC_NUMBER;
-        ExhaustiveVariable.setBaseValue(this, EXHAUSTIVE_AMT);
+        this.DAMAGE = 5;
+        this.UPGRADE_PLUS_DMG = 1;
+        this.MAGIC_NUMBER = 1;
+        this.UPGRADE_PLUS_MAGIC_NUMBER = 1;
+        this.EXHAUSTIVE_AMT = 2;
+        this.setSecondaryValues();
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
@@ -59,15 +46,9 @@ public class Observe extends AbstractDynamicCard {
                 new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
-            initializeDescription();
-        }
+        this.defaultUpgrade();
     }
 
     @Override

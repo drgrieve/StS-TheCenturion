@@ -19,17 +19,23 @@ import java.util.Iterator;
 public class DiscoverAction extends AbstractGameAction {
     private boolean retrieveCard = false;
     private CardGroup cards;
+    private String bannerText;
 
     public DiscoverAction(CardGroup cards) {
+        this(cards, null);
+    }
+
+    public DiscoverAction(CardGroup cards, String bannerText) {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.duration = Settings.ACTION_DUR_FAST;
         this.cards = cards;
+        this.bannerText = bannerText;
     }
 
     public void update() {
         if (this.duration == Settings.ACTION_DUR_FAST) {
             if (CenturionMod.discoveryCardScreen == null) CenturionMod.discoveryCardScreen = new DiscoveryCardScreen();
-            CenturionMod.discoveryCardScreen.discoveryOpen(cards);
+            CenturionMod.discoveryCardScreen.discoveryOpen(cards, bannerText);
             this.tickDuration();
         } else {
             if (!this.retrieveCard) {

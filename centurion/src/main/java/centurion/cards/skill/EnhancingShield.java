@@ -4,6 +4,7 @@ import centurion.actions.EnhanceAction;
 import centurion.actions.FilterAction;
 import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
+import centurion.tags.CustomTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -27,9 +28,10 @@ public class EnhancingShield extends AbstractDynamicCard {
 
     public EnhancingShield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.BLOCK = 3;
+        this.BLOCK = 5;
         this.UPGRADE_PLUS_BLOCK = 3;
         this.setSecondaryValues();
+        tags.add(CustomTags.SHIELD);
     }
 
     @Override

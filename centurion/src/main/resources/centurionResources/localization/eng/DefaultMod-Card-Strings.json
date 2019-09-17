@@ -3,6 +3,10 @@
     "NAME": "Bathe in Blood",
     "DESCRIPTION": "Heal HP equal to all enemies centurion:Bleed. NL Exhaust."
   },
+  "centurion:BeatDown": {
+    "NAME": "Beat Down",
+    "DESCRIPTION": "centurion:Quest: Deal !M! damage. NL centurion:Reward: Transform a Strike card into an Ultimate Strike. Upgrades are preserved."
+  },
   "centurion:BladeWork": {
     "NAME": "Blade Work",
     "DESCRIPTION": "Whenever you play an Attack gain 2 Block.",
@@ -20,7 +24,7 @@
   },
   "centurion:BloodRush": {
     "NAME": "Blood Rush",
-    "DESCRIPTION": "At the end of your turn centurion:filter for each card you play that turn."
+    "DESCRIPTION": "At the end of your turn centurion:Filter for each card you play that turn."
   },
   "centurion:BringItOn": {
     "NAME": "Bring It On",
@@ -59,6 +63,18 @@
     "NAME": "Double Strike",
     "DESCRIPTION": "Deal !D! damage. Add 1 Quick Strike to your hand.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. Add 1 Upgraded Quick Strike to your hand."
+  },
+  "centurion:Draw1000": {
+    "NAME": "Draw!",
+    "DESCRIPTION": "centurion:Quest: Draw !M! cards. NL centurion:Reward: An upgraded centurion:Burst."
+  },
+  "centurion:DualWieldStance": {
+    "NAME": "Dual Wield",
+    "DESCRIPTION": "Innate. NL centurion:Equip an offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
+    "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
+    "EXTENDED_DESCRIPTION": [
+      "Equip an offhand weapon"
+    ]
   },
   "centurion:Enhancement": {
     "NAME": "Enhancement",
@@ -104,6 +120,10 @@
     "DESCRIPTION": "Add a Doom and a Gloom to your hand. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Add an upgraded Doom and an upgraded Gloom to your hand. NL Exhaust."
   },
+  "centurion:HealthUp": {
+    "NAME": "Health Up",
+    "DESCRIPTION": "Innate. NL Raise your max HP by !M!. NL Fleeting."
+  },
   "centurion:HeavyBlow": {
     "NAME": "Heavy Blow",
     "DESCRIPTION": "centurion:Heavy !M!. NL Deal !D! Damage. NL Retain. When retained gain !centurion:SecondMagic! centurion:Heavy. NL Exhaust."
@@ -139,8 +159,7 @@
   },
   "centurion:OpeningManeuver": {
     "NAME": "Opening Maneuver",
-    "DESCRIPTION": "Innate. NL Add to your hand a Strike+3 or a Shield+3 card. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Add to your hand an Upgraded Strike+3 or an Upgraded Shield+3 card. NL Exhaust."
+    "DESCRIPTION": "Innate. NL Add to your hand a Strike or a Shield card with centurion:Enhance !M!. NL Exhaust."
   },
   "centurion:OpportuneStrike": {
     "NAME": "Opportune Strike",
@@ -151,8 +170,8 @@
     "DESCRIPTION": "Shuffle !M! Ultimate Strike into your draw pile. Can be upgraded any number of times.",
     "UPGRADE_DESCRIPTION": "Shuffle !M! Ultimate Strikes into your draw pile. Can be upgraded any number of times."
   },
-  "centurion:PushForward": {
-    "NAME": "Push Forward",
+  "centurion:PushOnward": {
+    "NAME": "Push Onward",
     "DESCRIPTION": "Discard any number of cards. Gain [E] for each card discarded."
   },
   "centurion:PowerUp": {
@@ -176,6 +195,10 @@
   "centurion:MurderAllTheThings": {
     "NAME": "Murder All The Things",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. Twice."
+  },
+  "centurion:ReadyShield": {
+    "NAME": "Ready Shield",
+    "DESCRIPTION": "Gain !B! Block. NL Exhaust. NL Retain. When retained decrease Block by 1 for this combat."
   },
   "centurion:Reap": {
     "NAME": "Reap",
@@ -228,7 +251,10 @@
   },
   "centurion:SlowBurn": {
     "NAME": "Slow Burn",
-    "DESCRIPTION": "Gain [E] [E] . Exhaust. NL Retain 1. NL When retained gain [E] next turn."
+    "DESCRIPTION": "Gain [E] [E] . NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      " NL Retain 1. When retained gain [E] next turn."
+    ]
   },
   "centurion:Smith": {
     "NAME": "Smith",
@@ -286,14 +312,6 @@
     "NAME": "Two Handed",
     "DESCRIPTION": "Innate. NL centurion:Equip a new weapon: Greatsword, Battle Axe, or a Warhammer. NL Purge.",
     "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded weapon: Greatsword, Battle Axe, or a Warhammer. NL Purge."
-  },
-  "centurion:DualWieldStance": {
-      "NAME": "Dual Wield",
-      "DESCRIPTION": "Innate. NL centurion:Equip an offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
-      "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
-      "EXTENDED_DESCRIPTION": [
-        "Equip an offhand weapon."
-      ]
   },
   "centurion:Sword": {
     "NAME": "Sword",

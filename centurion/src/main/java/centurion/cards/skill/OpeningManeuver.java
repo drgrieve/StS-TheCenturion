@@ -2,7 +2,7 @@ package centurion.cards.skill;
 
 import centurion.actions.DiscoverAction;
 import centurion.cards.AbstractDynamicCard;
-import centurion.cards.Strike_Centurion;
+import centurion.cards.attack.Strike_Centurion;
 import centurion.characters.Centurion;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -25,6 +25,8 @@ public class OpeningManeuver extends AbstractDynamicCard {
 
     public OpeningManeuver() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        this.MAGIC_NUMBER = 3;
+        this.UPGRADE_PLUS_MAGIC_NUMBER = 3;
         this.setSecondaryValues();
         this.isInnate = true;
         this.exhaust = true;
@@ -33,14 +35,10 @@ public class OpeningManeuver extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCard strike = new Strike_Centurion();
-        AbstractCard shield = new Shield();
-        if (this.upgraded) {
-            strike.upgrade();
-            shield.upgrade();
-        }
-        shield.baseBlock +=3;
-        strike.baseDamage +=3;
+        Strike_Centurion strike = new Strike_Centurion();
+        Shield shield = new Shield();
+        shield.enhance(this.magicNumber);
+        strike.enhance(this.magicNumber);
 
         CardGroup cards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         cards.addToTop(strike);

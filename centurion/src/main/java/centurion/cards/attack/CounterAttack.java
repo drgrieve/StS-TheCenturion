@@ -1,16 +1,14 @@
-package centurion.cards;
+package centurion.cards.attack;
 
+import centurion.CenturionMod;
+import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
-import centurion.powers.RazorPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static centurion.CenturionMod.makeCardPath;
@@ -34,7 +32,6 @@ public class CounterAttack extends AbstractDynamicCard {
         this.setSecondaryValues();
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int damageMultiplier = damageMultiplier(m);
@@ -44,7 +41,8 @@ public class CounterAttack extends AbstractDynamicCard {
     }
 
     private int damageMultiplier(AbstractMonster m) {
-        return m.getIntentDmg() > 0 ? 2 : 1;
+        CenturionMod.logger.info("intent damage:" + m.getIntentBaseDmg());
+        return m.getIntentBaseDmg() > 0 ? 2 : 1;
     }
 
     public void calculateCardDamage(AbstractMonster mo) {

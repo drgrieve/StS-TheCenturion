@@ -2,6 +2,7 @@ package centurion.characters;
 
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
+import centurion.cards.attack.Strike_Centurion;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -23,7 +24,6 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import centurion.cards.*;
 import centurion.cards.skill.*;
 import centurion.cards.twohanded.*;
 import centurion.cards.dualwield.*;

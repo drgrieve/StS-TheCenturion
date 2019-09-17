@@ -22,29 +22,19 @@ import static centurion.CenturionMod.makeCardPath;
 
 public class PowerUp extends AbstractDynamicCard {
 
-    // TEXT DECLARATION
-
     public static final String ID = centurion.CenturionMod.makeID(PowerUp.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-
-    // /TEXT DECLARATION/
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
+    public static final String IMG = makeCardPath(makeImageName(TYPE, PowerUp.class.getSimpleName()));
 
     private static final int COST = 0;
 
-    // /STAT DECLARATION/
-
-
     public PowerUp() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        this.setSecondaryValues();
         this.isInnate = true;
         FleetingField.fleeting.set(this, true);
     }
@@ -78,13 +68,13 @@ public class PowerUp extends AbstractDynamicCard {
         }
     }
 
-    // Upgraded stats.
     @Override
-    public void upgrade() {
-        if (!upgraded) {
-            upgradeName();
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
-        }
+    public void upgrade() { this.defaultUpgrade(); }
+
+    @Override
+    public AbstractCard makeCopy()
+    {
+        return new PowerUp();
     }
+
 }
