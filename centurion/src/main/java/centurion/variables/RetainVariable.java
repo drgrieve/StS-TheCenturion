@@ -1,9 +1,8 @@
 package centurion.variables;
 
 import basemod.abstracts.DynamicVariable;
-import centurion.cards.AbstractDefaultCard;
+import centurion.cards.AbstractCenturionCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static centurion.CenturionMod.makeID;
 
@@ -18,24 +17,24 @@ public class RetainVariable extends DynamicVariable
     @Override
     public boolean isModified(AbstractCard card)
     {
-        return ((AbstractDefaultCard) card).isRetainVariableModified;
+        return ((AbstractCenturionCard) card).isRetainVariableModified;
     }
    
     @Override
     public int value(AbstractCard card)
     {
-        return ((AbstractDefaultCard) card).retainVariable;
+        return ((AbstractCenturionCard) card).retainVariable;
     }
     
     @Override
     public int baseValue(AbstractCard card)
     {
-        return ((AbstractDefaultCard) card).baseRetainVariable;
+        return ((AbstractCenturionCard) card).baseRetainVariable;
     }
     
     @Override
     public boolean upgraded(AbstractCard card)
     {
-        return ((AbstractDefaultCard) card).upgradedRetainVariable;
+        return ((AbstractCenturionCard) card).upgradedRetainVariable;
     }
 }

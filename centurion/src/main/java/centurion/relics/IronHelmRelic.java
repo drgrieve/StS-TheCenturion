@@ -114,12 +114,12 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
     }
 
     private void addCardsToReward(RewardItem reward, AbstractCard... cards) {
-        reward.type = RewardItem.RewardType.CARD;
         reward.cards.clear();
         for(AbstractCard c: cards) reward.cards.add(c);
     }
 
-    private void AddThreeQuestsForStance(RewardItem item, Centurion.StanceType stance) {
+    private void AddThreeQuestsForStance(RewardItem reward, Centurion.StanceType stance) {
+        reward.cards.clear();
         CardGroup quests = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         quests.addToTop(new Draw1000());
         quests.addToTop(new BloodDrive());
@@ -130,7 +130,7 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
         }
         for(int i = 0; i < 3; i++) {
             AbstractCard card = quests.getRandomCard(true);
-            item.cards.add(card);
+            reward.cards.add(card);
             quests.removeCard(card);
         }
     }

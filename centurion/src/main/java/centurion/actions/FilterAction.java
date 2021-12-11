@@ -4,10 +4,7 @@ import centurion.CenturionMod;
 import centurion.powers.BleedPower;
 import centurion.powers.RepurposePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -32,12 +29,14 @@ public class FilterAction extends AbstractGameAction {
         NONE,
         ENERGY,
         UPGRADE,
-        MULTI
+        MULTI,
+        EXHAUST
     }
 
     public enum OnNotDiscardAction {
         NONE,
-        DRAW
+        DRAW,
+        PLAY
     }
 
     public static final String ACTION_ID = centurion.CenturionMod.makeID(FilterAction.class.getSimpleName());
@@ -83,7 +82,10 @@ public class FilterAction extends AbstractGameAction {
         if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
             int attacks = 0; int skills = 0; int powers = 0;
             for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards){
-                AbstractDungeon.player.drawPile.moveToDiscardPile(c);
+                if (this.onDiscardAction == OnDiscardAction.EXHAUST)
+                    AbstractDungeon.player.drawPile.moveToExhaustPile(c);
+                else
+                    AbstractDungeon.player.drawPile.moveToDiscardPile(c);
                 if (onDiscardAction == OnDiscardAction.UPGRADE && c.canUpgrade()) c.upgrade();
                 switch(c.type) {
                     case ATTACK: attacks++; break;
@@ -104,7 +106,15 @@ public class FilterAction extends AbstractGameAction {
         }
         int cardsNotDiscarded = this.amount - cardsDiscarded;
         if (cardsNotDiscarded > 0 && onNotDiscardAction != OnNotDiscardAction.NONE) {
-            if (onNotDiscardAction == OnNotDiscardAction.DRAW) AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, cardsNotDiscarded));
+            if (onNotDiscardAction == OnNotDiscardAction.DRAW) {
+                AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, cardsNotDiscarded));
+            }
+            else if (onNotDiscardAction == OnNotDiscardAction.PLAY)
+            {
+                for(int i = 0; i < cardsNotDiscarded; i++)
+                    AbstractDungeon.actionManager.addToBottom(new PlayTopCardAction(
+                        (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), false));
+            }
         }
         //CenturionMod.logger.info("FilterAction" + duration);
         //CenturionMod.logger.info("FilterAction" + AbstractDungeon.gridSelectScreen.selectedCards.size());

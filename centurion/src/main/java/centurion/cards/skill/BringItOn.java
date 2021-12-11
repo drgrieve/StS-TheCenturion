@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
 
 import static centurion.CenturionMod.makeCardPath;
 
@@ -29,9 +30,16 @@ public class BringItOn extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int count = AbstractDungeon.getMonsters().monsters.size();
+        int count = countAliveMonsters(AbstractDungeon.getMonsters());
         AbstractDungeon.actionManager.addToBottom(new FilterAction(count));
         if (this.upgraded) AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, count));
+    }
+
+    private int countAliveMonsters(MonsterGroup monsters) {
+        int count = 0;
+        for(AbstractMonster m: monsters.monsters)
+            if (!m.isDead && !m.escaped) count++;
+        return count;
     }
 
     @Override

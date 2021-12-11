@@ -30,6 +30,7 @@ public class BatheInBlood extends AbstractDynamicCard {
         this.UPGRADE_REDUCE_COST_BY = 1;
         this.setSecondaryValues();
         this.exhaust = true;
+        this.tags.add(CardTags.HEALING);
     }
 
     @Override

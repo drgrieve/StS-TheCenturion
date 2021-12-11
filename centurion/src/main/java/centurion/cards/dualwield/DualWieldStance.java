@@ -34,19 +34,12 @@ public class DualWieldStance extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCard sword = new Sword();
-        AbstractCard dagger = new Dagger();
-        AbstractCard mace = new Mace();
-        if (this.upgraded) {
-            sword.upgrade();
-            dagger.upgrade();
-            mace.upgrade();
-        }
         CardGroup cards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-        cards.addToTop(sword);
-        cards.addToTop(dagger);
-        cards.addToTop(mace);
-        AbstractDungeon.actionManager.addToBottom(new DiscoverAction(cards, cardStrings.EXTENDED_DESCRIPTION[0]));
+        cards.addToTop(new Sword());
+        cards.addToTop(new Dagger());
+        cards.addToTop(new Mace());
+        AbstractDungeon.actionManager.addToBottom(
+                new DiscoverAction(cards, cardStrings.EXTENDED_DESCRIPTION[0], this.upgraded ? DiscoverAction.CardOption.UPGRADE : DiscoverAction.CardOption.NONE));
     }
 
     @Override

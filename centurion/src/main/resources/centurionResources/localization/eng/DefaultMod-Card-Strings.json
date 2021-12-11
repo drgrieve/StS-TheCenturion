@@ -22,14 +22,25 @@
       " NL (You haven't played an Attack this turn.)"
     ]
   },
+  "centurion:BloodDrive": {
+    "NAME": "Blood Drive",
+    "DESCRIPTION": "centurion:Quest: Deal !M! centurion:Bleed damage. NL centurion:Reward: Discover a rare card to gain."
+  },
   "centurion:BloodRush": {
     "NAME": "Blood Rush",
-    "DESCRIPTION": "At the end of your turn centurion:Filter for each card you play that turn."
+    "DESCRIPTION": "At the end of your turn centurion:Filter for each 2 cards you played that turn."
   },
   "centurion:BringItOn": {
     "NAME": "Bring It On",
     "DESCRIPTION": "centurion:Filter for each enemy",
     "UPGRADE_DESCRIPTION": "centurion:Filter and draw a card for each enemy."
+  },
+  "centurion:Burst": {
+    "NAME": "Burst",
+    "DESCRIPTION": "centurion:Filter !M!. Gain [E] for each card discarded. Draw the cards not discarded.",
+    "EXTENDED_DESCRIPTION": [
+      "Choose cards to discard. Gain energy for each card discarded. Draw the cards not discarded."
+    ]
   },
   "centurion:Caution": {
     "NAME": "Caution",
@@ -66,12 +77,12 @@
   },
   "centurion:Draw1000": {
     "NAME": "Draw!",
-    "DESCRIPTION": "centurion:Quest: Draw !M! cards. NL centurion:Reward: An upgraded centurion:Burst."
+    "DESCRIPTION": "centurion:Quest: Draw !M! cards. NL centurion:Reward: An upgraded Burst."
   },
   "centurion:DualWieldStance": {
     "NAME": "Dual Wield",
-    "DESCRIPTION": "Innate. NL centurion:Equip an offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
-    "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
+    "DESCRIPTION": "SoulBound. Innate. NL centurion:Equip an offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
+    "UPGRADE_DESCRIPTION": "SoulBound. Innate. NL centurion:Equip an Upgraded offhand weapon: Sword, Dagger, or a Mace. NL Purge. ",
     "EXTENDED_DESCRIPTION": [
       "Equip an offhand weapon"
     ]
@@ -127,6 +138,13 @@
   "centurion:HeavyBlow": {
     "NAME": "Heavy Blow",
     "DESCRIPTION": "centurion:Heavy !M!. NL Deal !D! Damage. NL Retain. When retained gain !centurion:SecondMagic! centurion:Heavy. NL Exhaust."
+  },
+  "centurion:HiddenMove": {
+    "NAME": "Hidden Move",
+    "DESCRIPTION": "centurion:Filter !M!. NL Each card discarded is exhausted. Each card not discarded is played. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "Choose cards to discard. Each discarded is exhausted. Each card not discarded is played."
+    ]
   },
   "centurion:InTheZone": {
     "NAME": "In the Zone",
@@ -365,11 +383,11 @@
   },
   "centurion:TrustyAxe": {
     "NAME": "Trusty Axe",
-    "DESCRIPTION": "Innate. NL Deal !D! damage."
+    "DESCRIPTION": "Innate. NL If you have centurion:Razor increase centurion:Bleed by 1 for this turn. NL Deal !D! damage."
   },
   "centurion:TrustyShield": {
     "NAME": "Trusty Shield",
-    "DESCRIPTION": "Innate. NL Gain !B! Block."
+    "DESCRIPTION": "Innate. NL Gain !B! Block. NL Apply !M! Weak to a random enemy."
   },
   "centurion:BleedOut": {
     "NAME": "Bleed Out",
@@ -421,13 +439,6 @@
     "NAME": "Bright Beginning",
     "DESCRIPTION": "Innate. NL Reduce the cost of all Innate cards in your hand to 0 this turn.",
     "UPGRADE_DESCRIPTION": "Innate. NL Reduce the cost of all Innate cards in your hand to 0 this turn. NL Exhaust."
-  },
-  "centurion:Burst": {
-    "NAME": "Burst",
-    "DESCRIPTION": "centurion:Filter !M!. Gain [E] for each card discarded. Draw the cards not discarded.",
-    "EXTENDED_DESCRIPTION": [
-      "Choose cards to discard. Gain energy for each card discarded. Draw the cards not discarded."
-    ]
   },
   "centurion:DefensiveWhirlwind": {
     "NAME": "Defensive Whirlwind",

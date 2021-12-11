@@ -114,9 +114,9 @@ public class Centurion extends CustomPlayer {
 
         initializeClass(null, // required call to load textures and setup energy/loadout.
                 // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
-                THE_DEFAULT_SHOULDER_1, // campfire pose
-                THE_DEFAULT_SHOULDER_2, // another campfire pose
-                THE_DEFAULT_CORPSE, // dead corpse
+                CENTURION_SHOULDER_1, // campfire pose
+                CENTURION_SHOULDER_2, // another campfire pose
+                CENTURION_CORPSE, // dead corpse
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
@@ -125,10 +125,10 @@ public class Centurion extends CustomPlayer {
         // =============== ANIMATIONS =================  
 
         loadAnimation(
-                THE_DEFAULT_SKELETON_ATLAS,
-                THE_DEFAULT_SKELETON_JSON,
+                CENTURION_SKELETON_ATLAS,
+                CENTURION_SKELETON_JSON,
                 1.0f);
-        AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
+        AnimationState.TrackEntry e = state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
 
         // =============== /ANIMATIONS/ =================
@@ -229,7 +229,7 @@ public class Centurion extends CustomPlayer {
                 break;
             case DualWield:
                 cards.addToBottom(new Caution());
-                cards.addToBottom(new DoubleStrike());
+                cards.addToBottom(new Sequel());
                 cards.addToBottom(new Feint());
                 cards.addToBottom(new Probe());
 

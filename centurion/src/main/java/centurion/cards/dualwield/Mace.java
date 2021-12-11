@@ -23,7 +23,7 @@ public class Mace extends AbstractDynamicCard {
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
     public static final String IMG = makeCardPath(makeImageName(TYPE, Mace.class.getSimpleName()));
 
-    private static final int COST = 1;
+    private static final int COST = 0;
 
     public Mace() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

@@ -72,6 +72,7 @@ public abstract class AbstractDefaultPower extends AbstractPower {
             AbstractDungeon.player.masterDeck.removeCard(c);
         } else {
             c.baseMagicNumber = amount;
+            c.applyPowers();
         }
     }
 

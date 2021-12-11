@@ -31,7 +31,7 @@ public class Sword extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
 
     // /STAT DECLARATION/
 

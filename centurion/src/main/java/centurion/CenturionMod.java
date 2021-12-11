@@ -6,6 +6,7 @@ import basemod.ModPanel;
 import basemod.interfaces.*;
 import centurion.cards.attack.*;
 import centurion.cards.power.*;
+import centurion.cards.quest.*;
 import centurion.cards.skill.*;
 import centurion.cards.swordshield.*;
 import centurion.util.DiscoveryCardScreen;
@@ -125,18 +126,18 @@ public class CenturionMod implements
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "centurionResources/images/1024/card_default_gray_orb.png";
     
     // Character assets
-    private static final String THE_DEFAULT_BUTTON = "centurionResources/images/charSelect/DefaultCharacterButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = "centurionResources/images/charSelect/DefaultCharacterPortraitBG.png";
-    public static final String THE_DEFAULT_SHOULDER_1 = "centurionResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_DEFAULT_SHOULDER_2 = "centurionResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_DEFAULT_CORPSE = "centurionResources/images/char/defaultCharacter/corpse.png";
+    private static final String CENTURION_BUTTON = "centurionResources/images/charSelect/DefaultCharacterButton.png";
+    private static final String CENTURION_PORTRAIT = "centurionResources/images/charSelect/DefaultCharacterPortraitBG.png";
+    public static final String CENTURION_SHOULDER_1 = "centurionResources/images/char/centurion/shoulder.png";
+    public static final String CENTURION_SHOULDER_2 = "centurionResources/images/char/centurion/shoulder2.png";
+    public static final String CENTURION_CORPSE = "centurionResources/images/char/centurion/corpse.png";
     
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "centurionResources/images/Badge.png";
     
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "centurionResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "centurionResources/images/char/defaultCharacter/skeleton.json";
+    public static final String CENTURION_SKELETON_ATLAS = "centurionResources/images/char/centurion/skeleton.atlas";
+    public static final String CENTURION_SKELETON_JSON = "centurionResources/images/char/centurion/skeleton.json";
 
     public static DiscoveryCardScreen discoveryCardScreen;
 
@@ -293,7 +294,7 @@ public class CenturionMod implements
         logger.info("Beginning to edit characters. " + "Add " + Centurion.Enums.CENTURION.toString());
         
         BaseMod.addCharacter(new Centurion("the Default", Centurion.Enums.CENTURION),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, Centurion.Enums.CENTURION);
+                CENTURION_BUTTON, CENTURION_PORTRAIT, Centurion.Enums.CENTURION);
         
         receiveEditPotions();
         logger.info("Added " + Centurion.Enums.CENTURION.toString());
@@ -418,6 +419,12 @@ public class CenturionMod implements
         BaseMod.addCard(new StatsUp());
         BaseMod.addCard(new StrengthUp());
 
+        //Quests
+        BaseMod.addCard(new BeatDown());
+        BaseMod.addCard(new BloodDrive());
+        BaseMod.addCard(new Draw1000());
+        BaseMod.addCard(new PunchBag());
+
         //Stance cards
         BaseMod.addCard(new TwoHandedStance());
         BaseMod.addCard(new DualWieldStance());
@@ -486,6 +493,7 @@ public class CenturionMod implements
         BaseMod.addCard(new DiamondEdgedBlade());
         BaseMod.addCard(new DefensiveWhirlwind());
         BaseMod.addCard(new Enhancement());
+        BaseMod.addCard(new HiddenMove());
         BaseMod.addCard(new InTheZone());
         BaseMod.addCard(new ReapAndSow());
         BaseMod.addCard(new Repurpose());

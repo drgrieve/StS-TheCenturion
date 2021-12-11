@@ -36,6 +36,7 @@ public class GatherBandages extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.exhaust = true;
         AlwaysRetainField.alwaysRetain.set(this, true);
+        this.tags.add(CardTags.HEALING);
         this.baseMagicNumber = MAGIC_NUMBER;
         this.magicNumber = MAGIC_NUMBER;
     }

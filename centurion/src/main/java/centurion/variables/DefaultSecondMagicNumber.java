@@ -2,7 +2,7 @@ package centurion.variables;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import centurion.cards.AbstractDefaultCard;
+import centurion.cards.AbstractCenturionCard;
 
 import static centurion.CenturionMod.makeID;
 
@@ -20,22 +20,22 @@ public class DefaultSecondMagicNumber extends DynamicVariable {
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((AbstractDefaultCard) card).isDefaultSecondMagicNumberModified;
+        return ((AbstractCenturionCard) card).isDefaultSecondMagicNumberModified;
 
     }
 
     @Override
     public int value(AbstractCard card) {
-        return ((AbstractDefaultCard) card).defaultSecondMagicNumber;
+        return ((AbstractCenturionCard) card).defaultSecondMagicNumber;
     }
 
     @Override
     public int baseValue(AbstractCard card) {
-        return ((AbstractDefaultCard) card).defaultBaseSecondMagicNumber;
+        return ((AbstractCenturionCard) card).defaultBaseSecondMagicNumber;
     }
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        return ((AbstractDefaultCard) card).upgradedDefaultSecondMagicNumber;
+        return ((AbstractCenturionCard) card).upgradedDefaultSecondMagicNumber;
     }
 }

@@ -3,6 +3,7 @@ package centurion.cards.twohanded;
 import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
 import centurion.powers.RazorPower;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.SoulboundField;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -39,6 +40,7 @@ public class TwoHandedStance extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.isInnate = true;
         this.purgeOnUse = true;
+        SoulboundField.soulbound.set(this, true);
     }
 
     // Actions the card should do.

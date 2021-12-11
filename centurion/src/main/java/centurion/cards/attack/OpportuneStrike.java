@@ -32,6 +32,7 @@ public class OpportuneStrike extends AbstractDynamicCard {
         this.DAMAGE = 16;
         this.UPGRADE_PLUS_DMG = 4;
         this.setSecondaryValues();
+        this.tags.add(CardTags.STRIKE);
     }
 
     @Override

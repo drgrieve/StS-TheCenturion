@@ -1,9 +1,7 @@
 package centurion.actions;
 
 import centurion.CenturionMod;
-import centurion.cards.AbstractDefaultCard;
-import centurion.cards.attack.EnhancingStrike;
-import centurion.cards.skill.EnhancingShield;
+import centurion.cards.AbstractCenturionCard;
 import centurion.tags.CustomTags;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -66,7 +64,7 @@ public class EnhanceAction extends AbstractGameAction {
             CardGroup tmpGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
             for(AbstractCard c: cards.group) {
                 boolean passesTag = !mustBeTagged || (c.hasTag(AbstractCard.CardTags.STRIKE) || c.hasTag(CustomTags.SHIELD));
-                if (passesTag && cardTypes.contains(c.type) && (c.baseBlock > 0) || c.baseDamage > 0) {
+                if (passesTag && cardTypes.contains(c.type) && ((c.baseBlock > 0) || c.baseDamage > 0)) {
                     tmpGroup.addToTop(c);
                 }
             }
@@ -106,15 +104,12 @@ public class EnhanceAction extends AbstractGameAction {
             }
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
         }
-        //CenturionMod.logger.info("FilterAction" + duration);
-        //CenturionMod.logger.info("FilterAction" + AbstractDungeon.gridSelectScreen.selectedCards.size());
-        //CenturionMod.logger.info("FilterAction" + cardsDiscarded);
         this.isDone = true;
     }
 
     private void enhance(AbstractCard c) {
-        if (c instanceof AbstractDefaultCard) {
-            ((AbstractDefaultCard)c).enhance();
+        if (c instanceof AbstractCenturionCard) {
+            ((AbstractCenturionCard)c).enhance();
         } else {
             if (c.baseDamage > 0) c.baseDamage++;
             if (c.baseBlock > 0) c.baseBlock++;

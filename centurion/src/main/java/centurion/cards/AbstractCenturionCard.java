@@ -2,7 +2,7 @@ package centurion.cards;
 
 import basemod.abstracts.CustomCard;
 
-public abstract class AbstractDefaultCard extends CustomCard {
+public abstract class AbstractCenturionCard extends CustomCard {
 
     // Custom Abstract Cards can be a bit confusing. While this is a simple base for simply adding a second magic number,
     // if you're new to modding I suggest you skip this file until you know what unique things that aren't provided
@@ -21,16 +21,17 @@ public abstract class AbstractDefaultCard extends CustomCard {
     public boolean isRetainVariableModified;
     public boolean upgradedRetainVariable;
     public int enhanceCount;
+    public boolean reshuffleOnUse = false; //if true -> don't discard on next use, has to be reset in the "use" method (from witchmod)
 
-    public AbstractDefaultCard(final String id,
-                               final String name,
-                               final String img,
-                               final int cost,
-                               final String rawDescription,
-                               final CardType type,
-                               final CardColor color,
-                               final CardRarity rarity,
-                               final CardTarget target) {
+    public AbstractCenturionCard(final String id,
+                                 final String name,
+                                 final String img,
+                                 final int cost,
+                                 final String rawDescription,
+                                 final CardType type,
+                                 final CardColor color,
+                                 final CardRarity rarity,
+                                 final CardTarget target) {
 
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
 

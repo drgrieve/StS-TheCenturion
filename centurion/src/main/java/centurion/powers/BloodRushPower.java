@@ -30,15 +30,18 @@ public class BloodRushPower extends AbstractDefaultPower {
         if (amount < 10) {
             if (this.amount == 0) this.flashWithoutSound();
             this.amount++;
-            AbstractCreature p = this.owner;
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FilterPower(p, 1), 1));
+            if (this.amount % 2 == 0) {
+                AbstractCreature p = this.owner;
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FilterPower(p, 1), 1));
+            }
         }
     }
 
     public void atEndOfTurn(boolean isPlayer) {
-        if (isPlayer && this.amount > 0) {
+        if (isPlayer && this.amount > 1) {
+            int toRemove = this.amount / 2;
             AbstractCreature p = this.owner;
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FilterPower(p, -amount), -amount));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FilterPower(p, -toRemove), -toRemove));
             this.amount = 0;
         }
     }

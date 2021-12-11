@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
-public abstract class AbstractDynamicCard extends AbstractDefaultCard {
+public abstract class AbstractDynamicCard extends AbstractCenturionCard {
 
     // "How come DefaultCommonAttack extends CustomCard and not DynamicCard like all the rest?"
 

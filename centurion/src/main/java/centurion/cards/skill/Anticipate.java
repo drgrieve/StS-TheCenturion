@@ -1,5 +1,6 @@
-package centurion.cards;
+package centurion.cards.skill;
 
+import centurion.cards.AbstractDynamicCard;
 import centurion.characters.Centurion;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -25,9 +26,6 @@ public class Anticipate extends AbstractDynamicCard {
 
     private static final int COST = 1;
 
-    // /STAT DECLARATION/
-
-
     public Anticipate() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
@@ -36,7 +34,6 @@ public class Anticipate extends AbstractDynamicCard {
         this.setSecondaryValues();
     }
 
-    // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
@@ -73,7 +70,6 @@ public class Anticipate extends AbstractDynamicCard {
         initializeDescription();
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         this.defaultUpgrade();

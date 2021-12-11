@@ -29,6 +29,13 @@
     "DESCRIPTION": "A Rank Up is a one time use card that will you allow to choose from different rewards."
   },
   {
+    "PROPER_NAME": "Recurring",
+    "NAMES": [
+      "recurring"
+    ],
+    "DESCRIPTION": "When this card is played it is shuffled into the draw pile instead of being discarded."
+  },
+  {
     "NAMES": [
       "reward"
     ],

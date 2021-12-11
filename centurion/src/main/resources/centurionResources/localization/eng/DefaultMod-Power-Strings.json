@@ -31,7 +31,7 @@
         "centurion:BloodRushPower": {
                 "NAME": "Blood Rush",
                 "DESCRIPTIONS": [
-                        "Whenever you play a card gain #b1 #yFilter for this turn. (Up to 10)"
+                        "Whenever you play 2 cards gain #b1 #yFilter for this turn. (Up to 5)"
                 ]
         },
         "centurion:DaggerPower": {
@@ -52,7 +52,7 @@
                 "NAME": "Draw!",
                 "DESCRIPTIONS": [
                         "Draw #b",
-                        " cards to complete the #YQuest."
+                        " cards to complete the #yQuest."
                 ]
         },
         "centurion:EnergyPower": {

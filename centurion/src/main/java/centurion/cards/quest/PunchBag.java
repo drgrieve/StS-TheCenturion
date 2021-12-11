@@ -28,6 +28,7 @@ public class PunchBag extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.MAGIC_NUMBER = 1000;
         this.setSecondaryValues();
+        this.isInnate = true;
     }
 
     @Override

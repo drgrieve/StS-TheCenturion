@@ -1,49 +1,48 @@
-package centurion.cards;
+package centurion.cards.dualwield;
 
+import centurion.cards.AbstractDynamicCard;
+import centurion.cards.token.QuickStrike;
 import centurion.characters.Centurion;
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.ExhaustiveField;
-import com.evacipated.cardcrawl.mod.stslib.variables.ExhaustiveVariable;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
 
 import static centurion.CenturionMod.makeCardPath;
 
-public class Observe extends AbstractDynamicCard {
+public class Sequel extends AbstractDynamicCard {
 
-    public static final String ID = centurion.CenturionMod.makeID(Observe.class.getSimpleName());
-    public static final String IMG = makeCardPath("Strike_Centurion.png");
+    public static final String ID = centurion.CenturionMod.makeID(Sequel.class.getSimpleName());
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Centurion.Enums.COLOR_GRAY;
+    public static final String IMG = makeCardPath(makeImageName(TYPE, Sequel.class.getSimpleName()));
 
     private static final int COST = 1;
 
-    public Observe() {
+    public Sequel() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.DAMAGE = 5;
-        this.UPGRADE_PLUS_DMG = 1;
-        this.MAGIC_NUMBER = 1;
-        this.UPGRADE_PLUS_MAGIC_NUMBER = 1;
-        this.EXHAUSTIVE_AMT = 2;
-        this.setSecondaryValues();
+        this.DAMAGE = 4;
+        this.UPGRADE_PLUS_DMG = 2;
+        this.tags.add(CardTags.STRIKE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        this.reshuffleOnUse = true;
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                        AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber), this.magicNumber));
+                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
+                        AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        this.enhance();
     }
 
     @Override
@@ -54,7 +53,7 @@ public class Observe extends AbstractDynamicCard {
     @Override
     public AbstractCard makeCopy()
     {
-        return new Observe();
+        return new Sequel();
     }
 
 }
