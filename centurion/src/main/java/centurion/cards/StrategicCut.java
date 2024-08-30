@@ -2,6 +2,7 @@ package centurion.cards;
 
 import centurion.characters.Centurion;
 import centurion.powers.RazorPower;
+import centurion.powers.BleedUpPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -57,15 +58,8 @@ public class StrategicCut extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        if (p.hasPower(RazorPower.POWER_ID)) {
-            ((RazorPower)p.getPower(RazorPower.POWER_ID)).increaseCurrentBleed(this.defaultSecondMagicNumber);
-            AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new RazorPower(p, this.magicNumber), this.magicNumber));
-        }
-        else {
-            AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new RazorPower(p, this.magicNumber, 0, this.defaultSecondMagicNumber), this.magicNumber));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BleedUpPower(p, this.defaultSecondMagicNumber), this.defaultSecondMagicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new RazorPower(p, this.magicNumber), this.magicNumber));
 
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),

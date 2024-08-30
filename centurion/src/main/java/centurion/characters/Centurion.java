@@ -87,17 +87,17 @@ public class Centurion extends CustomPlayer {
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
-            "centurionResources/images/char/defaultCharacter/orb/layer1.png",
-            "centurionResources/images/char/defaultCharacter/orb/layer2.png",
-            "centurionResources/images/char/defaultCharacter/orb/layer3.png",
-            "centurionResources/images/char/defaultCharacter/orb/layer4.png",
-            "centurionResources/images/char/defaultCharacter/orb/layer5.png",
-            "centurionResources/images/char/defaultCharacter/orb/layer6.png",
-            "centurionResources/images/char/defaultCharacter/orb/layer1d.png",
-            "centurionResources/images/char/defaultCharacter/orb/layer2d.png",
-            "centurionResources/images/char/defaultCharacter/orb/layer3d.png",
-            "centurionResources/images/char/defaultCharacter/orb/layer4d.png",
-            "centurionResources/images/char/defaultCharacter/orb/layer5d.png",};
+            "centurionResources/images/char/centurion/orb/layer1.png",
+            "centurionResources/images/char/centurion/orb/layer2.png",
+            "centurionResources/images/char/centurion/orb/layer3.png",
+            "centurionResources/images/char/centurion/orb/layer4.png",
+            "centurionResources/images/char/centurion/orb/layer5.png",
+            "centurionResources/images/char/centurion/orb/layer6.png",
+            "centurionResources/images/char/centurion/orb/layer1d.png",
+            "centurionResources/images/char/centurion/orb/layer2d.png",
+            "centurionResources/images/char/centurion/orb/layer3d.png",
+            "centurionResources/images/char/centurion/orb/layer4d.png",
+            "centurionResources/images/char/centurion/orb/layer5d.png",};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
@@ -105,9 +105,9 @@ public class Centurion extends CustomPlayer {
 
     public Centurion(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "centurionResources/images/char/defaultCharacter/orb/vfx.png", null,
+                "centurionResources/images/char/centurion/orb/vfx.png", null,
                 new SpriterAnimation(
-                        "centurionResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
+                        "centurionResources/images/char/centurion/Spriter/theDefaultAnimation.scml"));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  

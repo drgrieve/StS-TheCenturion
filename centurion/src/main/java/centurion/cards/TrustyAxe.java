@@ -1,6 +1,8 @@
 package centurion.cards;
 
 import centurion.characters.Centurion;
+import centurion.powers.BleedDownPower;
+import centurion.powers.BleedUpPower;
 import centurion.powers.RazorPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,6 +13,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static centurion.CenturionMod.makeCardPath;
 
@@ -36,9 +39,11 @@ public class TrustyAxe extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (p.hasPower(RazorPower.POWER_ID)) {
-            ((RazorPower)p.getPower(RazorPower.POWER_ID)).increaseCurrentBleed(1);
-        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BleedUpPower(p, 1), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BleedDownPower(p, 1), 1));
+        // if (p.hasPower(RazorPower.POWER_ID)) {
+        //     ((RazorPower)p.getPower(RazorPower.POWER_ID)).increaseCurrentBleed(1);
+        // }
         AbstractDungeon.actionManager.addToBottom(
             new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
                     AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));

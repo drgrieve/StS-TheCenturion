@@ -28,18 +28,23 @@ public class BeatDown extends AbstractDynamicCard {
     public BeatDown() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.MAGIC_NUMBER = 1000;
+        this.UPGRADE_PLUS_MAGIC_NUMBER = -250;
         this.setSecondaryValues();
         this.isInnate = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BeatDownPower(p, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BeatDownPower(p, this.baseMagicNumber), this.baseMagicNumber));
     }
 
     @Override
     public void upgrade() {
-        this.defaultUpgrade();
+        if (!upgraded) {
+            upgradeName();
+            upgradeMagicNumber(UPGRADE_PLUS_MAGIC_NUMBER);
+            initializeDescription();
+        }    
     }
 
     @Override

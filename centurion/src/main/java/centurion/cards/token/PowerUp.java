@@ -43,22 +43,21 @@ public class PowerUp extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         CardGroup cards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-        Iterator iterator = p.masterDeck.group.iterator();
+        Iterator<AbstractCard> iterator = p.masterDeck.group.iterator();
         while(iterator.hasNext()) {
             AbstractCard c = (AbstractCard)iterator.next();
             if (!c.upgraded) cards.addToTop(c);
         }
-        cards.shuffle();
         if (!cards.isEmpty()) {
             AbstractCard c;
             if (this.upgraded) {
-                c = cards.getTopCard();
-            } else {
                 c = cards.getRandomCard(false, CardRarity.RARE);
                 if (c == null) c = cards.getRandomCard(false, CardRarity.UNCOMMON);
                 if (c == null) c = cards.getRandomCard(false, CardRarity.COMMON);
                 if (c == null) c = cards.getRandomCard(false, CardRarity.SPECIAL);
                 if (c == null) c = cards.getRandomCard(false, CardRarity.BASIC);
+            } else {
+                c = cards.getRandomCard(false);
             }
             c.upgrade();
 

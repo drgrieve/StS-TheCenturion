@@ -429,7 +429,7 @@ public class CenturionMod implements
         BaseMod.addCard(new TwoHandedStance());
         BaseMod.addCard(new DualWieldStance());
         BaseMod.addCard(new Dagger());
-        BaseMod.addCard(new Mace());
+        BaseMod.addCard(new Greatsword());
         BaseMod.addCard(new Sword());
         BaseMod.addCard(new SwordShieldStance());
 

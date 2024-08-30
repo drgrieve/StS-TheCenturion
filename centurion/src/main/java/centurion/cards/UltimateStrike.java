@@ -38,9 +38,9 @@ public class UltimateStrike extends AbstractDynamicCard {
 
     private static final int COST = 1;
     private static final int DAMAGE = 10;
-    private static final int UPGRADE_PLUS_DMG = 5;
+    private static final int UPGRADE_PLUS_DMG = 4;
     private static final int BLOCK = 10;
-    private static final int UPGRADE_PLUS_BLOCK = 5;
+    private static final int UPGRADE_PLUS_BLOCK = 4;
 
     // /STAT DECLARATION/
 
@@ -56,10 +56,10 @@ public class UltimateStrike extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
         AbstractDungeon.actionManager.addToBottom(
             new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
                     AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
     }
 

@@ -101,7 +101,7 @@ public class IronHelmRelic extends CustomRelic implements CustomSavable<Integer>
                 newRankAward.text = DESCRIPTIONS[4];
                 HealthUp c = new HealthUp();
                 if (stance == Centurion.StanceType.TwoHanded) c.increase(2);
-                else if (stance == Centurion.StanceType.DualWield) c.increase(1);;
+                else if (stance == Centurion.StanceType.DualWield) c.increase(1);
                 addCardsToReward(newRankAward, c);
             } else if (this.currentRank == 4) {
                 newRankAward.text = DESCRIPTIONS[5];

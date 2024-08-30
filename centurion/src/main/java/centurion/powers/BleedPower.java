@@ -63,8 +63,8 @@ public class BleedPower extends AbstractDefaultPower implements CloneablePowerIn
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             this.flashWithoutSound();
             AbstractDungeon.actionManager.addToBottom(new BleedAction(this.owner, this.source));
-            if (owner.hasPower(BloodDrivePower.POWER_ID)) {
-                ((BloodDrivePower)owner.getPower(BloodDrivePower.POWER_ID)).onBleed(this.amount);
+            if (AbstractDungeon.player.hasPower(BloodDrivePower.POWER_ID)) {
+                ((BloodDrivePower)AbstractDungeon.player.getPower(BloodDrivePower.POWER_ID)).onBleed(this.amount);
             }
         }
     }

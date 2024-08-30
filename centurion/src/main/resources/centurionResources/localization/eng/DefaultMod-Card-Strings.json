@@ -3,6 +3,10 @@
     "NAME": "Bathe in Blood",
     "DESCRIPTION": "Heal HP equal to all enemies centurion:Bleed. NL Exhaust."
   },
+  "centurion:BattleAxe": {
+    "NAME": "Battle Axe",
+    "DESCRIPTION": "Whenever you apply centurion:Bleed, apply !M! additional centurion:Bleed."
+  },
   "centurion:BeatDown": {
     "NAME": "Beat Down",
     "DESCRIPTION": "centurion:Quest: Deal !M! damage. NL centurion:Reward: Transform a Strike card into an Ultimate Strike. Upgrades are preserved."
@@ -84,7 +88,7 @@
     "DESCRIPTION": "SoulBound. Innate. NL centurion:Equip an offhand weapon: Sword, Dagger, or a Mace. NL Purge.",
     "UPGRADE_DESCRIPTION": "SoulBound. Innate. NL centurion:Equip an Upgraded offhand weapon: Sword, Dagger, or a Mace. NL Purge. ",
     "EXTENDED_DESCRIPTION": [
-      "Equip an offhand weapon"
+      "Equip an offhand weapon for defense and attack options"
     ]
   },
   "centurion:Enhancement": {
@@ -130,6 +134,10 @@
     "NAME": "Doom and Gloom",
     "DESCRIPTION": "Add a Doom and a Gloom to your hand. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Add an upgraded Doom and an upgraded Gloom to your hand. NL Exhaust."
+  },
+  "centurion:Greatsword": {
+    "NAME": "Greatsword",
+    "DESCRIPTION": "Gain !M! Strength."
   },
   "centurion:HealthUp": {
     "NAME": "Health Up",
@@ -220,7 +228,7 @@
   },
   "centurion:Reap": {
     "NAME": "Reap",
-    "DESCRIPTION": "Deal !D! damage. NL Double the damage for each Death Mark. NL Remove 1 Death Mark or Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Double the base damage for each Death Mark. NL Remove 1 Death Mark or Exhaust."
   },
   "centurion:ReapAndSow": {
     "NAME": "Reap and Sow",
@@ -329,7 +337,10 @@
   "centurion:TwoHandedStance": {
     "NAME": "Two Handed",
     "DESCRIPTION": "Innate. NL centurion:Equip a new weapon: Greatsword, Battle Axe, or a Warhammer. NL Purge.",
-    "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded weapon: Greatsword, Battle Axe, or a Warhammer. NL Purge."
+    "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip an Upgraded weapon: Greatsword, Battle Axe, or a Warhammer. NL Purge.",
+    "EXTENDED_DESCRIPTION": [
+      "Equip a two handed weapon for greater damage"
+    ]
   },
   "centurion:Sword": {
     "NAME": "Sword",
@@ -339,7 +350,10 @@
   "centurion:SwordShieldStance": {
     "NAME": "Sword & Shield",
     "DESCRIPTION": "Innate. NL centurion:Equip a better shield: Tower, Spiked, or Warded. NL Purge.",
-    "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip a better and Upgraded shield: Tower+, Spiked+, or Warded+. NL Purge."
+    "UPGRADE_DESCRIPTION": "Innate. NL centurion:Equip a better and Upgraded shield: Tower+, Spiked+, or Warded+. NL Purge.",
+    "EXTENDED_DESCRIPTION": [
+      "Equip a powerful shield for extra defense"
+    ]
   },
   "centurion:Strike_Centurion": {
     "NAME": "Strike",
@@ -450,7 +464,7 @@
   },
   "centurion:UltimateStrike": {
     "NAME": "Ultimate Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block. NL Draw a card. NL Exhaust."
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage. NL Draw a card. NL Exhaust."
   },
   "centurion:DefaultCommonPower": {
     "NAME": "Hold Place",

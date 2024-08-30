@@ -21,7 +21,21 @@
                 " HP."
         ]
         },
-        "centurion:BloodDrivePower": {
+        "centurion:BleedDownPower": {
+                "NAME": "Bleed Down",
+                "DESCRIPTIONS": [
+                        "Lose #b",
+                        " increased #yBleed at the start of your next turn."
+                ]
+        },
+        "centurion:BleedUpPower": {
+                "NAME": "More Bleed",
+                "DESCRIPTIONS": [
+                        "Whenever you apply #yBleed, apply an additional #b",
+                        " #yBleed."
+                ]
+        },
+                "centurion:BloodDrivePower": {
                 "NAME": "Blood Drive",
                 "DESCRIPTIONS": [
                         "Deal #b",

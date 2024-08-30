@@ -15,9 +15,6 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
 import com.megacrit.cardcrawl.vfx.FastCardObtainEffect;
-import sun.util.resources.cldr.ar.CalendarData_ar_DZ;
-
-import javax.smartcardio.Card;
 import java.util.List;
 
 import static centurion.CenturionMod.makeCardPath;

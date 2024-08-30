@@ -1,6 +1,7 @@
 package centurion.powers;
 
 import centurion.actions.DiscoverAction;
+import centurion.cards.quest.BloodDrive;
 import centurion.cards.quest.Draw1000;
 import centurion.characters.Centurion;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -36,7 +37,7 @@ public class BloodDrivePower extends AbstractDefaultPower {
             AbstractDungeon.actionManager.addToBottom(new DiscoverAction(cards));
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
         }
-        adjustMasterQuestCard(Draw1000.ID, this.amount);
+        adjustMasterQuestCard(BloodDrive.ID, this.amount);
     }
 
     public void stackPower(int stackAmount) {

@@ -22,14 +22,7 @@ public class RazorPower extends AbstractDefaultPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private int baseBleed = 1;
-    private int currentBleed = baseBleed;
-
     public RazorPower(AbstractCreature owner, int newAmount) {
-        this(owner, newAmount, 0, 0);
-    }
-
-    public RazorPower(AbstractCreature owner, int newAmount, int increaseBaseBleedAmount, int increaseCurrentBleedAmount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -37,8 +30,6 @@ public class RazorPower extends AbstractDefaultPower {
         this.type = PowerType.BUFF;
         this.canGoNegative = true;
         this.isTurnBased = true;
-        this.baseBleed = baseBleed + increaseBaseBleedAmount;
-        this.currentBleed = currentBleed + increaseCurrentBleedAmount;
 
         loadImages();
         this.updateDescription();
@@ -70,14 +61,14 @@ public class RazorPower extends AbstractDefaultPower {
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.currentBleed + DESCRIPTIONS[1];
+        this.description = DESCRIPTIONS[0] + calculateBleed() + DESCRIPTIONS[1];
     }
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (damageAmount > 0 && this.amount > 0 && target != this.owner && info.type == DamageInfo.DamageType.NORMAL) {
             this.flash();
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, this.owner, new BleedPower(target, this.owner, this.currentBleed), this.currentBleed, true));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, this.owner, new BleedPower(target, this.owner, calculateBleed()), calculateBleed(), true));
         }
     }
 
@@ -92,7 +83,6 @@ public class RazorPower extends AbstractDefaultPower {
                 for(int i = 0; i < applications; i++) {
                     AbstractDungeon.actionManager.addToBottom(new BleedAction(action.target, this.owner));
                 }
-
             }
         }
     }
@@ -104,21 +94,16 @@ public class RazorPower extends AbstractDefaultPower {
                 AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
             } else  {
                 AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new RazorPower(this.owner, -1), -1));
-                if (this.currentBleed > this.baseBleed) {
-                    this.currentBleed = this.currentBleed - 1;
-                    updateDescription();
-                }
+                updateDescription();
             }
         }
     }
 
-    public void increaseCurrentBleed(int amount) {
-        this.currentBleed = this.currentBleed + amount;
+    public int calculateBleed() {
+        int currentBleed = 1;
+        if (owner.hasPower(BleedUpPower.POWER_ID)) {
+            currentBleed += owner.getPower(RazorPower.POWER_ID).amount;
+        }
+        return currentBleed;
     }
-
-    public void increaseBaseBleed(int amount) {
-        this.baseBleed = this.baseBleed + amount;
-        if (this.baseBleed > this.currentBleed) this.currentBleed = this.baseBleed;
-    }
-
 }

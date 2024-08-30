@@ -23,8 +23,8 @@ public class HealthUp extends AbstractDynamicCard {
 
     public HealthUp() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.MAGIC_NUMBER = 3;
-        this.UPGRADE_PLUS_MAGIC_NUMBER = 1;
+        this.MAGIC_NUMBER = 4;
+        this.UPGRADE_PLUS_MAGIC_NUMBER = 6;
         this.setSecondaryValues();
         this.isInnate = true;
         FleetingField.fleeting.set(this, true);
